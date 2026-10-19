@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Object Tracing Dashboard</title>
+  <meta name="description" content="Interactive dashboard for the systematic literature mapping on accountability through digital object tracing in information security.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/vendor/xlsx.full.min.js" defer></script>
+  <script src="assets/vendor/chart.umd.js" defer></script>
+  <script src="data/article.js" defer></script>
+  <script src="data/references.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">Systematic literature mapping · Supplementary dashboard</p>
+      <h1 id="article-title">Loading…</h1>
+    </div>
+  </header>
+  <div class="tab-bar">
+    <nav class="tabs wrap" id="tabs" role="tablist" aria-label="Dashboard sections"></nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <div class="status" id="status" role="status">Loading the spreadsheet…</div>
+
+    <!-- Overview -->
+    <section class="panel" id="panel-overview" role="tabpanel" hidden>
+      <div class="authors" id="article-authors"></div>
+      <p class="affiliation" id="article-affiliation"></p>
+      <div class="tiles" id="overview-tiles"></div>
+      <div class="card">
+        <h2>Abstract</h2>
+        <p id="article-abstract" class="abstract"></p>
+        <p class="keywords" id="article-keywords"></p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>Distribution of studies by year</h2>
+          <p class="hint">Add any category of the thematic analysis as a series, and choose whether it is drawn as bars or as a line. Click a bar or a point to list the studies behind it.</p>
+        </div>
+        <div class="series-builder" id="series-builder">
+          <label>Dimension <select id="sb-dimension"></select></label>
+          <label>Category <select id="sb-category"></select></label>
+          <label>Draw as
+            <select id="sb-type"><option value="bar">Bars</option><option value="line">Line</option></select>
+          </label>
+          <button type="button" class="btn" id="sb-add">Add series</button>
+          <label class="check"><input type="checkbox" id="sb-stack"> Stack bars</label>
+          <button type="button" class="btn ghost" id="sb-reset">Reset</button>
+        </div>
+        <ul class="series-list" id="series-list" aria-label="Series in the chart"></ul>
+        <p class="hint warn" id="series-warning" hidden></p>
+        <div class="chart-box"><canvas id="year-chart" aria-label="Studies by year"></canvas></div>
+        <details class="table-view">
+          <summary>Show the chart data as a table</summary>
+          <div class="table-scroll" id="year-table"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Data extraction form -->
+    <section class="panel" id="panel-def" role="tabpanel" hidden>
+      <div class="card-head">
+        <h2>Data extraction form (DEF)</h2>
+        <p class="hint">Each cell shows what Researcher 1 extracted. Click a cell to compare it with the output of the AI tools.</p>
+      </div>
+      <div class="toolbar">
+        <label class="grow">Filter studies <input type="search" id="def-filter" placeholder="Paper ID, title, year or any text"></label>
+        <span class="count" id="def-count"></span>
+      </div>
+      <div class="table-scroll tall" id="def-table"></div>
+    </section>
+
+    <!-- Thematic analysis -->
+    <section class="panel" id="panel-ta" role="tabpanel" hidden>
+      <div class="card-head">
+        <h2>Thematic analysis</h2>
+        <p class="hint">Each cell shows the coding of Researcher 1 at each stage. Click a cell to compare it with the coding of the AI tools.</p>
+      </div>
+      <div class="subtabs" id="ta-subtabs" role="tablist" aria-label="Thematic analysis dimensions"></div>
+      <div class="toolbar">
+        <label class="grow">Filter studies <input type="search" id="ta-filter" placeholder="Paper ID, title or any text"></label>
+        <span class="count" id="ta-count"></span>
+      </div>
+      <div class="table-scroll tall" id="ta-table"></div>
+    </section>
+
+    <!-- Research questions (one panel, filled per tab) -->
+    <section class="panel" id="panel-rq" role="tabpanel" hidden>
+      <div class="card">
+        <p class="eyebrow" id="rq-id"></p>
+        <h2 id="rq-question"></h2>
+        <p class="hint" id="rq-rationale"></p>
+        <div class="table-scroll" id="rq-table"></div>
+        <dl class="stats" id="rq-stats"></dl>
+      </div>
+    </section>
+
+    <!-- Heatmaps -->
+    <section class="panel" id="panel-heatmaps" role="tabpanel" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Heatmaps</h2>
+          <p class="hint">Choose the dimensions for each axis. Each cell counts the studies coded with both categories; click a cell to list them.</p>
+        </div>
+        <div class="toolbar">
+          <label>Y axis (rows) <select id="hm-y"></select></label>
+          <label>X axis (columns) <select id="hm-x"></select></label>
+          <button type="button" class="btn ghost" id="hm-swap">Swap axes</button>
+        </div>
+        <div class="heatmap-scroll"><div id="heatmap"></div></div>
+        <p class="hint small" id="hm-order-note">Rows and columns are ordered so that the highest count sits in the top-right cell and the lowest counts gather in the bottom-left corner. The column holding the highest count is placed on the right; rows are sorted by their count in that column, highest at the top. Tied rows are separated by their highest count in the remaining columns, then the next highest, and so on. Columns are then sorted by their count in the top row, highest on the right, with ties separated in the same way.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p id="source-note"></p>
+    <p>
+      <label class="file-load">Preview another version of the spreadsheet
+        <input type="file" id="file-input" accept=".xlsx,.xlsm,.xls">
+      </label>
+    </p>
+  </footer>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head">
+      <h2 id="dialog-title"></h2>
+      <button type="button" class="btn ghost" id="dialog-close" aria-label="Close">Close</button>
+    </div>
+    <div id="dialog-body"></div>
+  </dialog>
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>
