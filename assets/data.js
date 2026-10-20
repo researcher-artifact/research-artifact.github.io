@@ -128,7 +128,7 @@
    * Groups columns named "<field> (<coder>)" into fields with one entry per
    * coder. GPT columns named "C1 - Value" and "C1 - Justification" are joined
    * to field "C1". Columns without a coder (other than identifiers) are kept as
-   * "extra" columns, e.g. the final decision.
+   * "extra" columns, e.g. the final decision (flagged with `final`).
    */
   function groupColumns(header) {
     const fields = [];
@@ -155,7 +155,7 @@
         // A column named like a coded field (e.g. "Architecture Type", "High-level theme")
         // is that field's final decision; it is also kept as a column of its own.
         if (f) f.final = i;
-        extras.push({ label: h, index: i });
+        extras.push({ label: h, index: i, final: Boolean(f) || /final/i.test(h) });
       }
     });
     return { fields, extras };
@@ -252,7 +252,8 @@
     // Per-dimension thematic analysis sheets.
     const taSheets = [];
     for (const t of TA_SHEETS) {
-      const sh = table(findSheet(wb, t.sheet));
+      const sheetName = wb.SheetNames.find((n) => t.sheet.test(n.trim()));
+      const sh = table(sheetName ? wb.Sheets[sheetName] : null);
       if (!sh.rows.length) continue;
       const idx = rayyanIndex(sh.header);
       const grouped = groupColumns(sh.header);
@@ -260,7 +261,7 @@
         .map((r) => ({ study: byId.get(text(r[idx])), row: r }))
         .filter((r) => r.study)
         .sort((a, b) => a.study.paperId.localeCompare(b.study.paperId, 'en', { numeric: true }));
-      taSheets.push({ label: t.label, stages: grouped.fields, extras: grouped.extras, rows });
+      taSheets.push({ label: t.label, sheetName: sheetName.trim(), stages: grouped.fields, extras: grouped.extras, rows });
     }
 
     // Number of unique records retrieved (sheet "Data Set").
@@ -300,5 +301,5 @@
     });
   }
 
-  window.DashboardData = { SOURCES, parseWorkbook, cellFor, text };
+  window.DashboardData = { SOURCES, parseWorkbook, cellFor, text, table, findSheet };
 })();
