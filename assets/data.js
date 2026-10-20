@@ -152,8 +152,10 @@
         f.cols[source.id].push({ index: i, part });
       } else if (!ID_COLUMNS.test(h)) {
         const f = byName.get(h.toLowerCase());
-        if (f) f.final = i; // e.g. "Architecture Type" next to its per-coder columns
-        else extras.push({ label: h, index: i });
+        // A column named like a coded field (e.g. "Architecture Type", "High-level theme")
+        // is that field's final decision; it is also kept as a column of its own.
+        if (f) f.final = i;
+        extras.push({ label: h, index: i });
       }
     });
     return { fields, extras };
