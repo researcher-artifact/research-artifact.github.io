@@ -1,8 +1,9 @@
 /*
  * Dashboard user interface: tabs, the studies-by-year chart, the DEF and
- * thematic analysis tables, one table per research question and the heatmaps.
- * The data model comes from data.js; citations come from data/references.js,
- * which follows the numbering of the article's reference list.
+ * thematic analysis tables, the Fleiss' kappa analysis, one table per research
+ * question and the heatmaps. The data model comes from data.js and kappa.js;
+ * citations come from data/references.js, which follows the numbering of the
+ * article's reference list.
  */
 (function () {
   'use strict';
@@ -13,6 +14,7 @@
   };
 
   const { SOURCES, parseWorkbook, cellFor, text } = window.DashboardData;
+  const Kappa = window.DashboardKappa;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -24,6 +26,8 @@
     chart: null,
     taIndex: 0,
     heatmap: { y: 'purposes', x: 'technologies' },
+    kappaSel: { combo: 'Technology|Theme', study: null },
+    eqFilter: { dim: '', stage: '', type: '', q: '' },
   };
 
   // ------------------------------------------------------------ utilities
@@ -45,6 +49,9 @@
   }
 
   const pct = (n, total) => (total ? (100 * n / total).toFixed(2) + '%' : '–');
+  /** Three decimals with a true minus sign, as in the article's kappa table. */
+  const dec = (v, digits = 3) => (Number.isFinite(v) ? v.toFixed(digits).replace('-', '−') : '–');
+  const rate = (v) => (Number.isFinite(v) ? (100 * v).toFixed(1) + '%' : '–');
   const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
   // ------------------------------------------------------------ citations
@@ -137,6 +144,7 @@
       { id: 'overview', label: 'Overview' },
       { id: 'def', label: 'Data extraction' },
       { id: 'ta', label: 'Thematic analysis' },
+      { id: 'kappa', label: "Fleiss' kappa" },
     ];
     state.article.researchQuestions.forEach((rq) => tabs.push({ id: rq.id.toLowerCase(), label: rq.id, rq }));
     tabs.push({ id: 'heatmaps', label: 'Heatmaps' });
@@ -162,6 +170,7 @@
     if (tab.rq) renderRQ(tab.rq);
     if (tab.id === 'overview') renderChart();
     if (tab.id === 'heatmaps') renderHeatmap();
+    if (tab.id === 'kappa') renderKappaExample();
   }
 
   // ------------------------------------------------------------- overview
@@ -409,25 +418,38 @@
     }, sh.label)));
   }
 
+  /** Stage name as used in the article ("Codes" is the article's "Initial Codes"). */
+  function stageLabel(field) {
+    const stage = Kappa.stageOf(field.label);
+    return stage ? stage.label : field.label;
+  }
+
+  /** Intermediate stages read as supporting detail; data extraction, the high-level theme and the final columns stand out. */
+  function stageClass(field) {
+    const stage = Kappa.stageOf(field.label);
+    return stage && stage.key !== 'HighLevelTheme' ? ' stage-mid' : '';
+  }
+
   function renderTA() {
     const sh = state.model.taSheets[state.taIndex];
     if (!sh) return;
     const stages = sh.stages.filter((f) => f.cols.r1.length);
+    const extraClass = (x) => (x.final ? 'final-col' : 'extra-col');
     const draw = () => {
       const shown = filterRows(sh.rows, $('ta-filter').value,
         (r) => stages.map((f) => cellFor(r.row, f.cols.r1)).concat(sh.extras.map((x) => text(r.row[x.index]))));
       $('ta-count').textContent = `${shown.length} of ${sh.rows.length} studies`;
       const t = el('table', { class: 'data grid' },
         el('thead', {}, el('tr', {}, el('th', { class: 'study', text: 'Study' }),
-          stages.map((f) => el('th', {}, f.label, el('span', { class: 'sub', text: 'Researcher 1' }))),
-          sh.extras.map((x) => el('th', { text: x.label })))),
+          stages.map((f) => el('th', { class: stageClass(f).trim() || null }, stageLabel(f), el('span', { class: 'sub', text: 'Researcher 1' }))),
+          sh.extras.map((x) => el('th', { class: extraClass(x) }, x.label, x.final ? el('span', { class: 'sub', text: 'Final result' }) : null)))),
         el('tbody', {}, shown.map((r) => el('tr', {}, studyCell(r.study),
           stages.map((f) => el('td', {
-            class: 'clip', tabindex: 0, title: 'Click to compare with the AI tools',
+            class: `clip${stageClass(f)}`, tabindex: 0, title: 'Click to compare with the AI tools',
             onclick: () => openTA(sh, f, r), onkeydown: (e) => { if (e.key === 'Enter') openTA(sh, f, r); },
           }, el('div', { class: 'clamp', text: cellFor(r.row, f.cols.r1) }))),
           sh.extras.map((x) => el('td', {
-            class: 'clip final-col', tabindex: 0, title: 'Click to see every stage of the coding',
+            class: `clip ${extraClass(x)}`, tabindex: 0, title: 'Click to see every stage of the coding',
             onclick: () => openTA(sh, null, r), onkeydown: (e) => { if (e.key === 'Enter') openTA(sh, null, r); },
           }, el('div', { class: 'clamp', text: text(r.row[x.index]) })))))));
       $('ta-table').replaceChildren(t);
@@ -441,10 +463,305 @@
     const stages = stage ? [stage] : sh.stages;
     const body = el('div', {},
       el('p', { class: 'hint', text: studyHeading(r.study) }),
-      stages.map((f) => el('section', { class: 'stage' }, stages.length > 1 ? el('h3', { text: f.label }) : null, comparison(f, r.row))),
+      stages.map((f) => el('section', { class: 'stage' }, stages.length > 1 ? el('h3', { text: stageLabel(f) }) : null,
+        f.kappa ? agreementView(f, r) : comparison(f, r.row))),
       sh.extras.length ? el('div', { class: 'final' }, sh.extras.map((x) =>
         el('div', {}, el('h4', { text: x.label }), el('p', { class: 'pre', text: text(r.row[x.index]) || '–' })))) : null);
-    openDialog(stage ? `${sh.label}: ${stage.label}` : sh.label, body);
+    openDialog(stage ? `${sh.label}: ${stageLabel(stage)}` : sh.label, body);
+  }
+
+  /**
+   * Comparison of the three raters for a stage that enters the kappa analysis:
+   * labels that Researcher 1 shares with an AI tool are marked in green, and the
+   * study's agreement is described from its Pi.
+   */
+  function agreementView(field, r) {
+    const combo = field.kappa;
+    const entry = combo.perStudy.get(r.study.id);
+    if (!entry) return comparison(field, r.row);
+    const sets = entry.cells.map((c) => new Set(c.items));
+    const cols = el('div', { class: 'compare' }, SOURCES.map((src, i) => {
+      const cell = entry.cells[i];
+      return el('div', { class: `compare-col${i === 0 ? ' primary' : ''}` },
+        el('h4', { text: src.label }),
+        cell.combination ? el('p', { class: 'pre' }, cell.segments.flatMap((seg) => labelSegment(seg, sets)))
+          : el('p', { class: 'muted', text: 'Empty.' }));
+    }));
+    const verdict = agreementVerdict(entry);
+    return el('div', {}, cols,
+      el('div', { class: `agreement ${verdict.cls}` },
+        el('p', { class: 'agreement-label', text: verdict.text }),
+        el('p', { class: 'small' },
+          `${combo.dim.label} · ${combo.stage.label}: κ = ${dec(combo.kappa)}, ${combo.interpretation.toLowerCase()} agreement (Landis and Koch). `,
+          el('button', { type: 'button', class: 'link-btn small', onclick: () => showKappaExample(combo, r.study) }, 'See how it is calculated')),
+        el('p', { class: 'hint small', text: 'Green marks the labels that Researcher 1 shares with at least one AI tool; the darker green, those shared by all three. Agreement counts only when the complete combination of labels is the same, so shared labels can sit alongside no agreement.' })));
+  }
+
+  /** One label of a cell, as written, marked when Researcher 1 and an AI tool share it. */
+  function labelSegment(seg, sets) {
+    if (seg.separator) return seg.text;
+    const core = seg.text.trim();
+    const lead = seg.text.slice(0, seg.text.indexOf(core));
+    const trail = seg.text.slice(lead.length + core.length);
+    const inR1 = sets[0].has(seg.canonical);
+    const inGpt = sets[1].has(seg.canonical);
+    const inClaude = sets[2].has(seg.canonical);
+    const shared = inR1 && (inGpt || inClaude);
+    const title = seg.rule ? `Counted as “${seg.canonical}” by the equivalence table (${seg.rule.type || 'rule'})` : null;
+    return [lead, el('span', {
+      class: `label-item${shared ? ' shared' : ''}${inR1 && inGpt && inClaude ? ' all' : ''}${seg.rule ? ' mapped' : ''}`, title,
+    }, core), trail];
+  }
+
+  /** "Full agreement (3 of 3 raters)", "Partial agreement…" or "No agreement", from the study's Pi. */
+  function agreementVerdict(entry) {
+    if (!entry.included) return { cls: 'excluded', text: 'Not included in the kappa calculation: at least one rater left this stage blank.' };
+    const recovered = entry.pairs.some((hit, i) => hit && !entry.rawPairs[i]) ? ', after normalisation' : '';
+    if (entry.pi === 1) return { cls: 'full', text: `Full agreement (3 of 3 raters${recovered})` };
+    if (entry.pi > 0) {
+      const [a, b] = Kappa.PAIRS[entry.pairs.indexOf(true)];
+      return { cls: 'partial', text: `Partial agreement (2 of 3 raters${recovered}): ${Kappa.RATERS[a].label} and ${Kappa.RATERS[b].label}` };
+    }
+    return { cls: 'none', text: 'No agreement' };
+  }
+
+  // ---------------------------------------------------------- Fleiss' kappa
+
+  /** Results by dimension and stage, the means by stage and the equivalence table. */
+  function renderKappa() {
+    const k = state.model.kappa;
+    if (!k.combinations.length) {
+      $('kappa-check').textContent = 'No coding stage with three rater columns was found in the spreadsheet.';
+      return;
+    }
+    const checked = k.combinations.filter((c) => c.reference);
+    const differ = checked.filter((c) => !c.matchesReference);
+    const check = $('kappa-check');
+    check.classList.toggle('warn', differ.length > 0);
+    check.textContent = !k.referenceFound
+      ? 'The Kappa_Fleiss sheet was not found, so these values could not be checked against the spreadsheet.'
+      : differ.length
+        ? `${differ.length} of the ${checked.length} combinations reported in the Kappa_Fleiss sheet differ from the recomputed value; they are marked in the table.`
+        : `The Kappa_Fleiss sheet reports ${checked.length} of these ${k.combinations.length} combinations, and all ${checked.length} match the recomputed values.`;
+
+    const t = el('table', { class: 'data kappa' },
+      el('thead', {},
+        el('tr', {},
+          el('th', { rowspan: 2, text: 'Dimension' }), el('th', { rowspan: 2, text: 'Stage' }), el('th', { rowspan: 2, class: 'num', text: 'N' }),
+          el('th', { rowspan: 2, class: 'num' }, el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'o' })),
+          el('th', { rowspan: 2, class: 'num' }, el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'e' })),
+          el('th', { rowspan: 2, class: 'num', text: 'κ' }), el('th', { rowspan: 2, text: 'Interpretation' }),
+          el('th', { colspan: 3, class: 'group', text: 'Full agreement (studies)' }),
+          el('th', { colspan: 3, class: 'group', text: 'Pairwise agreement' }),
+          el('th', { rowspan: 2, text: 'Reported in' })),
+        el('tr', {}, ['Raw', 'Normalised', 'Recovered', 'R1 · GPT', 'R1 · Claude', 'GPT · Claude'].map((h) => el('th', { class: 'num', text: h })))),
+      el('tbody', {}, k.combinations.map((c, i) => {
+        const first = i === 0 || k.combinations[i - 1].dim !== c.dim;
+        return el('tr', { class: `${first ? 'group-start' : ''}${c.inArticle ? '' : ' supplementary'}${c.matchesReference === false ? ' mismatch' : ''}` },
+          el('th', { scope: 'row', class: first ? '' : 'repeat', text: c.dim.label }),
+          el('td', { text: c.stage.label }),
+          el('td', { class: 'num', text: c.n }),
+          el('td', { class: 'num', text: dec(c.po) }),
+          el('td', { class: 'num', text: dec(c.pe) }),
+          el('td', { class: 'num' },
+            el('button', { type: 'button', class: 'link-btn', title: 'Walk through this calculation', onclick: () => showKappaExample(c) }, dec(c.kappa)),
+            c.matchesReference === false ? el('span', { class: 'warn small', text: ` (sheet: ${dec(c.reference.kappa)})` }) : null),
+          el('td', {}, el('span', { class: `kappa-badge k-${c.interpretation.toLowerCase().replace(/\s+/g, '-')}`, text: c.interpretation })),
+          el('td', { class: 'num', text: c.rawFull }),
+          el('td', { class: 'num', text: c.normFull }),
+          el('td', { class: 'num', text: c.recovered }),
+          c.pairRates.map((v) => el('td', { class: 'num', text: rate(v) })),
+          el('td', { class: c.inArticle ? '' : 'muted', text: c.inArticle ? 'Article' : 'Supplementary' }));
+      })));
+    $('kappa-table').replaceChildren(t);
+
+    const mean = (list, key) => list.reduce((a, c) => a + c[key], 0) / list.length;
+    const byStage = Kappa.STAGES.map((stage) => ({ stage, list: k.combinations.filter((c) => c.stage === stage) })).filter((g) => g.list.length);
+    $('kappa-stages').replaceChildren(el('table', { class: 'data' },
+      el('thead', {}, el('tr', {}, el('th', { text: 'Stage' }), el('th', { class: 'num', text: 'Combinations' }),
+        el('th', { class: 'num' }, 'Mean ', el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'o' })),
+        el('th', { class: 'num' }, 'Mean ', el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'e' })),
+        el('th', { class: 'num', text: 'Mean κ' }), el('th', { text: 'Interpretation' }))),
+      el('tbody', {}, byStage.map(({ stage, list }) => {
+        const kMean = mean(list, 'kappa');
+        return el('tr', {}, el('th', { scope: 'row', text: stage.label }), el('td', { class: 'num', text: list.length }),
+          el('td', { class: 'num', text: dec(mean(list, 'po')) }), el('td', { class: 'num', text: dec(mean(list, 'pe')) }),
+          el('td', { class: 'num', text: dec(kMean) }), el('td', { text: Kappa.interpret(kMean) }));
+      }))),
+    el('p', { class: 'hint small', text: 'Means across every dimension with that stage, the supplementary ones included.' }));
+
+    renderEquivalences();
+  }
+
+  /** Opens the worked example on a combination and, optionally, a study. */
+  function showKappaExample(combo, study) {
+    state.kappaSel = { combo: combo.id, study: study ? study.id : null };
+    $('kx-filter').value = '';
+    if ($('dialog').open) $('dialog').close();
+    if (location.hash === '#kappa') renderKappaExample();
+    else location.hash = '#kappa';
+    requestAnimationFrame(() => $('kappa-example').scrollIntoView({ block: 'start' }));
+  }
+
+  function renderKappaExample() {
+    const k = state.model && state.model.kappa;
+    if (!k || !k.combinations.length) return;
+    let combo = k.get(state.kappaSel.combo) || k.combinations[0];
+    const dims = Kappa.DIMENSIONS.filter((d) => k.combinations.some((c) => c.dim === d));
+    $('kx-dim').replaceChildren(...dims.map((d) => el('option', { value: d.key, text: d.label })));
+    $('kx-dim').value = combo.dim.key;
+    const stages = k.combinations.filter((c) => c.dim === combo.dim);
+    $('kx-stage').replaceChildren(...stages.map((c) => el('option', { value: c.id, text: c.stage.label })));
+    $('kx-stage').value = combo.id;
+
+    // Studies: filtered by the search box; by default, the first study with partial agreement.
+    const q = $('kx-filter').value.trim().toLowerCase();
+    const rows = combo.sheet.rows.filter((r) => {
+      if (!q) return true;
+      const e = combo.perStudy.get(r.study.id);
+      return [r.study.paperId, r.study.title, citationLabel(r.study), ...e.cells.map((c) => c.raw)].join(' ').toLowerCase().includes(q);
+    });
+    let current = rows.find((r) => r.study.id === state.kappaSel.study);
+    if (!current) {
+      current = rows.find((r) => { const e = combo.perStudy.get(r.study.id); return e.included && e.pi > 0 && e.pi < 1; }) || rows[0];
+    }
+    $('kx-study').replaceChildren(...rows.map((r) => {
+      const e = combo.perStudy.get(r.study.id);
+      const tag = !e.included ? 'excluded' : e.pi === 1 ? 'all agree' : e.pi > 0 ? 'two agree' : 'none agree';
+      return el('option', { value: r.study.id, text: `${r.study.paperId} ${citationLabel(r.study)} · ${tag} · ${r.study.title}` });
+    }));
+    if (!current) {
+      $('kx-steps').replaceChildren(el('p', { class: 'muted', text: 'No study matches the search.' }));
+    } else {
+      state.kappaSel = { combo: combo.id, study: current.study.id };
+      $('kx-study').value = current.study.id;
+      $('kx-steps').replaceChildren(exampleSteps(combo, current.study));
+    }
+
+    $('kx-dim').onchange = (e) => {
+      const next = k.combinations.filter((c) => c.dim.key === e.target.value);
+      combo = next.find((c) => c.stage === combo.stage) || next[0];
+      state.kappaSel = { combo: combo.id, study: state.kappaSel.study };
+      renderKappaExample();
+    };
+    $('kx-stage').onchange = (e) => { state.kappaSel = { combo: e.target.value, study: state.kappaSel.study }; renderKappaExample(); };
+    $('kx-study').onchange = (e) => { state.kappaSel = { combo: combo.id, study: e.target.value }; renderKappaExample(); };
+    $('kx-filter').oninput = () => renderKappaExample();
+  }
+
+  function exampleSteps(combo, study) {
+    const e = combo.perStudy.get(study.id);
+    // Equal combinations share a colour, so agreeing raters are easy to spot.
+    const groups = [...new Set(e.cells.map((c) => c.combination).filter(Boolean))];
+    const groupOf = (c) => (c.combination ? groups.indexOf(c.combination) + 1 : 0);
+    const step = (n, title, ...content) => el('section', { class: 'kx-step' },
+      el('h3', {}, el('span', { class: 'kx-num', text: n }), title), ...content);
+
+    const raw = step(1, 'Raw codings', el('p', { class: 'hint small', text: `${combo.dim.label} · ${combo.stage.label} · ${studyHeading(study)}` }),
+      el('div', { class: 'compare' }, Kappa.RATERS.map((r, i) => el('div', { class: `compare-col${i === 0 ? ' primary' : ''}` },
+        el('h4', { text: r.label }),
+        el('p', { class: e.cells[i].raw.trim() ? 'pre' : 'muted', text: e.cells[i].raw.trim() || 'Empty.' })))));
+
+    const norm = step(2, 'Normalised labels and combinations',
+      el('p', { class: 'hint small', text: 'Each label after normalisation; a highlighted label was changed by a rule of the equivalence table. The combination is the deduplicated, sorted set of labels. Equal combinations share a colour.' }),
+      el('div', { class: 'compare' }, Kappa.RATERS.map((r, i) => {
+        const cell = e.cells[i];
+        const items = cell.segments.filter((s) => !s.separator);
+        return el('div', { class: 'compare-col' },
+          el('h4', { text: r.label }),
+          items.length ? el('ol', { class: 'norm-list' }, items.map((s) => el('li', {},
+            el('span', { class: 'muted', text: s.text.trim() }),
+            s.norm !== s.text.trim() ? [' → ', el('code', { text: s.norm })] : null,
+            s.rule ? el('span', { class: 'rule' }, ' → ', el('mark', { text: s.canonical }),
+              el('span', { class: 'small muted', text: ` ${s.rule.type || 'Equivalence'} · ${scopeLabel(s.rule)}` })) : null)))
+            : el('p', { class: 'muted', text: 'No labels.' }),
+          el('p', { class: `combo-chip grp-${groupOf(cell)}` }, el('span', { class: 'small muted', text: 'Combination: ' }), cell.combination || '(blank)'));
+      })));
+
+    if (!e.included) {
+      return el('div', {}, raw, norm, el('p', { class: 'hint warn', text: 'At least one rater left this stage blank, so the study is excluded from this combination\'s calculation.' }));
+    }
+
+    const hits = e.pairs.filter(Boolean).length;
+    const pi = step(3, 'Agreement for this study',
+      el('table', { class: 'data compact' }, el('tbody', {}, Kappa.PAIRS.map(([a, b], i) => el('tr', {},
+        el('td', { text: `${Kappa.RATERS[a].label} and ${Kappa.RATERS[b].label}` }),
+        el('td', { class: e.pairs[i] ? 'ok' : 'muted', text: e.pairs[i] ? '✓ same combination' : '✗ different' }))))),
+      el('p', { class: 'formula' }, el('var', { text: 'P' }), el('sub', { text: 'i' }), ` = ${hits} / 3 = ${dec(e.pi)}`),
+      el('p', { class: 'hint small', text: agreementVerdict(e).text }));
+
+    const total = 3 * combo.n;
+    const sumPi = combo.po * combo.n;
+    const own = groups.map((g) => ({ g, here: e.cells.filter((c) => c.combination === g).length, n: combo.counts.get(g) }));
+    const ownPe = own.reduce((a, o) => a + (o.n / total) ** 2, 0);
+    const contribution = step(4, `Contribution to κ for ${combo.dim.label} · ${combo.stage.label}`,
+      el('p', {}, 'Observed agreement: this study adds ', el('var', { text: 'P' }), el('sub', { text: 'i' }), ` = ${dec(e.pi)} to the sum over the N = ${combo.n} studies, `,
+        el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'o' }), ` = ${dec(sumPi, 2)} / ${combo.n} = ${dec(combo.po)}.`),
+      el('div', { class: 'table-scroll' }, el('table', { class: 'data compact' },
+        el('thead', {}, el('tr', {}, el('th', { text: 'Category j (combination)' }), el('th', { class: 'num', text: 'Ratings in this study' }),
+          el('th', { class: 'num', text: `n of ${total} ratings` }), el('th', { class: 'num' }, el('var', { text: 'p' }), el('sub', { text: 'j' })),
+          el('th', { class: 'num' }, el('var', { text: 'p' }), el('sub', { text: 'j' }), el('sup', { text: '2' })))),
+        el('tbody', {}, own.map((o) => el('tr', {},
+          el('td', {}, el('span', { class: `combo-chip grp-${groups.indexOf(o.g) + 1}`, text: o.g })),
+          el('td', { class: 'num', text: o.here }), el('td', { class: 'num', text: o.n }),
+          el('td', { class: 'num', text: dec(o.n / total, 4) }), el('td', { class: 'num', text: dec((o.n / total) ** 2, 6) })))))),
+      el('p', {}, 'Expected agreement: ', el('span', { class: 'ov', text: 'P' }), el('sub', { text: 'e' }),
+        ` is the sum of `, el('var', { text: 'p' }), el('sub', { text: 'j' }), el('sup', { text: '2' }),
+        ` over all ${combo.counts.size} categories used in this combination, ${dec(combo.pe)}; the categories of this study contribute ${dec(ownPe, 6)} of it.`),
+      el('p', { class: 'formula', text: `κ = (${dec(combo.po)} − ${dec(combo.pe)}) / (1 − ${dec(combo.pe)}) = ${dec(combo.kappa)}` }),
+      el('p', { class: combo.matchesReference === false ? 'hint small warn' : 'hint small' },
+        `${combo.interpretation} agreement (Landis and Koch). `,
+        !combo.reference ? 'The Kappa_Fleiss sheet does not report this combination; it is computed with the same method.'
+          : combo.matchesReference ? `The Kappa_Fleiss sheet reports the same value (${dec(combo.reference.kappa)}).`
+            : `The Kappa_Fleiss sheet reports ${dec(combo.reference.kappa)}.`));
+
+    return el('div', {}, raw, norm, pi, contribution);
+  }
+
+  /** "Domain · Initial Codes", "All dimensions · Theme", and so on. */
+  function scopeLabel(rule) {
+    const dim = Kappa.dimensionByKey(rule.dimension);
+    const stage = Kappa.stageByKey(rule.stage);
+    return `${dim ? dim.label : rule.dimension === 'ALL' ? 'All dimensions' : rule.dimension} · ${stage ? stage.label : rule.stage === 'ALL' ? 'All stages' : rule.stage}`;
+  }
+
+  function renderEquivalences() {
+    const eq = state.model.kappa.equivalences;
+    if (!eq.found) {
+      $('eq-note').textContent = 'The Equivalences sheet was not found, so labels are compared after normalisation only.';
+      $('eq-table').replaceChildren();
+      return;
+    }
+    const active = eq.rules.filter((r) => r.active).length;
+    $('eq-note').textContent = `${eq.rules.length} rules, ${active} active. ${eq.apply ? 'They are applied in the calculation' : 'They are not applied in the calculation'} (cell "Apply equivalences in Kappa?" of the sheet: ${eq.apply ? 'Yes' : 'No'}). Each rule maps a variant label to its canonical form for one dimension and stage, or for all of them.`;
+    const options = (id, values, label, all) => {
+      const sel = $(id);
+      sel.replaceChildren(el('option', { value: '', text: all }), ...values.map((v) => el('option', { value: v, text: label(v) })));
+      sel.value = values.includes(state.eqFilter[id.slice(3)]) ? state.eqFilter[id.slice(3)] : '';
+    };
+    const uniq = (key) => [...new Set(eq.rules.map((r) => r[key]))];
+    options('eq-dim', uniq('dimension'), (v) => (Kappa.dimensionByKey(v) || { label: v === 'ALL' ? 'All dimensions' : v }).label, 'Any dimension');
+    options('eq-stage', uniq('stage'), (v) => (Kappa.stageByKey(v) || { label: v === 'ALL' ? 'All stages' : v }).label, 'Any stage');
+    options('eq-type', uniq('type').filter(Boolean).sort(), (v) => v, 'Any type');
+    const draw = () => {
+      const f = { dim: $('eq-dim').value, stage: $('eq-stage').value, type: $('eq-type').value, q: $('eq-filter').value.trim().toLowerCase() };
+      state.eqFilter = f;
+      const shown = eq.rules.filter((r) => (!f.dim || r.dimension === f.dim) && (!f.stage || r.stage === f.stage) && (!f.type || r.type === f.type)
+        && (!f.q || [r.original, r.canonical, r.note, r.type].join(' ').toLowerCase().includes(f.q)));
+      $('eq-count').textContent = `${shown.length} of ${eq.rules.length} rules`;
+      $('eq-table').replaceChildren(el('table', { class: 'data' },
+        el('thead', {}, el('tr', {}, ['Active', 'Dimension', 'Stage', 'Original term', 'Canonical term', 'Type', 'Confidence', 'Note'].map((h) => el('th', { text: h })))),
+        el('tbody', {}, shown.map((r) => el('tr', { class: r.active ? '' : 'inactive' },
+          el('td', { text: r.active ? 'Yes' : 'No' }),
+          el('td', { text: (Kappa.dimensionByKey(r.dimension) || { label: r.dimension === 'ALL' ? 'All' : r.dimension }).label }),
+          el('td', { text: (Kappa.stageByKey(r.stage) || { label: r.stage === 'ALL' ? 'All' : r.stage }).label }),
+          el('td', { text: r.original }), el('td', {}, el('strong', { text: r.canonical })),
+          el('td', { text: r.type }), el('td', { text: r.confidence }), el('td', { class: 'small', text: r.note }))))));
+    };
+    ['eq-dim', 'eq-stage', 'eq-type'].forEach((id) => { $(id).onchange = draw; });
+    $('eq-filter').value = state.eqFilter.q;
+    $('eq-filter').oninput = draw;
+    draw();
   }
 
   // ----------------------------------------------------- research questions
@@ -615,18 +932,20 @@
   function readWorkbook(buffer) {
     // Only the sheets the dashboard uses are parsed, which keeps loading fast.
     const probe = XLSX.read(buffer, { type: 'array', bookSheets: true });
-    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$)/i.test(n.trim()));
+    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$|equivalences$|kappa[_\s]*fleiss$)/i.test(n.trim()));
     return XLSX.read(buffer, { type: 'array', sheets: wanted, cellHTML: false, cellStyles: false });
   }
 
   function useWorkbook(wb, sourceNote) {
     state.model = parseWorkbook(wb);
+    state.model.kappa = Kappa.build(wb, state.model.taSheets);
     state.model.warnings.forEach((w) => console.warn(w));
     renderOverview();
     buildSeriesBuilder();
     renderDEF();
     renderTASubtabs();
     renderTA();
+    renderKappa();
     buildHeatmapControls();
     $('source-note').textContent = sourceNote;
     $('status').hidden = true;
