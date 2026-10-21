@@ -9,27 +9,38 @@ All figures are computed in the browser from the DEF/TA spreadsheet each time th
 | Tab | What it shows |
 |---|---|
 | Overview | Title, authors, abstract, headline figures and the distribution of studies by year. Any category of any dimension can be added to the chart, drawn as bars or as a line. Clicking a bar or point lists the studies behind it. |
+| Study selection | The selection flow of the article (search, screening, snowballing, full-text reading), with the number of records and studies at each stage. Clicking a stage lists its records: included studies with their citation number, the others as plain citations. |
 | Data extraction | The data extraction form (sheet *Data Extraction*) as recorded by Researcher 1. Clicking a cell shows the same field side by side with the output of the AI tools (OpenAI GPT and Anthropic Claude). |
 | Thematic analysis | The coding of Researcher 1 at each stage (data extraction, initial codes, theme, final theme, high-level theme) for each dimension, followed by the final results. Clicking a cell compares it with the coding of the AI tools: labels that Researcher 1 shares with an AI tool are marked in green, and the study's agreement among the three raters is shown with the Fleiss' κ of that dimension and stage. |
 | Fleiss' kappa | Inter-rater reliability for every dimension and coding stage, recomputed in the browser with the article's method and checked against the *Kappa_Fleiss* sheet; the mean by stage; an explanation of the calculation; a worked example for any study; and the *Equivalences* sheet, with filters. |
-| RQ1–RQ5 | One table per research question with each category, its percentage and its number of studies. Clicking a number lists the studies, cited in the article's numeric style. |
+| RQ1–RQ5 | One table per research question with each category, its percentage and its number of studies. Clicking a number lists the studies, cited in the article's numeric style. RQ5 also shows the rules that assign the approach groups, recomputes the assignment from the DEF fields and checks it against *RQ5 Classification*, and lists the combinations of groups and the conditions met by each study. |
+| TRL | The Technology Readiness Level assigned to each proposed solution: the rubric, the steps of the assessment, the distribution of levels, and the levels by technology, approach group and period, checked against the *TRL* sheets. |
 | Heatmaps | Any two dimensions of the thematic analysis crossed. Rows and columns are ordered so that the highest count is in the top-right cell and the lowest counts gather in the bottom-left corner. Clicking a cell lists the studies. |
 
 ## Files
 
 | Path | Role |
 |---|---|
-| `index.html`, `assets/` | The page, its styles and scripts. `assets/data.js` reads the workbook; `assets/kappa.js` computes Fleiss' kappa; `assets/app.js` draws the views. |
+| `index.html`, `assets/` | The page, its styles and scripts. `assets/data.js` reads the workbook; `assets/kappa.js` computes Fleiss' kappa; `assets/analyses.js` recomputes the RQ5 groups and the TRL summaries; `assets/app.js` draws the views. |
 | `data/DEF_TA.xlsx` | The DEF/TA spreadsheet the page reads. |
-| `data/article.js` | Title, authors, abstract, keywords and research questions, taken from the manuscript. |
+| `data/article.js` | Title, authors, abstract, keywords and research questions, taken from the manuscript, and the record counts of the study selection (`selection`). |
 | `data/references.js` | Citation number and formatted reference of every work cited in the article, in the order of the article's reference list (elsarticle-num). |
+| `tools/add_analysis_sheets.py`, `tools/analysis_definitions.json` | Add the *RQ5* and *TRL* analysis sheets to the workbook. The JSON file holds the group rules, the term patterns, the TRL rubric and the periods. |
 | `tools/build_references.py` | Regenerates `data/references.js` from the manuscript's `.tex` and `.bib` files. |
 | `assets/vendor/` | SheetJS 0.18.5 (Apache 2.0) and Chart.js 4.4.1 (MIT), kept locally so the page works without external services. |
 
 ## Updating the data
 
-- **Spreadsheet:** replace `data/DEF_TA.xlsx` with the new version (same file name) and commit it. Sheet and column names must stay as they are; category names are read from the RQ summary sheets, and the study assignments from *Thematic Analysis* and *ApproachesAnalyses*. Coding stages are read from headers of the form `<Stage> (<Rater>)` in the dimension sheets, and the kappa analysis uses the rules of *Equivalences* (and its "Apply equivalences in Kappa?" switch). If a recomputed κ differs from *Kappa_Fleiss*, the row is marked on the page and a warning is written to the browser console.
-- **Article text:** edit `data/article.js`.
+- **Spreadsheet:** replace `data/DEF_TA.xlsx` with the new version (same file name) and commit it. Sheet and column names must stay as they are; category names are read from the RQ summary sheets, and the study assignments from *Thematic Analysis* and *RQ5 Classification* (or *ApproachesAnalyses* when that sheet is absent). The TRL views read *TRA Solutions* and *TRL Rubric*. Coding stages are read from headers of the form `<Stage> (<Rater>)` in the dimension sheets, and the kappa analysis uses the rules of *Equivalences* (and its "Apply equivalences in Kappa?" switch). If a recomputed κ differs from *Kappa_Fleiss*, the row is marked on the page and a warning is written to the browser console.
+- **Analysis sheets:** to rebuild the *RQ5* and *TRL* sheets, start from a workbook without them and run
+
+  ```sh
+  python3 tools/add_analysis_sheets.py --workbook DEF_TA_without_analyses.xlsx \
+      --tra TRA_solutions.xlsx --previous RQ5_approach_groups.xlsx --out data/DEF_TA.xlsx
+  ```
+
+  The sheets are added inside the xlsx package, so charts, tables and the data model of the workbook are kept.
+- **Article text and selection counts:** edit `data/article.js`. The screening-stage counts are not in the spreadsheet, so they are kept in its `selection` block.
 - **Citation numbers:** after the article's citations change, run
 
   ```sh

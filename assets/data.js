@@ -43,6 +43,10 @@
 
   const ID_COLUMNS = /^(article id|r[a]?y+an id|pap+er( id)?|doi|tit+le|year|dataset)$/i;
 
+  /** Category names are shown in British spelling, as in the article; the spreadsheet keeps its own. */
+  const BRITISH = [[/Containerization/g, 'Containerisation'], [/Authorization/g, 'Authorisation'], [/([Cc])entered/g, '$1entred']];
+  const british = (s) => BRITISH.reduce((acc, [re, to]) => acc.replace(re, to), String(s));
+
   // ---------------------------------------------------------------- helpers
 
   function findSheet(wb, pattern) {
@@ -236,7 +240,7 @@
       studies.forEach((s) => (s.cats[dim.id] || []).forEach((c) => counts.set(c, (counts.get(c) || 0) + 1)));
       dim.categories = [...counts.keys()].map((name) => ({
         id: name,
-        label: (dim.labels && dim.labels.get(name)) || name,
+        label: (dim.labels && dim.labels.get(name)) || british(name),
         count: counts.get(name),
       })).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
       dimensions.push(dim);
@@ -273,33 +277,41 @@
       dimensions,
       dimension: (id) => dimensions.find((d) => d.id === id),
       def,
+      deHeader: de.header,
       taSheets,
       records: dataSet.rows.length,
       warnings,
     };
   }
 
-  /** Approach groups (RQ5): assignments in "ApproachesAnalyses", names in "RQ5. Approaches". */
+  /**
+   * Approach groups (RQ5): the group of each study comes from "RQ5 Classification" and the
+   * names from "RQ5 Rules". Workbooks without these sheets fall back to "ApproachesAnalyses"
+   * and "RQ5. Approaches". analyses.js recomputes the groups from the rules and checks them.
+   */
   function parseApproaches(wb, dim, byId) {
     const names = new Map();
-    const rq5 = table(findSheet(wb, /^RQ5\b/i));
-    const iCode = colIndex(rq5.header, /approach/i);
-    const iDesc = colIndex(rq5.header, /description/i);
+    const rules = table(findSheet(wb, /^RQ5 rules$/i));
+    const rq5 = rules.rows.length ? rules : table(findSheet(wb, /^RQ5\./i));
+    const iCode = colIndex(rq5.header, /^code$/i, /approach cluster/i);
+    const iName = colIndex(rq5.header, /^approach group$/i, /description/i);
     rq5.rows.forEach((r) => {
-      const code = text(r[iCode]);
-      if (/^AC-\d+$/i.test(code)) names.set(code.toUpperCase(), text(r[iDesc]));
+      const code = text(r[iCode]).toUpperCase();
+      if (/^AC-\d+$/.test(code) && !names.has(code)) names.set(code, text(r[iName]));
     });
-    dim.labels = new Map([...names].map(([code, desc]) => [code, desc ? `${code} ${desc}` : code]));
-    const aa = table(findSheet(wb, /^approaches\s*analys/i));
+    dim.labels = new Map([...names].map(([code, desc]) => [code, desc ? `${code} ${british(desc)}` : code]));
+    dim.order = [...names.keys()];
+    const cls = table(findSheet(wb, /^RQ5 classification$/i));
+    const aa = cls.rows.length ? cls : table(findSheet(wb, /^approaches\s*analys/i));
     const idx = rayyanIndex(aa.header);
-    const iCluster = colIndex(aa.header, /cluster|approach/i);
+    const iGroups = colIndex(aa.header, /^approach groups$/i, /cluster/i);
     byId.forEach((s) => { s.cats.approaches = []; });
     aa.rows.forEach((r) => {
       const s = byId.get(text(r[idx]));
       if (!s) return;
-      s.cats.approaches = (text(r[iCluster]).toUpperCase().match(/AC-\d+/g) || []);
+      s.cats.approaches = [...new Set(text(r[iGroups]).toUpperCase().match(/AC-\d+/g) || [])];
     });
   }
 
-  window.DashboardData = { SOURCES, parseWorkbook, cellFor, text, table, findSheet };
+  window.DashboardData = { SOURCES, parseWorkbook, cellFor, text, table, findSheet, colIndex, british };
 })();
