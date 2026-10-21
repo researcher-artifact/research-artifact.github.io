@@ -1,0 +1,263 @@
+{
+  "source": "Accountability Through Digital Object Tracing in Information Security: A Systematic Literature Mapping (Tables approach_groups and trl_criteria)",
+  "term_fields": [
+    "Technology Stack (AI Tool - OpenAI GPT)",
+    "Technology Stack (AI Tool - Anthropic Claude)",
+    "Proposed Solution and Tracking Details (AI Tool - OpenAI GPT)",
+    "Proposed Solution and Tracking Details (AI Tool - Anthropic Claude)"
+  ],
+  "groups": [
+    {
+      "code": "AC-2",
+      "name": "Cryptographic Protection & Confidentiality",
+      "definition": "Encryption schemes, searchable encryption, and secret sharing, frequently integrated with blockchain to bind authorisation decisions and audit trails to an immutable ledger. They enable secure delegation, fine-grained revocation, and multi-party computation without trusted intermediaries, so that only authorised consumers can decrypt distributed copies of a digital object, including in decentralised storage.",
+      "rule": "Technology Cryptography, and purpose Data Privacy, Data Confidentiality, Cybersecurity Risk Mitigation, or Data Auditing.",
+      "clauses": [
+        {
+          "technologies_all": [
+            "Cryptography"
+          ],
+          "purposes_any": [
+            "Data Privacy",
+            "Data Confidentiality",
+            "Cybersecurity Risk Mitigation",
+            "Data Auditing"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-7",
+      "name": "Decentralised Storage with Integrity Anchoring",
+      "definition": "Permissioned blockchains combined with distributed file systems, such as IPFS and cloud storage, which keep large payloads off-chain and anchor integrity proofs, such as cryptographic hashes and content identifiers, on-chain. Decoupling data persistence from consensus overcomes the storage limitation of blockchains in large-scale tracking of digital objects.",
+      "rule": "Technologies Blockchain and Distributed File System.",
+      "clauses": [
+        {
+          "technologies_all": [
+            "Blockchain",
+            "Distributed File System"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-1",
+      "name": "Ledger-Centric Access Governance",
+      "definition": "Permissioned and consortium blockchains combined with smart contracts to enforce attribute-based and role-based access control, with on-chain permission management, digital identities issued by certificate authorities, immutable audit logs, and decentralised data-sharing workflows. Each access event is recorded as a tamper-evident on-chain transaction, which provides non-repudiation.",
+      "rule": "Technologies Blockchain and Smart Contracts, and purpose Access Control.",
+      "clauses": [
+        {
+          "technologies_all": [
+            "Blockchain",
+            "Smart Contracts"
+          ],
+          "purposes_any": [
+            "Access Control"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-6",
+      "name": "IoT Data Provenance & Secure Ingestion",
+      "definition": "IoT sensor networks integrated with blockchain and lightweight cryptographic protocols for the secure collection, transmission, and storage of data in resource-constrained environments, addressing device heterogeneity and scalability through edge computing and optimised consensus, so that the data pipeline from edge devices to the ledger remains secure and traceable.",
+      "rule": "Digital object IoT Data Streams, and technology Blockchain or Cryptography.",
+      "clauses": [
+        {
+          "objects_any": [
+            "IoT Data Streams"
+          ],
+          "technologies_any": [
+            "Blockchain",
+            "Cryptography"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-3",
+      "name": "Embedded Forensic Attribution",
+      "definition": "Imperceptible identifiers, such as watermarks and fingerprints, embedded into digital content with frequency-domain transforms and collusion-resistant codes and, in some solutions, combined with blockchain for copyright registration and traitor tracing. These persistent, extractable identifiers enable ex post forensic attribution and copyright protection. The group also includes post-incident digital forensics techniques.",
+      "rule": "Technology Steganography & Digital Watermarking or Digital Forensics Techniques.",
+      "clauses": [
+        {
+          "technologies_any": [
+            "Steganography & Digital Watermarking",
+            "Digital Forensics Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-8",
+      "name": "Post-Authorisation Usage Control & Consent Lifecycle Governance",
+      "definition": "Continuous control over the use of a digital object after legitimate access has been granted, through usage-control policies and consent lifecycle management, including grant, update, revocation, obligations, and audit trails. Smart contracts record authorisation decisions as on-chain transactions and support runtime policy enforcement among multiple stakeholders, governing how, when, and for what declared purpose an object may be used.",
+      "rule": "Technical term “usage control” or “UCON”, or purpose Digital Object Lifecycle Management.",
+      "clauses": [
+        {
+          "terms_any": [
+            "usage control",
+            "UCON"
+          ]
+        },
+        {
+          "purposes_any": [
+            "Digital Object Lifecycle Management"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-4",
+      "name": "Intelligent Misuse & Insider Threat Detection",
+      "definition": "Supervised and unsupervised machine learning for anomaly detection, insider threat identification, and user behaviour profiling, complemented by decoy and honey-file strategies that plant instrumented artefacts to detect illicit access or exfiltration. These mechanisms identify unauthorised access patterns in near real time, and honey files generate evidence that attributes exfiltration to specific internal actors.",
+      "rule": "Technology Honey Files; or technology Machine Learning & AI with purpose Cybersecurity Risk Mitigation, Forensic Attribution & Post-Incident Investigation, or Automated Sensitive Data Detection.",
+      "clauses": [
+        {
+          "technologies_any": [
+            "Honey Files"
+          ]
+        },
+        {
+          "technologies_all": [
+            "Machine Learning & AI"
+          ],
+          "purposes_any": [
+            "Cybersecurity Risk Mitigation",
+            "Forensic Attribution & Post-Incident Investigation",
+            "Automated Sensitive Data Detection"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AC-5",
+      "name": "Self-Sovereign Identity & Privacy-Preserving Authorisation",
+      "definition": "Zero-knowledge proofs, self-sovereign identity, decentralised identifiers, verifiable credentials, and Identity Mixer for privacy-preserving authentication and authorisation, in line with the privacy-by-design principles of the LGPD and the GDPR. Data subjects control their digital identities and govern access policies at runtime without exposing unnecessary personal data.",
+      "rule": "Technical term “zero-knowledge”, “self-sovereign”, “verifiable credential”, “Identity Mixer” or “Idemix”, or “decentralised identifier” together with “identity”.",
+      "clauses": [
+        {
+          "terms_any": [
+            "zero-knowledge",
+            "self-sovereign",
+            "verifiable credential",
+            "Identity Mixer",
+            "Idemix",
+            "decentralised identifier + identity"
+          ]
+        }
+      ]
+    }
+  ],
+  "terms": [
+    {
+      "term": "usage control",
+      "pattern": "usage[\\s-]+control"
+    },
+    {
+      "term": "UCON",
+      "pattern": "\\bucon\\b"
+    },
+    {
+      "term": "zero-knowledge",
+      "pattern": "zero[\\s-]*knowledge"
+    },
+    {
+      "term": "self-sovereign",
+      "pattern": "self[\\s-]*sovereign"
+    },
+    {
+      "term": "verifiable credential",
+      "pattern": "verifiable\\s+credential"
+    },
+    {
+      "term": "Identity Mixer",
+      "pattern": "identity\\s+mixer"
+    },
+    {
+      "term": "Idemix",
+      "pattern": "\\bidemix\\b"
+    },
+    {
+      "term": "decentralised identifier + identity",
+      "pattern": "decentrali[sz]ed\\s+identifiers?",
+      "also_requires": "identity"
+    }
+  ],
+  "dominant": [
+    "AC-2",
+    "AC-7",
+    "AC-1"
+  ],
+  "trl_rubric": [
+    {
+      "trl": 1,
+      "definition": "Basic principles observed and reported",
+      "criterion": "Not assigned: every included study formulates an application of these principles to the tracking of digital objects.",
+      "environment": "—"
+    },
+    {
+      "trl": 2,
+      "definition": "Technology concept and/or application formulated",
+      "criterion": "Concept, architecture or framework described, with no implementation and no evaluation.",
+      "environment": "Not evaluated"
+    },
+    {
+      "trl": 3,
+      "definition": "Analytical and experimental proof-of-concept of critical function and/or characteristics",
+      "criterion": "Critical function demonstrated analytically (e.g., security proofs or analytical models) or in a simulation of the mechanism, or an implementation demonstrated without any reported test.",
+      "environment": "Analytical / simulation"
+    },
+    {
+      "trl": 4,
+      "definition": "Component and/or breadboard validation in a laboratory environment",
+      "criterion": "Working implementation of the proposed mechanism or system tested in a laboratory environment: local machines, private or test blockchain networks, containers, network simulators, and synthetic or public datasets.",
+      "environment": "Laboratory"
+    },
+    {
+      "trl": 5,
+      "definition": "Component and/or brassboard validated in a relevant environment",
+      "criterion": "Implemented solution exercised with real operational data, users or infrastructure of the target organisations or domain.",
+      "environment": "Relevant"
+    },
+    {
+      "trl": 6,
+      "definition": "System/sub-system model or prototype demonstration in a relevant environment",
+      "criterion": "Integrated prototype operated with the stakeholders of a target organisation under realistic operating conditions and scale.",
+      "environment": "Relevant"
+    },
+    {
+      "trl": 7,
+      "definition": "System prototype demonstration in an operational environment",
+      "criterion": "Solution in routine use by its intended users, without evidence of qualification.",
+      "environment": "Operational"
+    },
+    {
+      "trl": 8,
+      "definition": "Actual system completed and “flight qualified” through test and demonstration",
+      "criterion": "Operational solution with documented verification against its requirements, such as a certification or a completed compliance audit.",
+      "environment": "Operational"
+    },
+    {
+      "trl": 9,
+      "definition": "Actual system flight proven through successful mission operations",
+      "criterion": "Sustained operation with reported operational results.",
+      "environment": "Operational"
+    }
+  ],
+  "trl_rule": "Each solution receives the highest level whose criterion is fully met by the evidence that the study reports; when the evidence is ambiguous between two adjacent levels, the lower level is assigned.",
+  "periods": [
+    [
+      2000,
+      2018
+    ],
+    [
+      2019,
+      2022
+    ],
+    [
+      2023,
+      2025
+    ]
+  ]
+}
