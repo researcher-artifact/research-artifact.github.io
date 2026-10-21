@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Digital Object Tracing Dashboard</title>
-  <meta name="description" content="Interactive dashboard for the systematic literature mapping on accountability through digital object tracing in information security.">
+  <meta name="description" content="Supplementary data of the systematic literature mapping on accountability through digital object tracing in information security.">
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/vendor/xlsx.full.min.js" defer></script>
   <script src="assets/vendor/chart.umd.js" defer></script>
@@ -12,6 +12,7 @@
   <script src="data/references.js" defer></script>
   <script src="assets/data.js" defer></script>
   <script src="assets/kappa.js" defer></script>
+  <script src="assets/analyses.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
 <body>
@@ -41,7 +42,7 @@
       <div class="card">
         <div class="card-head">
           <h2>Distribution of studies by year</h2>
-          <p class="hint">Add any category of the thematic analysis as a series, and choose whether it is drawn as bars or as a line. Click a bar or a point to list the studies behind it.</p>
+          <p class="hint">Number of studies per publication year. Any category of the thematic analysis can be added as a series, drawn as bars or as a line. Select a bar or a point to list its studies.</p>
         </div>
         <div class="series-builder" id="series-builder">
           <label>Dimension <select id="sb-dimension"></select></label>
@@ -63,11 +64,28 @@
       </div>
     </section>
 
+    <!-- Study selection -->
+    <section class="panel" id="panel-selection" role="tabpanel" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Study selection</h2>
+          <p class="hint">Selection procedure of the mapping, with one iteration of backward and forward snowballing. Select a set of studies to list its records: included studies carry their number in the article's reference list; records that were not included are listed by citation only.</p>
+        </div>
+        <div class="flow-scroll" id="selection-flow"></div>
+        <p class="hint small" id="selection-note"></p>
+      </div>
+      <div class="card">
+        <h2>Records per stage</h2>
+        <div class="table-scroll" id="selection-table"></div>
+        <p class="hint small" id="selection-check"></p>
+      </div>
+    </section>
+
     <!-- Data extraction form -->
     <section class="panel" id="panel-def" role="tabpanel" hidden>
       <div class="card-head">
         <h2>Data extraction form (DEF)</h2>
-        <p class="hint">Each cell shows what Researcher 1 extracted. Click a cell to compare it with the output of the AI tools.</p>
+        <p class="hint">Fields extracted by Researcher 1 for each study. Select a cell to compare it with the output of the two AI tools.</p>
       </div>
       <div class="toolbar">
         <label class="grow">Filter studies <input type="search" id="def-filter" placeholder="Paper ID, title, year or any text"></label>
@@ -80,7 +98,7 @@
     <section class="panel" id="panel-ta" role="tabpanel" hidden>
       <div class="card-head">
         <h2>Thematic analysis</h2>
-        <p class="hint">Each cell shows the coding of Researcher 1 at each stage, followed by the final results. Click a cell to compare it with the coding of the AI tools and see how far the three raters agree.</p>
+        <p class="hint">Coding of Researcher 1 at each stage, followed by the final results. Select a cell to compare it with the coding of the two AI tools and to see the agreement among the three raters.</p>
       </div>
       <div class="subtabs" id="ta-subtabs" role="tablist" aria-label="Thematic analysis dimensions"></div>
       <div class="toolbar">
@@ -95,7 +113,7 @@
       <div class="card">
         <div class="card-head">
           <h2>Inter-rater reliability: Fleiss' kappa</h2>
-          <p class="hint">Agreement among the three raters (Researcher 1, OpenAI GPT and Anthropic Claude) for each dimension and coding stage of the thematic analysis. The values are recomputed in the browser from the coding sheets, following the method described in the article. Click a value of κ to walk through its calculation below.</p>
+          <p class="hint">Fleiss' κ for each dimension and coding stage of the thematic analysis, with three raters: Researcher 1, OpenAI GPT and Anthropic Claude. The values are recomputed in the browser from the coding sheets with the method described in the article. Select a value of κ to show its calculation below.</p>
         </div>
         <p class="hint small" id="kappa-check"></p>
         <div class="table-scroll" id="kappa-table"></div>
@@ -139,13 +157,13 @@
             </tbody>
           </table>
         </div>
-        <p class="hint small">Benchmarks proposed by Landis and Koch (1977), who stress that the divisions are arbitrary: they help to compare the relative strength of agreement rather than act as strict thresholds.</p>
+        <p class="hint small">Benchmarks of Landis and Koch (1977). The authors note that the divisions are arbitrary: they indicate the relative strength of agreement and are not strict thresholds.</p>
       </div>
 
       <div class="card" id="kappa-example">
         <div class="card-head">
           <h2>Worked example</h2>
-          <p class="hint">Pick a dimension, a stage and a study to follow the calculation step by step.</p>
+          <p class="hint">Select a dimension, a stage and a study to show the calculation step by step.</p>
         </div>
         <div class="toolbar">
           <label>Dimension <select id="kx-dim"></select></label>
@@ -181,6 +199,53 @@
         <div class="table-scroll" id="rq-table"></div>
         <dl class="stats" id="rq-stats"></dl>
       </div>
+      <div class="stack" id="rq-extra"></div>
+    </section>
+
+    <!-- Technology readiness -->
+    <section class="panel" id="panel-trl" role="tabpanel" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Technology readiness level (TRL)</h2>
+          <p class="hint">Maturity of the solution proposed by each study, rated on the TRL scale of the NASA Technology Readiness Assessment Best Practices Guide. Select a bar or a number to list the studies.</p>
+        </div>
+        <div class="chart-box short"><canvas id="trl-chart" aria-label="Number of solutions per TRL"></canvas></div>
+        <dl class="stats" id="trl-stats"></dl>
+        <p class="hint small" id="trl-check"></p>
+      </div>
+      <div class="card method">
+        <h2>Assessment procedure</h2>
+        <ol class="steps" id="trl-steps"></ol>
+        <h3>Criteria by level</h3>
+        <div class="table-scroll" id="trl-rubric"></div>
+      </div>
+      <div class="card">
+        <h2>TRL by technology</h2>
+        <p class="hint small">A solution can employ more than one technology, so the counts sum to more than the number of solutions. The median is the lower of the two middle values when the number of solutions is even.</p>
+        <div class="table-scroll" id="trl-tech"></div>
+      </div>
+      <div class="card">
+        <h2>TRL by approach group</h2>
+        <p class="hint small">Approach groups of RQ5; a solution can belong to more than one group.</p>
+        <div class="table-scroll" id="trl-approach"></div>
+      </div>
+      <div class="card">
+        <h2>TRL by publication period</h2>
+        <div class="table-scroll" id="trl-period"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>Rating of each solution</h2>
+          <p class="hint small">Evidence on which each rating is based. “DEF + full text” marks the solutions whose full text was consulted.</p>
+        </div>
+        <div class="toolbar">
+          <label>TRL <select id="trl-level"></select></label>
+          <label>Evidence source <select id="trl-source"></select></label>
+          <label class="grow">Filter studies <input type="search" id="trl-filter" placeholder="Paper ID, title or any text"></label>
+          <span class="count" id="trl-count"></span>
+        </div>
+        <div class="table-scroll tall" id="trl-table"></div>
+      </div>
     </section>
 
     <!-- Heatmaps -->
@@ -188,7 +253,7 @@
       <div class="card">
         <div class="card-head">
           <h2>Heatmaps</h2>
-          <p class="hint">Choose the dimensions for each axis. Each cell counts the studies coded with both categories; click a cell to list them.</p>
+          <p class="hint">Number of studies coded with both categories, for any two dimensions of the thematic analysis. Select a cell to list its studies.</p>
         </div>
         <div class="toolbar">
           <label>Y axis (rows) <select id="hm-y"></select></label>

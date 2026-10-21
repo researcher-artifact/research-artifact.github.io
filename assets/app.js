@@ -1,9 +1,10 @@
 /*
- * Dashboard user interface: tabs, the studies-by-year chart, the DEF and
- * thematic analysis tables, the Fleiss' kappa analysis, one table per research
- * question and the heatmaps. The data model comes from data.js and kappa.js;
- * citations come from data/references.js, which follows the numbering of the
- * article's reference list.
+ * Dashboard user interface: tabs, the studies-by-year chart, the study selection,
+ * the DEF and thematic analysis tables, the Fleiss' kappa analysis, one table per
+ * research question (with the RQ5 classification), the technology readiness
+ * assessment and the heatmaps. The data model comes from data.js, kappa.js and
+ * analyses.js; citations come from data/references.js, which follows the
+ * numbering of the article's reference list.
  */
 (function () {
   'use strict';
@@ -15,6 +16,7 @@
 
   const { SOURCES, parseWorkbook, cellFor, text } = window.DashboardData;
   const Kappa = window.DashboardKappa;
+  const Analyses = window.DashboardAnalyses;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -28,6 +30,7 @@
     heatmap: { y: 'purposes', x: 'technologies' },
     kappaSel: { combo: 'Technology|Theme', study: null },
     eqFilter: { dim: '', stage: '', type: '', q: '' },
+    trlChart: null,
   };
 
   // ------------------------------------------------------------ utilities
@@ -49,6 +52,9 @@
   }
 
   const pct = (n, total) => (total ? (100 * n / total).toFixed(2) + '%' : '–');
+  const fmt = (n) => Number(n).toLocaleString('en-GB');
+  /** "a, b and c". */
+  const listJoin = (items) => (items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}` : items.join(''));
   /** Three decimals with a true minus sign, as in the article's kappa table. */
   const dec = (v, digits = 3) => (Number.isFinite(v) ? v.toFixed(digits).replace('-', '−') : '–');
   const rate = (v) => (Number.isFinite(v) ? (100 * v).toFixed(1) + '%' : '–');
@@ -142,11 +148,13 @@
   function tabList() {
     const tabs = [
       { id: 'overview', label: 'Overview' },
+      { id: 'selection', label: 'Study selection' },
       { id: 'def', label: 'Data extraction' },
       { id: 'ta', label: 'Thematic analysis' },
       { id: 'kappa', label: "Fleiss' kappa" },
     ];
     state.article.researchQuestions.forEach((rq) => tabs.push({ id: rq.id.toLowerCase(), label: rq.id, rq }));
+    tabs.push({ id: 'trl', label: 'TRL' });
     tabs.push({ id: 'heatmaps', label: 'Heatmaps' });
     return tabs;
   }
@@ -171,6 +179,7 @@
     if (tab.id === 'overview') renderChart();
     if (tab.id === 'heatmaps') renderHeatmap();
     if (tab.id === 'kappa') renderKappaExample();
+    if (tab.id === 'trl') renderTRLChart();
   }
 
   // ------------------------------------------------------------- overview
@@ -393,7 +402,7 @@
           cols.map((f) => {
             const v = cellFor(r.row, f.cols.r1);
             return el('td', {
-              class: 'clip', tabindex: 0, title: 'Click to compare with the AI tools',
+              class: 'clip', tabindex: 0, title: 'Compare with the AI tools',
               onclick: () => openDEF(f, r), onkeydown: (e) => { if (e.key === 'Enter') openDEF(f, r); },
             }, el('div', { class: 'clamp', text: v }));
           })))));
@@ -445,11 +454,11 @@
           sh.extras.map((x) => el('th', { class: extraClass(x) }, x.label, x.final ? el('span', { class: 'sub', text: 'Final result' }) : null)))),
         el('tbody', {}, shown.map((r) => el('tr', {}, studyCell(r.study),
           stages.map((f) => el('td', {
-            class: `clip${stageClass(f)}`, tabindex: 0, title: 'Click to compare with the AI tools',
+            class: `clip${stageClass(f)}`, tabindex: 0, title: 'Compare with the AI tools',
             onclick: () => openTA(sh, f, r), onkeydown: (e) => { if (e.key === 'Enter') openTA(sh, f, r); },
           }, el('div', { class: 'clamp', text: cellFor(r.row, f.cols.r1) }))),
           sh.extras.map((x) => el('td', {
-            class: `clip ${extraClass(x)}`, tabindex: 0, title: 'Click to see every stage of the coding',
+            class: `clip ${extraClass(x)}`, tabindex: 0, title: 'Show every stage of the coding',
             onclick: () => openTA(sh, null, r), onkeydown: (e) => { if (e.key === 'Enter') openTA(sh, null, r); },
           }, el('div', { class: 'clamp', text: text(r.row[x.index]) })))))));
       $('ta-table').replaceChildren(t);
@@ -494,7 +503,7 @@
         el('p', { class: 'small' },
           `${combo.dim.label} · ${combo.stage.label}: κ = ${dec(combo.kappa)}, ${combo.interpretation.toLowerCase()} agreement (Landis and Koch). `,
           el('button', { type: 'button', class: 'link-btn small', onclick: () => showKappaExample(combo, r.study) }, 'See how it is calculated')),
-        el('p', { class: 'hint small', text: 'Green marks the labels that Researcher 1 shares with at least one AI tool; the darker green, those shared by all three. Agreement counts only when the complete combination of labels is the same, so shared labels can sit alongside no agreement.' })));
+        el('p', { class: 'hint small', text: 'Green marks the labels that Researcher 1 shares with at least one AI tool, and dark green those shared by all three. Agreement requires the same complete combination of labels, so a study can share labels and still show no agreement.' })));
   }
 
   /** One label of a cell, as written, marked when Researcher 1 and an AI tool share it. */
@@ -564,7 +573,7 @@
           el('td', { class: 'num', text: dec(c.po) }),
           el('td', { class: 'num', text: dec(c.pe) }),
           el('td', { class: 'num' },
-            el('button', { type: 'button', class: 'link-btn', title: 'Walk through this calculation', onclick: () => showKappaExample(c) }, dec(c.kappa)),
+            el('button', { type: 'button', class: 'link-btn', title: 'Show this calculation', onclick: () => showKappaExample(c) }, dec(c.kappa)),
             c.matchesReference === false ? el('span', { class: 'warn small', text: ` (sheet: ${dec(c.reference.kappa)})` }) : null),
           el('td', {}, el('span', { class: `kappa-badge k-${c.interpretation.toLowerCase().replace(/\s+/g, '-')}`, text: c.interpretation })),
           el('td', { class: 'num', text: c.rawFull }),
@@ -651,7 +660,7 @@
 
   function exampleSteps(combo, study) {
     const e = combo.perStudy.get(study.id);
-    // Equal combinations share a colour, so agreeing raters are easy to spot.
+    // Equal combinations share a colour, so that agreeing raters can be identified.
     const groups = [...new Set(e.cells.map((c) => c.combination).filter(Boolean))];
     const groupOf = (c) => (c.combination ? groups.indexOf(c.combination) + 1 : 0);
     const step = (n, title, ...content) => el('section', { class: 'kx-step' },
@@ -803,6 +812,515 @@
     ];
     $('rq-stats').replaceChildren(...stats.map(([k, v]) => el('div', {}, el('dt', { text: k }), el('dd', { text: v }))));
     $('rq-table').append(el('p', { class: 'hint small', text: 'Percentages refer to all primary studies; categories are not mutually exclusive.' }));
+    $('rq-extra').replaceChildren();
+    if (dim.id === 'approaches') renderRQ5();
+  }
+
+  /** A count that opens the list of its studies; zero is shown as plain text. */
+  function countButton(studies, title, subtitle, label) {
+    const n = studies.length;
+    if (!n) return el('span', { class: 'muted', text: label === undefined ? '0' : label });
+    return el('button', {
+      type: 'button', class: 'link-btn', title: 'List the studies',
+      onclick: () => showCitations(title, studies, subtitle),
+    }, label === undefined ? n : label);
+  }
+
+  const stepItem = (title, ...content) => el('li', {}, el('strong', { text: `${title}. ` }), ...content);
+
+  // ------------------------------------------------------------------ RQ5
+
+  function renderRQ5() {
+    const r = state.model.rq5;
+    const n = state.model.studies.length;
+    if (!r) {
+      $('rq-extra').append(el('div', { class: 'card' }, el('p', { class: 'hint', text: 'The RQ5 Rules sheet was not found, so the attribution rules cannot be shown or checked.' })));
+      return;
+    }
+    const groupLabel = (code) => {
+      const g = r.groups.find((x) => x.code === code);
+      return g ? `${code} ${british(g.name)}` : code;
+    };
+    const studiesIn = (code) => state.model.studies.filter((s) => r.perStudy.get(s.id).groups.includes(code));
+    const fieldNames = r.termFields.map(shortField);
+
+    // Procedure
+    const method = el('div', { class: 'card method' },
+      el('h2', { text: 'Classification procedure' }),
+      el('p', { text: 'RQ5 was not coded by the raters. Each study was assigned to approach groups by explicit rules applied to dimensions already coded, so this dimension is excluded from the agreement analysis.' }),
+      el('ol', { class: 'steps' },
+        stepItem('Inputs', 'For each study, the final codes of technologies (RQ2), purposes (RQ3) and digital objects (RQ1) from the thematic analysis, and the technical terms found in the data extraction form.'),
+        stepItem('Technical terms', `Each term of the RQ5 Terms sheet is searched as a case-insensitive pattern in the fields ${fieldNames.join(', ')}. “Decentralised identifier” counts only when the word “identity” also occurs in these fields.`),
+        stepItem('Rules', 'Each group has an attribution rule made of one or more clauses. A clause holds when all of its conditions hold: “all of” requires every listed code and “any of” at least one. The rule holds when any of its clauses holds.'),
+        stepItem('Assignment', 'Each study is assigned to every group whose rule holds. The groups are not mutually exclusive, and a study that satisfies no rule is assigned to no group.')),
+      el('p', { class: `hint small${r.matches === r.checked && r.checked === n ? '' : ' warn'}`, text: r.checked
+        ? `The groups were recomputed in the browser from these rules. For ${r.matches} of the ${n} studies they are the same as in the RQ5 Classification sheet.`
+        : 'The RQ5 Classification sheet was not found, so the recomputed groups could not be checked.' }));
+
+    // Rules
+    const rules = el('div', { class: 'card' },
+      el('h2', { text: 'Approach groups and attribution rules' }),
+      el('div', { class: 'table-scroll' }, el('table', { class: 'data' },
+        el('thead', {}, el('tr', {}, ['Approach group', 'Definition', 'Attribution rule'].map((h) => el('th', { text: h })), el('th', { class: 'num', text: 'Studies' }))),
+        el('tbody', {}, r.groups.map((g) => el('tr', {},
+          el('th', { scope: 'row', text: groupLabel(g.code) }),
+          el('td', { class: 'small', text: g.definition }),
+          el('td', { class: 'small', text: g.rule }),
+          el('td', { class: 'num' }, countButton(studiesIn(g.code), `RQ5 · ${groupLabel(g.code)}`, `${studiesIn(g.code).length} of ${n} studies (${pct(studiesIn(g.code).length, n)})`))))))));
+
+    // Combinations
+    const sets = r.sets;
+    const dom = r.dominant.join(', ');
+    const stat = (label, list) => el('div', {}, el('dt', { text: label }),
+      el('dd', {}, countButton(list, `RQ5 · ${label}`, `${list.length} of ${n} studies (${pct(list.length, n)})`), list.length ? ` (${pct(list.length, n)})` : ''));
+    const combos = el('div', { class: 'card' },
+      el('h2', { text: 'Combinations of groups' }),
+      el('dl', { class: 'stats' },
+        stat('Studies in two or more groups', sets.multi),
+        stat('Studies in exactly one group', sets.single),
+        stat('Studies in no group', sets.none),
+        stat(`Studies in at least one of ${dom}`, sets.anyDominant),
+        stat(`Studies only in ${dom}`, sets.onlyDominant),
+        stat(`Studies in exactly ${dom}`, sets.exactDominant),
+        stat(`Studies in ${dom}, possibly with others`, sets.allDominant)),
+      el('p', { class: 'hint small', text: `${dom} are the three most frequent groups.` }),
+      el('div', { class: 'table-scroll' }, el('table', { class: 'data' },
+        el('thead', {}, el('tr', {}, el('th', { text: 'Combination' }), el('th', { class: 'num', text: 'Groups' }), el('th', { class: 'num', text: 'Studies' }), el('th', { class: 'num', text: '% of studies' }))),
+        el('tbody', {}, r.combinations.map((c) => el('tr', {},
+          el('th', { scope: 'row', text: c.key || 'No group' }),
+          el('td', { class: 'num', text: c.size }),
+          el('td', { class: 'num' }, countButton(c.studies, `RQ5 · ${c.key || 'No group'}`, `${c.studies.length} of ${n} studies`)),
+          el('td', { class: 'num', text: pct(c.studies.length, n) })))))));
+
+    // Per study
+    const filter = el('input', { type: 'search', id: 'rq5-filter', placeholder: 'Paper ID, title, code or term' });
+    const groupSel = el('select', { id: 'rq5-group' },
+      el('option', { value: '', text: 'Any group' }),
+      r.groups.map((g) => el('option', { value: g.code, text: groupLabel(g.code) })),
+      el('option', { value: '-', text: 'No group' }),
+      el('option', { value: 'changed', text: 'Changed from the previous assignment' }));
+    const count = el('span', { class: 'count' });
+    const box = el('div', { class: 'table-scroll tall' });
+    const rows = state.model.studies.slice().sort((a, b) => a.paperId.localeCompare(b.paperId, 'en', { numeric: true }));
+    const draw = () => {
+      const q = filter.value.trim().toLowerCase();
+      const g = groupSel.value;
+      const shown = rows.filter((s) => {
+        const e = r.perStudy.get(s.id);
+        if (g === '-' && e.groups.length) return false;
+        if (g === 'changed' && !e.changed) return false;
+        if (g && g !== '-' && g !== 'changed' && !e.groups.includes(g)) return false;
+        return !q || [s.paperId, s.id, s.title, citationLabel(s), ...e.have.technologies, ...e.have.purposes, ...e.have.objects, ...e.have.terms, ...e.groups]
+          .join(' ').toLowerCase().includes(q);
+      });
+      count.textContent = `${shown.length} of ${rows.length} studies`;
+      box.replaceChildren(el('table', { class: 'data grid' },
+        el('thead', {}, el('tr', {}, el('th', { class: 'study', text: 'Study' }),
+          ['Technologies', 'Purposes', 'Digital objects', 'Technical terms'].map((h) => el('th', { class: 'stage-mid', text: h })),
+          r.groups.map((x) => el('th', { class: 'num', title: groupLabel(x.code), text: x.code })),
+          el('th', { class: 'final-col', text: 'Approach groups' }))),
+        el('tbody', {}, shown.map((s) => {
+          const e = r.perStudy.get(s.id);
+          const open = () => showRQ5Study(s);
+          const cell = (values) => el('td', { class: 'clip stage-mid', tabindex: 0, onclick: open, onkeydown: (ev) => { if (ev.key === 'Enter') open(); } },
+            el('div', { class: 'clamp', text: values.map(british).join('\n') || '–' }));
+          return el('tr', {}, studyCell(s),
+            cell(e.have.technologies), cell(e.have.purposes), cell(e.have.objects), cell(e.have.terms),
+            r.groups.map((x) => el('td', { class: `num${e.groups.includes(x.code) ? ' ok' : ' muted'}`, text: e.groups.includes(x.code) ? '✓' : '·' })),
+            el('td', { class: 'clip final-col', tabindex: 0, onclick: open, onkeydown: (ev) => { if (ev.key === 'Enter') open(); } },
+              el('div', { class: 'clamp', text: e.groups.length ? e.groups.join(', ') : 'No group' }),
+              !e.matches && e.reference ? el('span', { class: 'warn small', text: ` Sheet: ${e.reference.join(', ') || 'no group'}` }) : null));
+        }))));
+    };
+    filter.oninput = draw;
+    groupSel.onchange = draw;
+    const perStudy = el('div', { class: 'card' },
+      el('div', { class: 'card-head' }, el('h2', { text: 'Classification of each study' }),
+        el('p', { class: 'hint small', text: 'Final codes and technical terms of each study, and the groups whose rule they satisfy. Select a row to see each rule checked condition by condition.' })),
+      el('div', { class: 'toolbar' }, el('label', { class: 'grow' }, 'Group ', groupSel), el('label', { class: 'grow' }, 'Filter studies ', filter), count),
+      box);
+    draw();
+    $('rq-extra').append(method, rules, combos, perStudy);
+  }
+
+  const british = (v) => window.DashboardData.british(v);
+
+  /** "Technology Stack (AI Tool - OpenAI GPT)" → "Technology Stack (OpenAI GPT)". */
+  function shortField(name) {
+    return name.replace(/\(AI Tool - ([^)]*)\)/, '($1)');
+  }
+
+  /** Every rule checked against one study, condition by condition. */
+  function showRQ5Study(study) {
+    const r = state.model.rq5;
+    const e = r.perStudy.get(study.id);
+    const list = (values) => (values.length ? values.map(british).join('; ') : '–');
+    const inputs = el('div', { class: 'final' },
+      el('div', {}, el('h4', { text: 'Technologies (RQ2)' }), el('p', { text: list(e.have.technologies) })),
+      el('div', {}, el('h4', { text: 'Purposes (RQ3)' }), el('p', { text: list(e.have.purposes) })),
+      el('div', {}, el('h4', { text: 'Digital objects (RQ1)' }), el('p', { text: list(e.have.objects) })),
+      el('div', {}, el('h4', { text: 'Technical terms' }),
+        e.terms.length ? el('ul', { class: 'plain' }, e.terms.map((t) => el('li', {}, el('strong', { text: t.term }), el('span', { class: 'muted small', text: ` in ${t.fields.map(shortField).join(', ')}` }))))
+          : el('p', { class: 'muted', text: 'None found.' })));
+    const checks = r.groups.map((g) => {
+      const c = e.checks.get(g.code);
+      return el('section', { class: `rule-check${c.met ? ' met' : ''}` },
+        el('h3', {}, el('span', { class: c.met ? 'ok' : 'muted', text: c.met ? '✓ ' : '✗ ' }), `${g.code} ${british(g.name)}`),
+        el('p', { class: 'small muted', text: g.rule }),
+        el('ol', { class: 'clauses' }, c.clauses.map((cl, i) => el('li', { class: cl.ok ? 'ok-clause' : '' },
+          c.clauses.length > 1 ? el('span', { class: 'small muted', text: `Clause ${i + 1}${cl.ok ? ' (holds)' : ''}: ` }) : null,
+          cl.conditions.map((k, j) => el('span', { class: 'cond' }, j ? ' and ' : '',
+            k.need.length === 1 ? `${k.label}: ` : `${k.plural} (${k.mode === 'all' ? 'all of' : 'any of'}): `,
+            k.need.map((x, xi) => el('span', { class: k.hit.includes(x) ? 'ok' : 'muted' }, xi ? ', ' : '', `${k.hit.includes(x) ? '✓' : '✗'} ${british(x)}`))))))));
+    });
+    const prev = e.previous ? el('p', { class: 'hint small' },
+      `Previous assignment: ${e.previous.join(', ') || 'no group'}. ${e.changed ? 'The current assignment differs from it.' : 'The current assignment is the same.'}`) : null;
+    openDialog(`RQ5 · ${study.paperId}`, el('div', {},
+      el('p', { class: 'hint', text: studyHeading(study) }),
+      inputs,
+      el('p', { class: 'agreement-label' }, 'Approach groups: ', e.groups.length ? e.groups.map((c) => `${c} ${british(r.groups.find((g) => g.code === c).name)}`).join('; ') : 'none'),
+      prev,
+      checks));
+  }
+
+  // ------------------------------------------------------ study selection
+
+  /** Citation of a record of the "Data Set" sheet, for records that are not in the reference list. */
+  function recordCitation(rec) {
+    const strip = (v) => v.replace(/[.\s]+$/, '');
+    const venue = rec.journal ? `${strip(rec.journal)}${rec.vol ? `, ${rec.vol}` : ''}${rec.issue ? `(${rec.issue})` : ''}.` : '';
+    return el('span', {},
+      rec.authors ? `${strip(rec.authors)} ` : '',
+      `(${rec.year || 'n.d.'}). `,
+      `${strip(rec.title || 'Untitled record')}. `,
+      venue ? el('em', { text: venue }) : null,
+      rec.doi ? [' ', el('a', { href: `https://doi.org/${rec.doi}`, target: '_blank', rel: 'noopener', text: `doi:${rec.doi}` })] : null);
+  }
+
+  function sortRecords(records) {
+    return records.slice().sort((a, b) => (!a.authors - !b.authors) || a.authors.localeCompare(b.authors, 'en') || a.title.localeCompare(b.title, 'en'));
+  }
+
+  /** Dialog listing the records of one stage: included studies numbered, the others as a bulleted list. */
+  function showRecords(title, intro, included, excluded) {
+    const inc = included.slice().sort((a, b) => ((refOf(a) || {}).number || 1e9) - ((refOf(b) || {}).number || 1e9));
+    const exc = excluded ? sortRecords(excluded) : null;
+    const filter = el('input', { type: 'search', placeholder: 'Title, author, year or number' });
+    const out = el('div', {});
+    const draw = () => {
+      const q = filter.value.trim().toLowerCase();
+      const incShown = inc.filter((s) => !q || [citationLabel(s), (refOf(s) || {}).reference, s.title, s.year, s.paperId, s.id].join(' ').toLowerCase().includes(q));
+      const excShown = exc ? exc.filter((r) => !q || [r.authors, r.title, r.year, r.journal, r.doi, r.id].join(' ').toLowerCase().includes(q)) : [];
+      out.replaceChildren(
+        el('h3', { text: `Included (${incShown.length}${q ? ` of ${inc.length}` : ''})` }),
+        el('ol', { class: 'ref-list' }, incShown.map((s) => {
+          const ref = refOf(s);
+          return el('li', {}, el('span', { class: 'ref-num', text: citationLabel(s) }),
+            el('span', {}, ref ? ref.reference : `${s.title} (${s.year || 'n.d.'}).`, ' ',
+              (ref && ref.url) || s.doi ? el('a', { href: (ref && ref.url) || `https://doi.org/${s.doi}`, target: '_blank', rel: 'noopener', text: 'Link' }) : null));
+        })),
+        exc ? el('h3', { text: `Not included (${excShown.length}${q ? ` of ${exc.length}` : ''})` }) : null,
+        exc ? el('ul', { class: 'record-list' }, excShown.map((r) => el('li', {}, recordCitation(r)))) : null);
+    };
+    filter.oninput = draw;
+    draw();
+    openDialog(title, el('div', { class: 'citations' }, el('p', { class: 'hint', text: intro }), el('label', { class: 'grow' }, 'Filter ', filter), out));
+  }
+
+  /** Opens the records of a stage of the selection flow. */
+  function showStage(id, kind) {
+    const sel = state.article.selection;
+    const sets = state.model.selection;
+    if (kind === 'final') {
+      showRecords(`Final set · ${sel.total} studies`, `Studies included in the mapping: ${sel.sources.map((s) => `${s.included} from ${s.inText}`).join(', ')}.`, state.model.studies);
+      return;
+    }
+    const src = sel.sources.find((s) => s.id === id);
+    const records = sets[id] || [];
+    const included = records.filter((r) => r.study).map((r) => r.study);
+    const removed = src.records - records.length;
+    if (kind === 'records') {
+      showRecords(`${src.setLabel} · ${src.label}`,
+        `${fmt(src.records)} records retrieved. The spreadsheet lists ${fmt(records.length)} of them${removed > 0 ? `; the other ${fmt(removed)} are duplicates removed before screening` : ''}. ${included.length} were included after full-text reading.`,
+        included, records.filter((r) => !r.study));
+    } else if (kind === 'screened') {
+      showRecords(`${src.label} · ${src.screened} studies after screening`,
+        `${src.screened} records were retained after screening of titles, abstracts and keywords. The spreadsheet does not record which records were retained at this stage, so only the ${included.length} included after full-text reading are listed; the other ${src.screened - included.length} were excluded at full-text reading.`,
+        included);
+    } else {
+      showRecords(`${src.label} · ${src.included} studies included`,
+        `${src.included} studies included after full-text reading, ${(100 * src.included / src.records).toFixed(1)}% of the ${fmt(src.records)} records retrieved.`,
+        included);
+    }
+  }
+
+  function renderSelection() {
+    const sel = state.article.selection;
+    if (!sel) return;
+    const sets = state.model.selection;
+    const src = Object.fromEntries(sel.sources.map((s) => [s.id, s]));
+    const share = (s) => `${(100 * s.included / s.records).toFixed(1)}%`;
+
+    // Layout of the article's figure: columns c[0..10], rows top, middle and bottom.
+    const c = [58, 180, 298, 416, 596, 746, 862, 978, 1094, 1212, 1370];
+    const y = { top: 55, mid: 150, bot: 250 };
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const S = (tag, attrs, ...kids) => {
+      const n = document.createElementNS(svgNS, tag);
+      Object.entries(attrs || {}).forEach(([k, v]) => { if (v !== undefined && v !== null) n.setAttribute(k, v); });
+      kids.flat().forEach((k) => k && n.append(k));
+      return n;
+    };
+    const nodes = {};
+    const node = (key, cx, cy, shape, cls, lines, stage, w, h) => {
+      w = w || (shape === 'box' ? 112 : 104);
+      h = h || (shape === 'box' ? 52 : 40);
+      nodes[key] = { cx, cy, w, h, shape };
+      const shapeEl = shape === 'box'
+        ? S('rect', { x: cx - w / 2, y: cy - h / 2, width: w, height: h, rx: 7 })
+        : S('ellipse', { cx, cy, rx: w / 2, ry: h / 2 });
+      const text = S('text', { x: cx, y: cy - ((lines.length - 1) * 15) / 2 + 5, 'text-anchor': 'middle' },
+        lines.map((l, i) => S('tspan', { x: cx, dy: i ? 15 : 0, class: l.cls || '' }, l.text || l)));
+      const g = S('g', { class: `fnode ${cls}${stage ? ' clickable' : ''}` }, shapeEl, text);
+      if (stage) {
+        const label = lines.map((l) => l.text || l).join(' ');
+        g.setAttribute('tabindex', '0');
+        g.setAttribute('role', 'button');
+        g.setAttribute('aria-label', `${label}: list the records`);
+        g.append(S('title', {}, `${label}: list the records`));
+        g.addEventListener('click', () => showStage(...stage));
+        g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showStage(...stage); } });
+      }
+      return g;
+    };
+    const bold = (t) => ({ text: t, cls: 'b' });
+    const it = (t) => ({ text: t, cls: 'i' });
+    const B = src.backward;
+    const F = src.forward;
+    const Z = src.seed;
+    const shapes = [
+      node('search', c[0], y.mid, 'oval', 'f-dark', [bold('Database'), bold('search')]),
+      node('start', c[1], y.mid, 'box', 'f-set', [Z.setLabel, bold(`${fmt(Z.records)} studies`)], ['seed', 'records']),
+      node('scr0', c[2], y.mid, 'oval', 'f-proc', [bold('Screening')]),
+      node('sel0', c[3], y.mid, 'box', 'f-sel', [bold(`${Z.screened} selected`), bold('studies')], ['seed', 'screened']),
+      node('bs', c[4], y.top, 'oval', 'f-snow', [bold('Backward'), bold(`snowballing (${B.short})`), it(B.detail)], null, 150, 62),
+      node('fs', c[4], y.mid, 'oval', 'f-snow', [bold('Forward'), bold(`snowballing (${F.short})`), it(F.detail)], null, 150, 62),
+      node('bsSet', c[5], y.top, 'box', 'f-set', [B.setLabel, bold(`${fmt(B.records)} studies`)], ['backward', 'records']),
+      node('fsSet', c[5], y.mid, 'box', 'f-set', [F.setLabel, bold(`${fmt(F.records)} studies`)], ['forward', 'records']),
+      node('scrB', c[6], y.top, 'oval', 'f-proc', [bold('Screening')]),
+      node('scrF', c[6], y.mid, 'oval', 'f-proc', [bold('Screening')]),
+      node('selB', c[7], y.top, 'box', 'f-sel', [bold(`${B.screened} selected`), bold('studies')], ['backward', 'screened']),
+      node('selF', c[7], y.mid, 'box', 'f-sel', [bold(`${F.screened} selected`), bold('studies')], ['forward', 'screened']),
+      node('fullB', c[8], y.top, 'oval', 'f-full', [bold('Full'), bold('screening')]),
+      node('fullF', c[8], y.mid, 'oval', 'f-full', [bold('Full'), bold('screening')]),
+      node('fullS', c[8], y.bot, 'oval', 'f-full', [bold('Full'), bold('screening')]),
+      node('resB', c[9], y.top, 'box', 'f-res', [bold(`${B.included} selected`), bold(`studies (${share(B)})`)], ['backward', 'included']),
+      node('resF', c[9], y.mid, 'box', 'f-res', [bold(`${F.included} selected`), bold(`studies (${share(F)})`)], ['forward', 'included']),
+      node('resS', c[9], y.bot, 'box', 'f-res', [bold(`${Z.included} selected`), bold(`studies (${share(Z)})`)], ['seed', 'included']),
+      node('final', c[10], y.mid, 'box', 'f-final', [bold(`Final: ${sel.total}`), bold('selected studies')], ['all', 'final'], 116, 56),
+    ];
+    // Edges leave the right side of a node and enter the left side of the next; between rows they
+    // run diagonally from the corner of the box towards the facing side of the target.
+    const edge = (a, b, cls) => {
+      const p = nodes[a];
+      const q = nodes[b];
+      const dir = Math.sign(q.cy - p.cy);
+      const x1 = p.cx + p.w / 2;
+      const y1 = p.cy + dir * (p.h / 2 - 8);
+      let x2 = q.cx - q.w / 2;
+      let y2 = q.cy;
+      if (dir && q.shape === 'oval') {
+        x2 = q.cx - 0.72 * q.w / 2;
+        y2 = q.cy - dir * 0.7 * q.h / 2;
+      } else if (dir) {
+        y2 = q.cy - dir * (q.h / 2 - 10);
+      }
+      const len = Math.hypot(x2 - x1, y2 - y1);
+      return S('line', { x1, y1, x2: x2 - 3 * (x2 - x1) / len, y2: y2 - 3 * (y2 - y1) / len, class: `fedge ${cls || ''}`, 'marker-end': `url(#arrow${cls ? `-${cls}` : ''})` });
+    };
+    const curve = S('path', {
+      d: `M ${c[3]} ${y.mid + 26} C ${c[3] + 30} ${y.bot} ${c[6]} ${y.bot} ${c[8] - 54} ${y.bot}`,
+      class: 'fedge full', 'marker-end': 'url(#arrow-full)', fill: 'none',
+    });
+    const marker = (id, cls) => S('marker', { id, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto-start-reverse' },
+      S('path', { d: 'M 0 0 L 10 5 L 0 10 z', class: `farrow ${cls || ''}` }));
+    const svg = S('svg', { viewBox: '0 0 1435 300', class: 'flow', role: 'group', 'aria-label': 'Study selection procedure' },
+      S('defs', {}, marker('arrow'), marker('arrow-snow', 'snow'), marker('arrow-full', 'full')),
+      edge('search', 'start'), edge('start', 'scr0'), edge('scr0', 'sel0'),
+      edge('sel0', 'bs', 'snow'), edge('sel0', 'fs', 'snow'), curve,
+      edge('bs', 'bsSet'), edge('fs', 'fsSet'),
+      edge('bsSet', 'scrB', 'snow'), edge('fsSet', 'scrF', 'snow'), edge('scrB', 'selB'), edge('scrF', 'selF'),
+      edge('selB', 'fullB', 'full'), edge('selF', 'fullF', 'full'),
+      edge('fullB', 'resB'), edge('fullF', 'resF'), edge('fullS', 'resS'),
+      edge('resB', 'final'), edge('resF', 'final'), edge('resS', 'final'),
+      shapes);
+    $('selection-flow').replaceChildren(svg);
+    $('selection-note').textContent = `Scopus search on ${sel.searchDate}; backward and forward snowballing on ${sel.snowballingDate}, starting from the ${Z.screened} studies retained in the screening of the start set. Before screening, ${sel.duplicates} duplicate records (matched by DOI and EID) were removed from the ${fmt(sel.sources.reduce((a, s) => a + s.records, 0))} records retrieved, leaving ${fmt(sel.unique)} unique records. Percentages are the studies included after full-text reading as a share of the records retrieved by that search.`;
+
+    const listed = (s) => (sets[s.id] || []).length;
+    const inc = (s) => (sets[s.id] || []).filter((r) => r.study).length;
+    const btn = (label, id, kind) => el('button', { type: 'button', class: 'link-btn', onclick: () => showStage(id, kind) }, label);
+    $('selection-table').replaceChildren(el('table', { class: 'data' },
+      el('thead', {}, el('tr', {}, ['Search', 'Records retrieved', 'Records in the spreadsheet', 'Retained after screening', 'Included after full-text reading', '% of records retrieved']
+        .map((h, i) => el('th', { class: i ? 'num' : '', text: h })))),
+      el('tbody', {}, sel.sources.map((s) => el('tr', {},
+        el('th', { scope: 'row', text: s.label }),
+        el('td', { class: 'num', text: fmt(s.records) }),
+        el('td', { class: 'num' }, btn(fmt(listed(s)), s.id, 'records')),
+        el('td', { class: 'num' }, btn(s.screened, s.id, 'screened')),
+        el('td', { class: 'num' }, btn(s.included, s.id, 'included')),
+        el('td', { class: 'num', text: share(s) })))),
+      el('tfoot', {}, el('tr', {},
+        el('th', { text: 'Total' }),
+        el('td', { class: 'num', text: fmt(sel.sources.reduce((a, s) => a + s.records, 0)) }),
+        el('td', { class: 'num', text: fmt(sel.sources.reduce((a, s) => a + listed(s), 0)) }),
+        el('td', { class: 'num', text: sel.sources.reduce((a, s) => a + s.screened, 0) }),
+        el('td', { class: 'num' }, btn(sel.total, 'all', 'final')),
+        el('td', { class: 'num', text: '' })))));
+
+    const problems = [];
+    sel.sources.forEach((s) => {
+      if (inc(s) !== s.included) problems.push(`the spreadsheet has ${inc(s)} included studies from ${s.inText}, the article ${s.included}`);
+      if (listed(s) > s.records) problems.push(`the spreadsheet lists more records for ${s.inText} than were retrieved`);
+    });
+    const listedTotal = sel.sources.reduce((a, s) => a + listed(s), 0);
+    if (listedTotal !== sel.unique) problems.push(`the Data Set sheet lists ${fmt(listedTotal)} unique records, the article ${fmt(sel.unique)}`);
+    if (state.model.studies.length !== sel.total) problems.push(`the spreadsheet has ${state.model.studies.length} included studies, the article ${sel.total}`);
+    const check = $('selection-check');
+    check.classList.toggle('warn', problems.length > 0);
+    check.textContent = problems.length
+      ? `Differences between the spreadsheet and the article: ${problems.join('; ')}.`
+      : `Records retrieved and retained at screening are the figures of the article. The records and the included studies come from the spreadsheet (Data Set sheet and the Dataset column of the Data Extraction sheet) and agree with the article: ${fmt(listedTotal)} unique records and ${sel.sources.map((s) => inc(s)).join(' + ')} = ${state.model.studies.length} included studies.`;
+  }
+
+  // ------------------------------------------------- technology readiness
+
+  function renderTRL() {
+    const t = state.model.tra;
+    if (!t) {
+      $('trl-check').textContent = 'The TRA Solutions sheet was not found in the spreadsheet.';
+      return;
+    }
+    const n = t.solutions.size;
+    const at = (l) => t.all.byLevel.get(l) || [];
+    const below = t.all.items.filter((s) => s.trl < 4).map((s) => s.study);
+    const above = t.all.items.filter((s) => s.trl > 4).map((s) => s.study);
+    const stat = (label, studies, extra) => el('div', {}, el('dt', { text: label }),
+      el('dd', {}, countButton(studies, `TRL · ${label}`, `${studies.length} of ${n} solutions`), extra || ` (${pct(studies.length, n)})`));
+    $('trl-stats').replaceChildren(
+      el('div', {}, el('dt', { text: 'Solutions rated' }), el('dd', { text: n })),
+      el('div', {}, el('dt', { text: 'Median TRL' }), el('dd', { text: t.all.median })),
+      stat('At TRL 4 (laboratory)', at(4).map((s) => s.study)),
+      stat('Below TRL 4', below),
+      stat('Above TRL 4', above),
+      stat('Full text consulted', t.fullText.map((s) => s.study)));
+    const checks = t.check.filter((c) => c.total);
+    const ok = checks.every((c) => c.same === c.total);
+    $('trl-check').classList.toggle('warn', !ok || t.missing.length > 0);
+    $('trl-check').textContent = [
+      t.missing.length ? `${t.missing.length} studies have no rating in the TRA Solutions sheet.` : '',
+      checks.length ? `The tables below are derived in the browser from the rating of each solution. ${ok ? 'They match' : 'They differ from'} the ${listJoin(checks.map((c) => `${c.sheet} (${c.same} of ${c.total} rows)`))} ${checks.length > 1 ? 'sheets' : 'sheet'}.` : '',
+    ].filter(Boolean).join(' ');
+
+    $('trl-steps').replaceChildren(
+      stepItem('Unit of assessment', 'The solution proposed by each study, that is, the tracking mechanism or system that the study implements and evaluates. Technologies are not rated in isolation, because a TRL is valid only for a specific application and environment, and a system is rated no higher than its least mature element.'),
+      stepItem('Evidence', `Only the evidence that each study reports: the DEF fields on the proposed solution, research method, evaluation type, research-type criteria, main findings and limitations. The full text was consulted for ${t.fullText.length} solutions whose fields were ambiguous between two adjacent levels or indicated validation beyond the laboratory.`),
+      stepItem('Rating', t.rule || 'Each solution receives the highest level whose criterion is fully met; when the evidence is ambiguous between two adjacent levels, the lower level is assigned.'),
+      stepItem('Aggregation', 'The TRL of a technology, an approach group or a publication period is given by the distribution, the median and the maximum of the TRLs of the solutions in it.'));
+
+    $('trl-rubric').replaceChildren(el('table', { class: 'data' },
+      el('thead', {}, el('tr', {}, ['TRL', 'NASA definition', 'Criterion applied to the mapped studies', 'Environment'].map((h, i) => el('th', { class: i ? '' : 'num', text: h })),
+        el('th', { class: 'num', text: 'Solutions' }))),
+      el('tbody', {}, t.rubric.map((r) => {
+        const list = t.all.items.filter((s) => s.trl === r.trl).map((s) => s.study);
+        return el('tr', {}, el('th', { scope: 'row', class: 'num', text: r.trl }), el('td', { text: r.definition }),
+          el('td', { class: 'small', text: r.criterion }), el('td', { class: 'small', text: r.environment }),
+          el('td', { class: 'num' }, countButton(list, `TRL ${r.trl}`, `${list.length} of ${n} solutions (${pct(list.length, n)})`)));
+      }))));
+
+    const levelTable = (rows, first, extra) => el('table', { class: 'data' },
+      el('thead', {}, el('tr', {}, el('th', { text: first }), el('th', { class: 'num', text: 'Solutions' }),
+        t.used.map((l) => el('th', { class: 'num', text: `TRL ${l}` })), el('th', { class: 'num', text: 'Median' }), el('th', { class: 'num', text: 'Max.' }),
+        extra ? extra.head.map((h) => el('th', { class: 'num', text: h })) : null)),
+      el('tbody', {}, rows.map((row, i) => el('tr', { class: i === rows.length - 1 ? 'total-row' : '' },
+        el('th', { scope: 'row', text: row.label }),
+        el('td', { class: 'num' }, countButton(row.items.map((s) => s.study), `TRL · ${row.label}`, `${row.n} solutions`)),
+        t.used.map((l) => el('td', { class: 'num' }, countButton(row.byLevel.get(l).map((s) => s.study), `TRL ${l} · ${row.label}`, `${row.byLevel.get(l).length} of ${row.n} solutions`))),
+        el('td', { class: 'num', text: row.median ?? '–' }), el('td', { class: 'num', text: row.max ?? '–' }),
+        extra ? extra.cells(row) : null))));
+    $('trl-tech').replaceChildren(levelTable([...t.byTechnology, t.all], 'Technology'));
+    $('trl-approach').replaceChildren(levelTable([...t.byApproach, t.noApproach, t.all], 'Approach group'));
+    $('trl-period').replaceChildren(levelTable([...t.byPeriod, t.all], 'Period', {
+      head: ['TRL 4 or above', '% at TRL 4 or above'],
+      cells: (row) => [el('td', { class: 'num' }, countButton(row.atLeast4.map((s) => s.study), `TRL 4 or above · ${row.label}`, `${row.atLeast4.length} of ${row.n} solutions`)),
+        el('td', { class: 'num', text: pct(row.atLeast4.length, row.n) })],
+    }));
+
+    // Rating of each solution
+    const levels = t.used;
+    const sources = [...new Set(t.all.items.map((s) => s.source))].sort();
+    $('trl-level').replaceChildren(el('option', { value: '', text: 'Any' }), ...levels.map((l) => el('option', { value: l, text: `TRL ${l}` })));
+    $('trl-source').replaceChildren(el('option', { value: '', text: 'Any' }), ...sources.map((s) => el('option', { value: s, text: s })));
+    const rows = t.all.items.slice().sort((a, b) => a.study.paperId.localeCompare(b.study.paperId, 'en', { numeric: true }));
+    const draw = () => {
+      const q = $('trl-filter').value.trim().toLowerCase();
+      const level = $('trl-level').value;
+      const source = $('trl-source').value;
+      const shown = rows.filter((s) => (!level || String(s.trl) === level) && (!source || s.source === source)
+        && (!q || [s.study.paperId, s.study.id, s.study.title, citationLabel(s.study), s.environment, s.criterion, s.evidence].join(' ').toLowerCase().includes(q)));
+      $('trl-count').textContent = `${shown.length} of ${rows.length} solutions`;
+      $('trl-table').replaceChildren(el('table', { class: 'data grid' },
+        el('thead', {}, el('tr', {}, el('th', { class: 'study', text: 'Study' }), el('th', { class: 'num', text: 'Year' }), el('th', { class: 'num final-col', text: 'TRL' }),
+          ['Environment', 'Criterion met', 'Evidence source', 'Evidence'].map((h) => el('th', { text: h })))),
+        el('tbody', {}, shown.map((s) => el('tr', {}, studyCell(s.study), el('td', { class: 'num', text: s.study.year || '' }),
+          el('td', { class: 'num final-col', text: s.trl }), el('td', { text: s.environment }), el('td', { class: 'small', text: s.criterion }),
+          el('td', { text: s.source }), el('td', { class: 'small evidence', text: s.evidence }))))));
+    };
+    ['trl-level', 'trl-source'].forEach((id) => { $(id).onchange = draw; });
+    $('trl-filter').oninput = draw;
+    draw();
+  }
+
+  function renderTRLChart() {
+    const t = state.model && state.model.tra;
+    if (!t || $('panel-trl').hidden) return;
+    const levels = t.rubric.map((r) => r.trl);
+    const data = levels.map((l) => t.all.items.filter((s) => s.trl === l));
+    const ink = cssVar('--text-secondary');
+    if (state.trlChart) state.trlChart.destroy();
+    state.trlChart = new Chart($('trl-chart'), {
+      type: 'bar',
+      data: { labels: levels.map((l) => `TRL ${l}`), datasets: [{ label: 'Number of solutions', data: data.map((d) => d.length), backgroundColor: cssVar('--series-1'), borderRadius: 4, maxBarThickness: 48 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: false, layout: { padding: { top: 18 } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `${ctx.raw} solutions (${pct(ctx.raw, t.solutions.size)})` } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: ink }, border: { color: cssVar('--axis') }, title: { display: true, text: 'Technology readiness level', color: ink } },
+          y: { beginAtZero: true, ticks: { color: ink, precision: 0 }, grid: { color: cssVar('--grid') }, border: { display: false }, title: { display: true, text: 'Number of solutions', color: ink } },
+        },
+        onClick: (evt, elements, chart) => {
+          const hit = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false)[0];
+          if (hit && data[hit.index].length) showCitations(`TRL ${levels[hit.index]}`, data[hit.index].map((s) => s.study), `${data[hit.index].length} of ${t.solutions.size} solutions`);
+        },
+        onHover: (evt, elements, chart) => {
+          const hit = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false)[0];
+          chart.canvas.style.cursor = hit && data[hit.index].length ? 'pointer' : 'default';
+        },
+      },
+      plugins: [{
+        // Value above each bar, as in the article's figure.
+        id: 'values',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          ctx.save();
+          ctx.fillStyle = cssVar('--text-primary');
+          ctx.font = '12px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          chart.getDatasetMeta(0).data.forEach((bar, i) => ctx.fillText(chart.data.datasets[0].data[i], bar.x, bar.y - 5));
+          ctx.restore();
+        },
+      }],
+    });
   }
 
   // -------------------------------------------------------------- heatmaps
@@ -932,13 +1450,16 @@
   function readWorkbook(buffer) {
     // Only the sheets the dashboard uses are parsed, which keeps loading fast.
     const probe = XLSX.read(buffer, { type: 'array', bookSheets: true });
-    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$|equivalences$|kappa[_\s]*fleiss$)/i.test(n.trim()));
+    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$|equivalences$|kappa[_\s]*fleiss$|tr[al] )/i.test(n.trim()));
     return XLSX.read(buffer, { type: 'array', sheets: wanted, cellHTML: false, cellStyles: false });
   }
 
   function useWorkbook(wb, sourceNote) {
     state.model = parseWorkbook(wb);
     state.model.kappa = Kappa.build(wb, state.model.taSheets);
+    state.model.rq5 = Analyses.buildRQ5(wb, state.model);
+    state.model.tra = Analyses.buildTRA(wb, state.model);
+    state.model.selection = Analyses.buildSelection(wb, state.model);
     state.model.warnings.forEach((w) => console.warn(w));
     renderOverview();
     buildSeriesBuilder();
@@ -946,6 +1467,8 @@
     renderTASubtabs();
     renderTA();
     renderKappa();
+    renderSelection();
+    renderTRL();
     buildHeatmapControls();
     $('source-note').textContent = sourceNote;
     $('status').hidden = true;
@@ -988,7 +1511,7 @@
         alert(`This file could not be read: ${err.message}`);
       }
     });
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderChart(); renderHeatmap(); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderChart(); renderHeatmap(); renderTRLChart(); });
   }
 
   window.addEventListener('DOMContentLoaded', init);
