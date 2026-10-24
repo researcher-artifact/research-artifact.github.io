@@ -2,9 +2,10 @@
  * Dashboard user interface: tabs, the studies-by-year chart, the study selection,
  * the DEF and thematic analysis tables, the Fleiss' kappa analysis, one table per
  * research question (with the RQ5 classification), the technology readiness
- * assessment and the heatmaps. The data model comes from data.js, kappa.js and
- * analyses.js; citations come from data/references.js, which follows the
- * numbering of the article's reference list.
+ * assessment, the data protection requirements and the heatmaps. The data model
+ * comes from data.js, kappa.js and analyses.js; legal provisions are parsed by
+ * legal.js and their text comes from data/legislation.js; citations come from
+ * data/references.js, which follows the numbering of the article's reference list.
  */
 (function () {
   'use strict';
@@ -17,6 +18,7 @@
   const { SOURCES, parseWorkbook, cellFor, text } = window.DashboardData;
   const Kappa = window.DashboardKappa;
   const Analyses = window.DashboardAnalyses;
+  const Legal = window.DashboardLegal;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -155,6 +157,7 @@
     ];
     state.article.researchQuestions.forEach((rq) => tabs.push({ id: rq.id.toLowerCase(), label: rq.id, rq }));
     tabs.push({ id: 'trl', label: 'TRL' });
+    tabs.push({ id: 'dpr', label: 'Data Protection Requirements' });
     tabs.push({ id: 'heatmaps', label: 'Heatmaps' });
     return tabs;
   }
@@ -1323,6 +1326,123 @@
     });
   }
 
+  // ------------------------------------------- data protection requirements
+
+  /** Rows of the "Data Protection Requirements" sheet, with their provisions parsed. */
+  function parseRequirements(wb) {
+    const { findSheet, table, colIndex } = window.DashboardData;
+    const t = table(findSheet(wb, /^data protection requirements$/i));
+    if (!t.rows.length) return null;
+    const h = t.header;
+    const c = {
+      tr: colIndex(h, /^TR$/i),
+      name: colIndex(h, /^(technical )?requirement$/i),
+      description: colIndex(h, /^description$/i),
+      source: colIndex(h, /^source \(bibtex/i, /^source$/i),
+      gdpr: colIndex(h, /^GDPR/i),
+      lgpd: colIndex(h, /^LGPD equivalent|^LGPD provisions/i),
+      partial: colIndex(h, /^LGPD (counterpart|partial)/i),
+    };
+    return t.rows.map((r) => {
+      const get = (i) => (i >= 0 ? text(r[i]) : '');
+      const lgpd = get(c.lgpd);
+      return {
+        id: get(c.tr),
+        name: get(c.name),
+        description: get(c.description),
+        sources: get(c.source).split(/\s*[,;]\s*/).filter(Boolean),
+        gdpr: Legal.parseCell(get(c.gdpr), 'gdpr'),
+        lgpd: Legal.parseCell(lgpd, 'lgpd'),
+        partial: /^(partial|yes)$/i.test(get(c.partial)) || /^\(partial\)/i.test(lgpd),
+      };
+    }).filter((r) => r.id);
+  }
+
+  /** "[55, 56]" for bibliography keys of the article. */
+  function keyCitation(keys) {
+    const nums = keys.map((k) => state.references[k]).filter(Boolean).map((r) => r.number);
+    return compressNumbers(nums) || keys.join(', ');
+  }
+
+  function showSources(req) {
+    const refs = req.sources.map((k) => ({ key: k, ref: state.references[k] }));
+    openDialog(`${req.id} · Source studies`, el('div', { class: 'citations' },
+      el('ol', { class: 'ref-list' }, refs.map(({ key, ref }) => el('li', {},
+        el('span', { class: 'ref-num', text: ref ? `[${ref.number}]` : '[?]' }),
+        el('span', {}, ref ? ref.reference : key, ' ',
+          ref && ref.url ? el('a', { href: ref.url, target: '_blank', rel: 'noopener', text: 'Link' }) : null))))));
+  }
+
+  /** Paragraph, point or inciso text, with its number. */
+  function legalBlock(b) {
+    return el('div', { class: 'legal-block' },
+      b.text ? el('p', {}, b.num ? el('strong', { text: `${b.num}${/^\d+$/.test(b.num) ? '.' : ''} ` }) : null, b.text) : null,
+      b.points && b.points.length ? el('ol', { class: 'legal-points' }, b.points.map((pt) => el('li', {},
+        el('strong', { text: `${/^[a-z]$/.test(pt.id) ? `(${pt.id})` : `${pt.id} –`} ` }), pt.text,
+        pt.points && pt.points.length ? el('ol', { class: 'legal-points' }, pt.points.map((q) => el('li', {},
+          el('strong', { text: `${q.id}) ` }), q.text))) : null))) : null);
+  }
+
+  function showProvision(req, law, item) {
+    const src = Legal.SOURCES[law];
+    const lib = window.DASHBOARD_LEGISLATION && window.DASHBOARD_LEGISLATION[law];
+    const body = el('div', { class: 'legal' },
+      el('p', { class: 'hint' }, el('strong', { text: `${req.id} ${req.name}. ` }),
+        `Cited in the table as ${item.ref}${item.summary ? `: ${item.summary}` : ''}.`),
+      item.provisions.map((p) => {
+        const ex = Legal.excerpt(p);
+        return el('section', { class: 'legal-provision' },
+          el('h3', {}, `${src.name} ${Legal.label(p)}`),
+          ex ? el('p', { class: 'muted small', text: ex.heading }) : null,
+          ex && ex.blocks ? ex.blocks.map(legalBlock)
+            : el('p', { class: 'muted', text: 'The text of this provision is not included in the dashboard; it can be read in the official text.' }),
+          el('p', { class: 'small' }, el('a', { href: Legal.link(p), target: '_blank', rel: 'noopener', text: `Open in the official text (${law === 'gdpr' ? 'EUR-Lex' : 'Planalto'})` })));
+      }),
+      el('p', { class: 'muted small' }, `Source: ${src.title}`, lib && lib.retrieved ? `, text retrieved on ${lib.retrieved}` : '', '.'));
+    openDialog(`${src.name} · ${item.ref}`, body);
+  }
+
+  function provisionList(req, law) {
+    const items = req[law];
+    if (!items.length) return el('span', { class: 'muted', text: '–' });
+    return el('ul', { class: 'plain provisions' }, items.map((item) => el('li', {},
+      el('button', { type: 'button', class: 'link-btn', title: 'Read the provision', onclick: () => showProvision(req, law, item) }, item.ref),
+      item.summary ? `: ${item.summary}` : '')));
+  }
+
+  function renderDPR() {
+    const reqs = state.model.requirements;
+    if (!reqs) {
+      $('dpr-check').textContent = 'The Data Protection Requirements sheet was not found in the spreadsheet.';
+      $('dpr-table').replaceChildren();
+      return;
+    }
+    const sources = [...new Set(reqs.flatMap((r) => r.sources))];
+    const count = (law) => new Set(reqs.flatMap((r) => r[law].flatMap((i) => i.provisions.map(Legal.label)))).size;
+    const partial = reqs.filter((r) => r.partial);
+    $('dpr-intro').textContent = `${reqs.length} technical requirements (TR) derived from the GDPR in the requirements-engineering studies ${keyCitation(sources)}. `
+      + 'For each requirement, the table gives the source studies, the GDPR provisions on which it is grounded and the corresponding provisions of the Brazilian General Data Protection Law (LGPD, Law No. 13,709/2018). Select a provision to read its text.';
+    $('dpr-check').textContent = `${count('gdpr')} GDPR provisions and ${count('lgpd')} LGPD provisions cited. `
+      + (partial.length ? `The LGPD offers only a partial counterpart for ${listJoin(partial.map((r) => r.id))}.` : '');
+    const hasDescription = reqs.some((r) => r.description);
+    const draw = () => {
+      const q = $('dpr-filter').value.trim().toLowerCase();
+      const shown = reqs.filter((r) => !q || [r.id, r.name, r.description, ...r.gdpr.map((i) => `${i.ref} ${i.summary}`), ...r.lgpd.map((i) => `${i.ref} ${i.summary}`)]
+        .join(' ').toLowerCase().includes(q));
+      $('dpr-count').textContent = `${shown.length} of ${reqs.length} requirements`;
+      $('dpr-table').replaceChildren(el('table', { class: 'data grid dpr' },
+        el('thead', {}, el('tr', {}, ['TR', 'Requirement', 'Source', 'GDPR provisions', 'LGPD equivalent'].map((h) => el('th', { text: h })))),
+        el('tbody', {}, shown.map((r) => el('tr', {},
+          el('th', { scope: 'row', text: r.id }),
+          el('td', {}, el('strong', { text: r.name }), hasDescription && r.description ? el('p', { class: 'small muted', text: r.description }) : null),
+          el('td', { class: 'num' }, el('button', { type: 'button', class: 'link-btn', title: 'List the source studies', onclick: () => showSources(r) }, keyCitation(r.sources))),
+          el('td', { class: 'small' }, provisionList(r, 'gdpr')),
+          el('td', { class: 'small' }, r.partial ? el('span', { class: 'badge', text: 'Partial counterpart' }) : null, provisionList(r, 'lgpd')))))));
+    };
+    $('dpr-filter').oninput = draw;
+    draw();
+  }
+
   // -------------------------------------------------------------- heatmaps
 
   function buildHeatmapControls() {
@@ -1450,7 +1570,7 @@
   function readWorkbook(buffer) {
     // Only the sheets the dashboard uses are parsed, which keeps loading fast.
     const probe = XLSX.read(buffer, { type: 'array', bookSheets: true });
-    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$|equivalences$|kappa[_\s]*fleiss$|tr[al] )/i.test(n.trim()));
+    const wanted = probe.SheetNames.filter((n) => /^(data extraction|thematic analysis|rq\d|approaches\s*analys|domains$|sub-?domains$|purposes$|technologies$|digital objects$|architecture$|data set$|equivalences$|kappa[_\s]*fleiss$|tr[al] |data protection requirements$)/i.test(n.trim()));
     return XLSX.read(buffer, { type: 'array', sheets: wanted, cellHTML: false, cellStyles: false });
   }
 
@@ -1460,6 +1580,7 @@
     state.model.rq5 = Analyses.buildRQ5(wb, state.model);
     state.model.tra = Analyses.buildTRA(wb, state.model);
     state.model.selection = Analyses.buildSelection(wb, state.model);
+    state.model.requirements = parseRequirements(wb);
     state.model.warnings.forEach((w) => console.warn(w));
     renderOverview();
     buildSeriesBuilder();
@@ -1469,6 +1590,7 @@
     renderKappa();
     renderSelection();
     renderTRL();
+    renderDPR();
     buildHeatmapControls();
     $('source-note').textContent = sourceNote;
     $('status').hidden = true;

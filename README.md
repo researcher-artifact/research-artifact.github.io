@@ -15,15 +15,17 @@ All figures are computed in the browser from the DEF/TA spreadsheet each time th
 | Fleiss' kappa | Inter-rater reliability for every dimension and coding stage, recomputed in the browser with the article's method and checked against the *Kappa_Fleiss* sheet; the mean by stage; an explanation of the calculation; a worked example for any study; and the *Equivalences* sheet, with filters. |
 | RQ1–RQ5 | One table per research question with each category, its percentage and its number of studies. Clicking a number lists the studies, cited in the article's numeric style. RQ5 also shows the rules that assign the approach groups, recomputes the assignment from the DEF fields and checks it against *RQ5 Classification*, and lists the combinations of groups and the conditions met by each study. |
 | TRL | The Technology Readiness Level assigned to each proposed solution: the rubric, the steps of the assessment, the distribution of levels, and the levels by technology, approach group and period, checked against the *TRL* sheets. |
+| Data Protection Requirements | The fourteen technical requirements (TR) of the article (sheet *Data Protection Requirements*), with their source studies, the GDPR provisions on which each is grounded and the corresponding LGPD provisions. Selecting a provision opens its text, with a link to the official text in EUR-Lex (GDPR) or Planalto (LGPD). |
 | Heatmaps | Any two dimensions of the thematic analysis crossed. Rows and columns are ordered so that the highest count is in the top-right cell and the lowest counts gather in the bottom-left corner. Clicking a cell lists the studies. |
 
 ## Files
 
 | Path | Role |
 |---|---|
-| `index.html`, `assets/` | The page, its styles and scripts. `assets/data.js` reads the workbook; `assets/kappa.js` computes Fleiss' kappa; `assets/analyses.js` recomputes the RQ5 groups and the TRL summaries; `assets/app.js` draws the views. |
+| `index.html`, `assets/` | The page, its styles and scripts. `assets/data.js` reads the workbook; `assets/kappa.js` computes Fleiss' kappa; `assets/analyses.js` recomputes the RQ5 groups and the TRL summaries; `assets/legal.js` parses the legal provisions cited in the requirements table; `assets/app.js` draws the views. |
 | `data/DEF_TA.xlsx` | The DEF/TA spreadsheet the page reads. |
 | `data/article.js` | Title, authors, abstract, keywords and research questions, taken from the manuscript, and the record counts of the study selection (`selection`). |
+| `data/legislation.js` | Text of the GDPR and LGPD provisions cited in the requirements table, taken from the official texts. |
 | `data/references.js` | Citation number and formatted reference of every work cited in the article, in the order of the article's reference list (elsarticle-num). |
 | `tools/add_analysis_sheets.py`, `tools/analysis_definitions.json` | Add the *RQ5* and *TRL* analysis sheets to the workbook. The JSON file holds the group rules, the term patterns, the TRL rubric and the periods. |
 | `tools/build_references.py` | Regenerates `data/references.js` from the manuscript's `.tex` and `.bib` files. |

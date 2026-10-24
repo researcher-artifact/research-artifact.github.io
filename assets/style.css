@@ -301,3 +301,11 @@ ul.plain { list-style: none; padding: 0; margin: 0; font-size: .9rem; }
 .clauses .cond { overflow-wrap: anywhere; }
 table.data tr.total-row > * { border-top: 2px solid var(--axis); font-weight: 650; }
 td.evidence { min-width: 18rem; }
+table.dpr td { min-width: 12rem; vertical-align: top; }
+table.dpr td.num { min-width: 0; }
+ul.provisions li { margin-bottom: .35rem; }
+.badge { display: inline-block; margin-bottom: .35rem; padding: .05rem .5rem; border-radius: 999px; font-size: .78rem; white-space: nowrap; background: var(--surface-2); border: 1px solid var(--border); }
+.legal-provision { border-top: 1px solid var(--border); padding-top: .6rem; margin-top: .6rem; }
+.legal-provision h3 { margin: 0 0 .2rem; font-size: 1rem; }
+.legal-block p { margin: .3rem 0; }
+ol.legal-points { list-style: none; padding-left: 1rem; margin: .3rem 0; display: flex; flex-direction: column; gap: .25rem; }
