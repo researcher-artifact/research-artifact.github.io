@@ -168,215 +168,215 @@ window.DASHBOARD_REFERENCES = {
   "year": "2007",
   "url": ""
  },
- "WOHLIN2601248": {
-  "number": 29,
-  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, Association for Computing Machinery, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
-  "year": "2014",
-  "url": "https://doi.org/10.1145/2601248.2601268"
- },
- "WOHLIN2022106908": {
-  "number": 30,
-  "reference": "C. Wohlin, M. Kalinowski, K. R. Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Information and Software Technology 147 (2022) 106908.",
-  "year": "2022",
-  "url": "https://doi.org/10.1016/j.infsof.2022.106908"
- },
  "safavi2000combinatorial": {
-  "number": 31,
+  "number": 29,
   "reference": "R. Safavi-Naini, Y. Wang, A combinatorial approach to asymmetric traitor tracing, in: International Computing and Combinatorics Conference, 2000, pp. 416–425.",
   "year": "2000",
   "url": ""
  },
  "rayyan-172029046": {
-  "number": 32,
+  "number": 30,
   "reference": "F. Yin, L. Wang, R. Yu, X. Ma, A distribution model for data leakage prevention, Proceedings - 2013 International Conference on Mechatronic Sciences, Electric Engineering and Computer, MEC 2013 (2013) 2617–2620. doi:10.1109/MEC.2013.6885474.",
   "year": "2013",
   "url": "https://doi.org/10.1109/MEC.2013.6885474"
  },
  "2-s2.0-79960762009": {
-  "number": 33,
+  "number": 31,
   "reference": "R. Schick, C. Ruland, Document tracking - on the way to a new security service, in: 2011 Conference on Network and Information Systems Security, 2011, pp. 1–5. doi:10.1109/SAR-SSI.2011.5931374.",
   "year": "2011",
   "url": "https://doi.org/10.1109/SAR-SSI.2011.5931374"
  },
  "boneh1998collusion": {
-  "number": 34,
+  "number": 32,
   "reference": "D. Boneh, J. Shaw, Collusion-secure fingerprinting for digital data, IEEE Transactions on Information Theory 44 (5) (1998) 1897–1905. doi:10.1109/18.705568.",
   "year": "1998",
   "url": "https://doi.org/10.1109/18.705568"
  },
  "rayyan-218685609": {
-  "number": 35,
+  "number": 33,
   "reference": "T. Zheng, Y. Luo, T. Zhou, Z. Cai, Towards differential access control and privacy-preserving for secure media data sharing in the cloud, Computers and Security 113 (2022). doi:10.1016/j.cose.2021.102553.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.cose.2021.102553"
  },
  "2-s2.0-84952040795": {
-  "number": 36,
+  "number": 34,
   "reference": "G. Gu, S. Zhang, X. Wang, X. Cai, S. Chen, The method and system implementation of unstructured data tracking and forensics, in: Applications and Techniques in Information Security, Springer Berlin Heidelberg, Berlin, Heidelberg, 2015, pp. 359–367. doi:10.1007/978-3-662-48683-2_32.",
   "year": "2015",
   "url": "https://doi.org/10.1007/978-3-662-48683-2_32"
  },
  "rayyan-172027922": {
-  "number": 37,
+  "number": 35,
   "reference": "T.-K. Chang, C.-N. Yang, C.-Y. Tseng, Bt-def: A secure digital evidence framework using blockchain and tp-merkle tree, 2024 4th International Conference on Computer, Control and Robotics, ICCCR 2024 (2024) 343–348. doi:10.1109/ICCCR61138.2024.10585397.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICCCR61138.2024.10585397"
  },
  "rayyan-218685128": {
-  "number": 38,
+  "number": 36,
   "reference": "F. Ullah, J. He, N. Zhu, A. Wajahat, A. Nazir, S. Qureshi, M. S. Pathan, S. Dev, Blockchain-enabled ehr access auditing: Enhancing healthcare data security, Heliyon 10 (16) (2024). doi:10.1016/j.heliyon.2024.e34407.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.heliyon.2024.e34407"
  },
  "kent2006guide": {
-  "number": 39,
+  "number": 37,
   "reference": "K. Kent, M. Souppaya, Guide to computer security log management, National Institute of Standards and Technology (2006). doi:10.6028/NIST.SP.800-92.",
   "year": "2006",
   "url": "https://doi.org/10.6028/NIST.SP.800-92"
  },
  "rayyan-172028743": {
-  "number": 40,
+  "number": 38,
   "reference": "R. Manikandan, A. Rengarajan, C. Devibala, K. Gayathri, T. Malarvizhi, Secure and traceable medical image sharing using enigma in cloud?, Lecture Notes on Data Engineering and Communications Technologies 35 (2020) 816–825. doi:10.1007/978-3-030-32150-5_82.",
   "year": "2020",
   "url": "https://doi.org/10.1007/978-3-030-32150-5_82"
  },
  "rayyan-172027890": {
-  "number": 41,
+  "number": 39,
   "reference": "J. Yong, X. Lei, Z. Huang, J. Dang, Y. Wang, A blockchain-based supervision data security sharing framework, Applied Sciences (Switzerland) 14 (16) (2024). doi:10.3390/app14167034.",
   "year": "2024",
   "url": "https://doi.org/10.3390/app14167034"
  },
  "10.3390/info11110509": {
-  "number": 42,
+  "number": 40,
   "reference": "G. Caldarelli, Understanding the blockchain oracle problem: A call for action, Information 11 (11) (2020). doi:10.3390/info11110509.",
   "year": "2020",
   "url": "https://doi.org/10.3390/info11110509"
  },
  "nist80053r5": {
-  "number": 43,
+  "number": 41,
   "reference": "Joint Task Force, Security and privacy controls for information systems and organizations, National Institute of Standards and Technology (2020). doi:10.6028/NIST.SP.800-53r5.",
   "year": "2020",
   "url": "https://doi.org/10.6028/NIST.SP.800-53r5"
  },
  "rayyan-172027829": {
-  "number": 44,
+  "number": 42,
   "reference": "H. Makina, A. Ben Letaifa, A. Rachedi, A blockchain and self-sovereign identity-based platform for electronic health records management under gdpr, International Conference on Wireless and Mobile Computing, Networking and Communications (2024) 118–123. doi:10.1109/WiMob61911.2024.10770361.",
   "year": "2024",
   "url": "https://doi.org/10.1109/WiMob61911.2024.10770361"
  },
  "rayyan-218685194": {
-  "number": 45,
+  "number": 43,
   "reference": "M. Li, J. Xue, Z. Liu, Y. Suo, T. Lei, Y. Wang, Damfsd: A decentralized authorization model with flexible and secure delegation, Internet of Things (Netherlands) 27 (2024). doi:10.1016/j.iot.2024.101317.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.iot.2024.101317"
  },
  "rayyan-172027927": {
-  "number": 46,
+  "number": 44,
   "reference": "M. Rajesh, V. Navya, R. Konjarla, M. Birada, Blockchain-based e-vault for legal records, Proceedings of the 3rd International Conference on Applied Artificial Intelligence and Computing, ICAAIC 2024 (2024) 1389–1392. doi:10.1109/ICAAIC60222.2024.10574924.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICAAIC60222.2024.10574924"
  },
  "weitzner2008information": {
-  "number": 47,
+  "number": 45,
   "reference": "D. J. Weitzner, H. Abelson, T. Berners-Lee, J. Feigenbaum, J. Hendler, G. J. Sussman, Information accountability, Communications of the ACM 51 (6) (2008) 82–87. doi:10.1145/1349026.1349043.",
   "year": "2008",
   "url": "https://doi.org/10.1145/1349026.1349043"
  },
  "fips1865": {
-  "number": 48,
+  "number": 46,
   "reference": "National Institute of Standards and Technology, Digital signature standard (DSS), National Institute of Standards and Technology (2023). doi:10.6028/NIST.FIPS.186-5.",
   "year": "2023",
   "url": "https://doi.org/10.6028/NIST.FIPS.186-5"
  },
  "haber1991timestamp": {
-  "number": 49,
+  "number": 47,
   "reference": "S. Haber, W. S. Stornetta, How to time-stamp a digital document, Journal of Cryptology 3 (2) (1991) 99–111. doi:10.1007/BF00196791.",
   "year": "1991",
   "url": "https://doi.org/10.1007/BF00196791"
  },
  "tardos2008optimal": {
-  "number": 50,
+  "number": 48,
   "reference": "G. Tardos, Optimal probabilistic fingerprint codes, Journal of the ACM 55 (2) (2008) 10:1–10:24. doi:10.1145/1346330.1346335.",
   "year": "2008",
   "url": "https://doi.org/10.1145/1346330.1346335"
  },
  "cox2008digital": {
-  "number": 51,
+  "number": 49,
   "reference": "I. J. Cox, M. L. Miller, J. A. Bloom, J. Fridrich, T. Kalker, Digital watermarking and steganography, Morgan Kaufmann, Burlington, MA (2008).",
   "year": "2008",
   "url": ""
  },
  "chor2000tracing": {
-  "number": 52,
+  "number": 50,
   "reference": "B. Chor, A. Fiat, M. Naor, B. Pinkas, Tracing traitors, IEEE Transactions on Information Theory 46 (3) (2000) 893–910. doi:10.1109/18.841169.",
   "year": "2000",
   "url": "https://doi.org/10.1109/18.841169"
  },
  "Mahieu2019Responsibility": {
-  "number": 53,
+  "number": 51,
   "reference": "R. Mahieu, J. van Hoboken, H. Asghari, Responsibility for data protection in a networked world: On the question of the controller, ``effective and complete protection'' and its application to data access rights in europe, Journal of Intellectual Property, Information Technology and Electronic Commerce Law (JIPITEC) 10 (1) (2019) 39–59. doi:10.2139/ssrn.3256743.",
   "year": "2019",
   "url": "https://doi.org/10.2139/ssrn.3256743"
  },
  "VanAlsenoy2016": {
-  "number": 54,
+  "number": 52,
   "reference": "B. Van Alsenoy, Liability under EU data protection law: From directive 95/46 to the general data protection regulation, Journal of Intellectual Property, Information Technology and E-Commerce Law (JIPITEC) 7 (3) (2016) 271–288.",
   "year": "2016",
   "url": "https://www.jipitec.eu/jipitec/article/view/185"
  },
  "us_hipaa_1996": {
-  "number": 55,
+  "number": 53,
   "reference": "United States Congress, Health insurance portability and accountability act of 1996 (1996).",
   "year": "1996",
   "url": "https://aspe.hhs.gov/reports/health-insurance-portability-accountability-act-1996"
  },
  "eu_digital_id_2024": {
-  "number": 56,
+  "number": 54,
   "reference": "European Parliament, Council of the European Union, Regulation (eu) 2024/1183 of the european parliament and of the council of 11 april 2024 amending regulation (eu) no 910/2014 as regards establishing the european digital identity framework (2024).",
   "year": "2024",
   "url": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj"
  },
  "10.1109/RE.2019.00036": {
-  "number": 57,
+  "number": 55,
   "reference": "K. Hjerppe, J. Ruohonen, V. Leppänen, The general data protection regulation: Requirements, architectures, and constraints, in: 2019 IEEE 27th International Requirements Engineering Conference (RE), 2019, pp. 265–275. doi:10.1109/RE.2019.00036.",
   "year": "2019",
   "url": "https://doi.org/10.1109/RE.2019.00036"
  },
  "10.1109/RE.2018.00023": {
-  "number": 58,
+  "number": 56,
   "reference": "V. Ayala-Rivera, L. Pasquale, The grace period has ended: An approach to operationalize gdpr requirements, in: 2018 IEEE 26th International Requirements Engineering Conference (RE), 2018, pp. 136–146. doi:10.1109/RE.2018.00023.",
   "year": "2018",
   "url": "https://doi.org/10.1109/RE.2018.00023"
  },
  "rayyan-218685148": {
-  "number": 59,
+  "number": 57,
   "reference": "A. Punia, P. Gulia, N. S. Gill, E. Ibeke, C. Iwendi, P. K. Shukla, A systematic review on blockchain-based access control systems in cloud environment, Journal of Cloud Computing 13 (1) (2024). doi:10.1186/s13677-024-00697-7.",
   "year": "2024",
   "url": "https://doi.org/10.1186/s13677-024-00697-7"
  },
  "petticrew2008systematic": {
-  "number": 60,
+  "number": 58,
   "reference": "M. Petticrew, H. Roberts, Systematic reviews in the social sciences: A practical guide, John Wiley and Sons (2008).",
   "year": "2008",
   "url": ""
  },
  "rayyan-218685725": {
-  "number": 61,
+  "number": 59,
   "reference": "F. Cirillo, B. Cheng, R. Porcellana, M. Russo, G. Solmaz, H. Sakamoto, S. P. Romano, Intentkeeper: Intent-oriented data usage control for federated data analytics, in: 2020 IEEE 45th Conference on Local Computer Networks (LCN), 2020, pp. 204–215. doi:10.1109/LCN48667.2020.9314823.",
   "year": "2020",
   "url": "https://doi.org/10.1109/LCN48667.2020.9314823"
  },
  "rayyan-218688039": {
-  "number": 62,
+  "number": 60,
   "reference": "Y. Zhuang, L. R. Sheets, Y.-W. Chen, Z.-Y. Shae, J. J. Tsai, C.-R. Shyu, A patient-centric health information exchange framework using blockchain technology, IEEE Journal of Biomedical and Health Informatics 24 (8) (2020) 2169–2176. doi:10.1109/JBHI.2020.2993072.",
   "year": "2020",
   "url": "https://doi.org/10.1109/JBHI.2020.2993072"
  },
  "rayyan-218688549": {
-  "number": 63,
+  "number": 61,
   "reference": "M. Alessi, A. Camillo, E. Giangreco, M. Matera, S. Pino, D. Storelli, Make users own their data: A decentralized personal data store prototype based on ethereum and ipfs, 2018 3rd International Conference on Smart and Sustainable Technologies, SpliTech 2018 (2018).",
   "year": "2018",
   "url": ""
+ },
+ "WOHLIN2022106908": {
+  "number": 62,
+  "reference": "C. Wohlin, M. Kalinowski, K. R. Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Information and Software Technology 147 (2022) 106908.",
+  "year": "2022",
+  "url": "https://doi.org/10.1016/j.infsof.2022.106908"
+ },
+ "WOHLIN2601248": {
+  "number": 63,
+  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, Association for Computing Machinery, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
+  "year": "2014",
+  "url": "https://doi.org/10.1145/2601248.2601268"
  },
  "Wieringa2006": {
   "number": 64,
