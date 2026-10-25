@@ -28,6 +28,7 @@ All figures are computed in the browser from the DEF/TA spreadsheet each time th
 | `data/legislation.js` | Text of the GDPR and LGPD provisions cited in the requirements table, taken from the official texts. |
 | `data/references.js` | Citation number and formatted reference of every work cited in the article, in the order of the article's reference list (elsarticle-num). |
 | `tools/add_analysis_sheets.py`, `tools/analysis_definitions.json` | Add the *RQ5* and *TRL* analysis sheets to the workbook. The JSON file holds the group rules, the term patterns, the TRL rubric and the periods. |
+| `tools/build_legislation.py` | Regenerates `data/legislation.js` from the official GDPR (EUR-Lex) and LGPD (Planalto) pages saved from a browser, keeping only the articles the requirements table cites. |
 | `tools/build_references.py` | Regenerates `data/references.js` from the manuscript's `.tex` and `.bib` files. |
 | `assets/vendor/` | SheetJS 0.18.5 (Apache 2.0) and Chart.js 4.4.1 (MIT), kept locally so the page works without external services. |
 
@@ -42,6 +43,14 @@ All figures are computed in the browser from the DEF/TA spreadsheet each time th
   ```
 
   The sheets are added inside the xlsx package, so charts, tables and the data model of the workbook are kept.
+- **Legal texts:** after the requirements table changes, or to update the wording of the laws, save the two official pages and run
+
+  ```sh
+  python3 tools/build_legislation.py --workbook data/DEF_TA.xlsx --gdpr gdpr.html --lgpd lgpd.html \
+      --retrieved "25 October 2026" --out data/legislation.js
+  ```
+
+  Superseded wording (struck through in the consolidated LGPD) and the notes on amendments are left out.
 - **Article text and selection counts:** edit `data/article.js`. The screening-stage counts are not in the spreadsheet, so they are kept in its `selection` block.
 - **Citation numbers:** after the article's citations change, run
 

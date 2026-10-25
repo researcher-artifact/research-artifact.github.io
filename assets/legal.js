@@ -189,8 +189,13 @@
 
   function gdprBlocks(a, p) {
     const paras = a.paragraphs || [];
-    const para = p.para ? paras.find((x) => String(x.num) === String(p.para)) : null;
-    if (p.para && !para) return null;
+    let para = p.para ? paras.find((x) => String(x.num) === String(p.para)) : null;
+    if (p.para && !para) {
+      // Articles without numbered paragraphs, such as Article 4, number their points: 4(5).
+      const list = paras.find((x) => !x.num && (x.points || []).some((pt) => pt.id === String(p.para)));
+      if (!list) return null;
+      return [{ text: list.text, points: list.points.filter((pt) => pt.id === String(p.para)) }];
+    }
     const scope = para || (p.point ? paras[0] : null);
     if (!scope) return paras.map(blockOf);
     if (!p.point) return [blockOf(scope)];
@@ -221,7 +226,7 @@
   }
 
   function blockOf(x) {
-    return { num: x.num, text: x.text, points: x.points || [] };
+    return { num: x.num, text: x.text, points: x.points || [], after: x.after || [] };
   }
 
   window.DashboardLegal = { SOURCES, parseCell, parseReference, label, link, excerpt };

@@ -1380,7 +1380,8 @@
       b.points && b.points.length ? el('ol', { class: 'legal-points' }, b.points.map((pt) => el('li', {},
         el('strong', { text: `${/^[a-z]$/.test(pt.id) ? `(${pt.id})` : `${pt.id} –`} ` }), pt.text,
         pt.points && pt.points.length ? el('ol', { class: 'legal-points' }, pt.points.map((q) => el('li', {},
-          el('strong', { text: `${q.id}) ` }), q.text))) : null))) : null);
+          el('strong', { text: `${q.id}) ` }), q.text))) : null))) : null,
+      (b.after || []).map((t) => el('p', {}, t)));
   }
 
   function showProvision(req, law, item) {
@@ -1395,10 +1396,10 @@
           el('h3', {}, `${src.name} ${Legal.label(p)}`),
           ex ? el('p', { class: 'muted small', text: ex.heading }) : null,
           ex && ex.blocks ? ex.blocks.map(legalBlock)
-            : el('p', { class: 'muted', text: 'The text of this provision is not included in the dashboard; it can be read in the official text.' }),
+            : el('p', { class: 'muted', text: 'The text of this provision was not found in the extracted legislation; it can be read in the official text.' }),
           el('p', { class: 'small' }, el('a', { href: Legal.link(p), target: '_blank', rel: 'noopener', text: `Open in the official text (${law === 'gdpr' ? 'EUR-Lex' : 'Planalto'})` })));
       }),
-      el('p', { class: 'muted small' }, `Source: ${src.title}`, lib && lib.retrieved ? `, text retrieved on ${lib.retrieved}` : '', '.'));
+      el('p', { class: 'muted small' }, `Source: ${src.title}`, lib && lib.retrieved ? `, official text consulted on ${lib.retrieved}` : '', '.'));
     openDialog(`${src.name} · ${item.ref}`, body);
   }
 
