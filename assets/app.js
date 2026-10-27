@@ -1,5 +1,5 @@
 /*
- * Dashboard user interface: tabs, the studies-by-year chart, the study selection,
+ * Dashboard user interface: the section menu, the studies-by-year chart, the study selection,
  * the DEF and thematic analysis tables, the Fleiss' kappa analysis, one table per
  * research question (with the RQ5 classification), the technology readiness
  * assessment, the data protection requirements and the heatmaps. The data model
@@ -163,12 +163,62 @@
     return tabs;
   }
 
+  /** Outline icons (24-unit grid) shown beside each section, and alone when the menu is collapsed. */
+  const TAB_ICONS = {
+    overview: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+    selection: 'M4 5h16l-6 7.5V19l-4 1.5v-8z',
+    def: 'M4 5h16v14H4zM4 10h16M4 15h16M10 5v14',
+    ta: 'M3 12V4h8l9 9-8 8zM7.5 8.5h.01',
+    kappa: 'M7 5v14M17 5l-7 7 7 7',
+    trl: 'M5 20V14M10 20V10M15 20V6M20 20V3',
+    dpr: 'M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z',
+    heatmaps: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
+  };
+
+  function tabIcon(t) {
+    const icon = el('span', { class: 'tab-icon', 'aria-hidden': 'true' });
+    if (t.rq) icon.append(el('span', { class: 'tab-badge', text: t.label.replace(/^RQ/i, 'Q') }));
+    else icon.innerHTML = `<svg viewBox="0 0 24 24"><path d="${TAB_ICONS[t.id]}"/></svg>`;
+    return icon;
+  }
+
+  const SIDEBAR_KEY = 'dashboard.sidebarCollapsed';
+  const narrow = matchMedia('(max-width: 860px)');
+
+  function setSidebarCollapsed(collapsed) {
+    $('shell').classList.toggle('collapsed', collapsed);
+    const label = collapsed ? 'Expand the menu' : 'Collapse the menu';
+    const btn = $('sidebar-toggle');
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    try { localStorage.setItem(SIDEBAR_KEY, collapsed ? '1' : '0'); } catch (e) { /* storage unavailable */ }
+  }
+
+  function setMenuOpen(open) {
+    $('sidebar').classList.toggle('open', open);
+    $('menu-toggle').setAttribute('aria-expanded', String(open));
+  }
+
   function buildTabs() {
     const nav = $('tabs');
     nav.replaceChildren(...tabList().map((t) => el('a', {
-      href: `#${t.id}`, role: 'tab', id: `tab-${t.id}`, class: 'tab', text: t.label,
-    })));
+      href: `#${t.id}`, role: 'tab', id: `tab-${t.id}`, class: 'tab', title: t.label,
+    }, tabIcon(t), el('span', { class: 'tab-label', text: t.label }))));
     window.addEventListener('hashchange', route);
+
+    // Wide screens: a side menu that collapses to its icons. Narrow screens: a drop-down menu.
+    let collapsed = false;
+    try { collapsed = localStorage.getItem(SIDEBAR_KEY) === '1'; } catch (e) { /* storage unavailable */ }
+    setSidebarCollapsed(collapsed);
+    $('sidebar-toggle').onclick = () => setSidebarCollapsed(!$('shell').classList.contains('collapsed'));
+    $('menu-toggle').onclick = () => setMenuOpen(!$('sidebar').classList.contains('open'));
+    nav.addEventListener('click', (e) => { if (e.target.closest('.tab')) setMenuOpen(false); });
+    document.addEventListener('click', (e) => { if (!$('sidebar').contains(e.target)) setMenuOpen(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && $('sidebar').classList.contains('open')) { setMenuOpen(false); $('menu-toggle').focus(); }
+    });
+    narrow.addEventListener('change', () => setMenuOpen(false));
   }
 
   function route() {
@@ -176,6 +226,7 @@
     const id = (location.hash || '#overview').slice(1);
     const tab = tabs.find((t) => t.id === id) || tabs[0];
     document.querySelectorAll('.tab').forEach((a) => a.setAttribute('aria-selected', String(a.id === `tab-${tab.id}`)));
+    $('menu-current').textContent = tab.label;
     document.querySelectorAll('.panel').forEach((p) => { p.hidden = true; });
     const panel = tab.rq ? 'rq' : tab.id;
     $(`panel-${panel}`).hidden = false;
