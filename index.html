@@ -18,15 +18,29 @@
   <script src="assets/app.js" defer></script>
 </head>
 <body>
+  <div class="shell" id="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="sidebar-title">Sections</span>
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-controls="tabs" aria-expanded="true" aria-label="Collapse the menu" title="Collapse the menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-controls="tabs" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span id="menu-current">Overview</span>
+        <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <nav class="tabs" id="tabs" role="tablist" aria-orientation="vertical" aria-label="Dashboard sections"></nav>
+  </aside>
+
+  <div class="content">
   <header class="site-header">
     <div class="wrap">
       <p class="eyebrow">Systematic literature mapping · Supplementary dashboard</p>
       <h1 id="article-title">Loading…</h1>
     </div>
   </header>
-  <div class="tab-bar">
-    <nav class="tabs wrap" id="tabs" role="tablist" aria-label="Dashboard sections"></nav>
-  </div>
 
   <main class="wrap" id="main">
     <div class="status" id="status" role="status">Loading the spreadsheet…</div>
@@ -300,6 +314,8 @@
       </label>
     </p>
   </footer>
+  </div>
+  </div>
 
   <dialog id="dialog" aria-labelledby="dialog-title">
     <div class="dialog-head">
