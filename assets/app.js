@@ -33,6 +33,7 @@
     kappaSel: { combo: 'Technology|Theme', study: null },
     eqFilter: { dim: '', stage: '', type: '', q: '' },
     trlChart: null,
+    dprChart: null,
   };
 
   // ------------------------------------------------------------ utilities
@@ -183,6 +184,7 @@
     if (tab.id === 'heatmaps') renderHeatmap();
     if (tab.id === 'kappa') renderKappaExample();
     if (tab.id === 'trl') renderTRLChart();
+    if (tab.id === 'dpr') renderDPRChart();
   }
 
   // ------------------------------------------------------------- overview
@@ -1444,6 +1446,147 @@
     draw();
   }
 
+  /**
+   * Closest counterparts of each technical requirement in the corpus (the article's figure that
+   * replaced its coverage table). The correspondence is the article's reading, so it is listed
+   * here; the counts are taken from the coding of the studies.
+   */
+  const TR_COUNTERPARTS = {
+    TR1: [['purposes', 'Access Control', 'Access control (purpose)'], ['approaches', 'AC-1']],
+    TR2: [['technologies', 'Cryptography'], ['approaches', 'AC-2'], ['purposes', 'Cybersecurity Risk Mitigation'], ['purposes', 'Data Confidentiality']],
+    TR3: [['approaches', 'AC-7', null, 'isolation only']],
+    TR4: [['approaches', 'AC-5']],
+    TR5: [['approaches', 'AC-8']],
+    TR7: [['architecture', 'User-centered', 'User-centric architectures'], ['technologies', 'Interoperability & Authorization Standards']],
+    TR9: [['purposes', 'Digital Object Lifecycle Management']],
+    TR10: [['purposes', 'Digital Object Lifecycle Management'], ['purposes', 'Secure Data Retention']],
+    TR11: [['purposes', 'Data Traceability'], ['purposes', 'Data Auditing'], ['objects', 'Logs & Audit Trails', 'Logs & audit trails as tracked objects']],
+  };
+  const TR_KINDS = [
+    { dim: 'purposes', label: 'Purpose', color: '--series-1' },
+    { dim: 'technologies', label: 'Technology', color: '--series-2' },
+    { dim: 'approaches', label: 'Approach group', color: '--series-3' },
+    { dim: 'architecture', label: 'Architecture', color: '--series-7' },
+    { dim: 'objects', label: 'Digital object', color: '--series-4' },
+  ];
+
+  function renderDPRChart() {
+    const reqs = state.model && state.model.requirements;
+    if (!reqs || $('panel-dpr').hidden) return;
+    const n = state.model.studies.length;
+    const rows = [];
+    const missing = [];
+    reqs.forEach((r) => {
+      const first = rows.length;
+      (TR_COUNTERPARTS[r.id] || []).forEach(([dimId, cat, label, note]) => {
+        const dim = state.model.dimension(dimId);
+        const c = dim && dim.categories.find((x) => x.id === cat);
+        if (!c) { missing.push(`${cat} (${dimId})`); return; }
+        const studies = state.model.studies.filter((s) => (s.cats[dimId] || []).includes(cat));
+        rows.push({ req: r, kind: TR_KINDS.find((k) => k.dim === dimId), name: (label || c.label.replace(/^AC-\d+\s*[·:–-]?\s*/, '')) + (note ? ` (${note})` : ''), studies });
+      });
+      if (rows.length === first) rows.push({ req: r, none: true });
+      rows[first].groupStart = true;
+    });
+    $('dpr-chart-note').textContent = (missing.length ? `Not found in the spreadsheet: ${listJoin(missing)}. ` : '')
+      + 'The correspondence between requirements and categories follows the article; the requirements were not used to code the studies. Erasure (TR9) is also supported by crypto-erasure in hybrid architectures, which is not a separate category.';
+    const ink = cssVar('--text-secondary');
+    // On narrow screens the axis shows only the TR number, and the bars only their values.
+    const narrow = $('dpr-chart').parentNode.clientWidth < 720;
+    const value = (row) => (row.none ? null : 100 * row.studies.length / n);
+    if (state.dprChart) state.dprChart.destroy();
+    state.dprChart = new Chart($('dpr-chart'), {
+      type: 'bar',
+      data: {
+        labels: rows.map((row) => (row.groupStart ? (narrow ? row.req.id : `${row.req.id} ${row.req.name}`) : '')),
+        datasets: TR_KINDS.map((k) => ({
+          label: k.label,
+          data: rows.map((row) => (row.kind === k ? value(row) : null)),
+          backgroundColor: cssVar(k.color),
+          borderRadius: 3,
+          barPercentage: 0.8,
+          categoryPercentage: 1,
+          grouped: false,
+        })),
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: false,
+        layout: { padding: { right: 8 } },
+        plugins: {
+          legend: { position: 'top', align: 'end', labels: { color: ink, boxWidth: 12, boxHeight: 12 } },
+          tooltip: {
+            filter: (item) => item.raw !== null,
+            callbacks: {
+              title: (items) => `${rows[items[0].dataIndex].req.id} ${rows[items[0].dataIndex].req.name}`,
+              label: (ctx) => { const row = rows[ctx.dataIndex]; return `${row.name}: ${row.studies.length} studies (${pct(row.studies.length, n)})`; },
+            },
+          },
+        },
+        scales: {
+          x: { min: 0, max: 100, ticks: { color: ink, callback: (v) => `${v}%` }, grid: { color: cssVar('--grid') }, border: { color: cssVar('--axis') },
+            title: { display: true, text: 'Studies of the corpus (%)', color: ink } },
+          y: { stacked: true, grid: { display: false }, border: { color: cssVar('--axis') }, ticks: { color: cssVar('--text-primary'), autoSkip: false, font: { weight: '600' } } },
+        },
+        onClick: (evt, elements, chart) => {
+          const hit = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false)[0];
+          const row = hit && rows[hit.index];
+          if (row && !row.none) showCitations(`${row.req.id} · ${row.name}`, row.studies, `${row.studies.length} of ${n} studies (${pct(row.studies.length, n)})`);
+        },
+        onHover: (evt, elements, chart) => {
+          const hit = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false)[0];
+          chart.canvas.style.cursor = hit && !rows[hit.index].none ? 'pointer' : 'default';
+        },
+      },
+      plugins: [{
+        // Grey bands for requirements without a counterpart, group separators, and the name and value of each bar.
+        id: 'trLabels',
+        beforeDatasetsDraw(chart) {
+          const { ctx, chartArea: a, scales: { x, y } } = chart;
+          const step = rows.length > 1 ? y.getPixelForValue(1) - y.getPixelForValue(0) : a.bottom - a.top;
+          ctx.save();
+          rows.forEach((row, i) => {
+            const cy = y.getPixelForValue(i);
+            if (row.none) {
+              ctx.fillStyle = cssVar('--surface-2');
+              ctx.fillRect(a.left, cy - step * 0.4, a.right - a.left, step * 0.8);
+              ctx.fillStyle = cssVar('--text-muted');
+              ctx.font = 'italic 12px system-ui, sans-serif';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(narrow ? 'No theme' : 'No corresponding theme', x.getPixelForValue(1), cy);
+            }
+            if (row.groupStart && i) {
+              ctx.strokeStyle = cssVar('--axis');
+              ctx.beginPath(); ctx.moveTo(0, cy - step / 2); ctx.lineTo(a.right, cy - step / 2); ctx.stroke();
+            }
+          });
+          ctx.restore();
+        },
+        afterDatasetsDraw(chart) {
+          const { ctx, chartArea: a, scales: { x, y } } = chart;
+          ctx.save();
+          ctx.font = '12px system-ui, sans-serif';
+          ctx.textBaseline = 'middle';
+          rows.forEach((row, i) => {
+            if (row.none) return;
+            const text = `${narrow ? '' : `${row.name}: `}${row.studies.length} (${pct(row.studies.length, n)})`;
+            const end = x.getPixelForValue(value(row));
+            const cy = y.getPixelForValue(i);
+            if (end + 6 + ctx.measureText(text).width <= a.right) {
+              ctx.fillStyle = cssVar('--text-primary');
+              ctx.textAlign = 'left';
+              ctx.fillText(text, end + 6, cy);
+            } else {
+              ctx.fillStyle = '#fff';
+              ctx.textAlign = 'right';
+              ctx.fillText(text, end - 6, cy);
+            }
+          });
+          ctx.restore();
+        },
+      }],
+    });
+  }
+
   // -------------------------------------------------------------- heatmaps
 
   function buildHeatmapControls() {
@@ -1634,7 +1777,7 @@
         alert(`This file could not be read: ${err.message}`);
       }
     });
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderChart(); renderHeatmap(); renderTRLChart(); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderChart(); renderHeatmap(); renderTRLChart(); renderDPRChart(); });
   }
 
   window.addEventListener('DOMContentLoaded', init);
