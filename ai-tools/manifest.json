@@ -1,0 +1,201 @@
+{
+ "generated": "2026-11-16T13:13:08Z",
+ "commit": "1f42786",
+ "tools": [
+  {
+   "id": "search-agent",
+   "name": "search-agent",
+   "summary": "AI-assisted study selection for the systematic mapping",
+   "description": "An agent and a skill that automate **study selection** in updates of the systematic literature mapping \"Accountability Through Digital Object Tracing in Information Security\". The agent receives `DEF_TA.xlsx` (the current state of the mapping) and a `.bib` file with the results of a new search, scores each study 0, 1 or 2, and records the iteration in a new `DEF_TA` workbook.",
+   "skills": [
+    {
+     "name": "slm-study-selection",
+     "path": "slm-study-selection/SKILL.md",
+     "description": "Study selection (0/1/2 screening) for the systematic mapping on digital object tracing and accountability in information security, from a .bib file and DEF_TA.xlsx, with deterministic deduplication, standardised exclusion reasons and recording of the iteration in DEF_TA."
+    }
+   ],
+   "files": [
+    {
+     "path": "README.md",
+     "size": 10140,
+     "text": true
+    },
+    {
+     "path": "dist/slm-study-selection.zip",
+     "size": 20680,
+     "text": false
+    },
+    {
+     "path": "instructions.md",
+     "size": 6503,
+     "text": true
+    },
+    {
+     "path": "slm-study-selection/SKILL.md",
+     "size": 7052,
+     "text": true
+    },
+    {
+     "path": "slm-study-selection/references/criteria.md",
+     "size": 7749,
+     "text": true
+    },
+    {
+     "path": "slm-study-selection/scripts/slm_screening.py",
+     "size": 45524,
+     "text": true
+    }
+   ]
+  },
+  {
+   "id": "extract-agent",
+   "name": "extract-agent",
+   "summary": "AI-assisted data extraction and thematic analysis for the systematic mapping",
+   "description": "An agent and three skills that automate the steps that follow study selection in the systematic literature mapping \"Accountability Through Digital Object Tracing in Information Security\": reading each included study in full, filling the Data Extraction Form (DEF), carrying out the thematic analysis and classifying the research type and evaluation method. The agent receives `DEF_TA.xlsx` and the full-text PDFs, **asks the user which AI rater role it is playing** (AI Tool - OpenAI GPT, AI Tool - Anthropic Claude, or a new one) and writes only in the columns of that role, in a new `DEF_TA` workbook.",
+   "skills": [
+    {
+     "name": "slm-data-extraction",
+     "path": "slm-data-extraction/SKILL.md",
+     "description": "Extract the Data Extraction Form (DEF) fields of each full-text study of the systematic mapping on digital object tracing and accountability (objective, proposed solution and tracking, what is tracked, architecture, technology stack, purpose, responsibility attribution, findings, limitations, notes) and record them in DEF_TA.xlsx under the rater role chosen by the user."
+    },
+    {
+     "name": "slm-research-type",
+     "path": "slm-research-type/SKILL.md",
+     "description": "Classify the research type (Research Method column, Wieringa/Petersen) and the empirical evaluation method (Evaluation Type column, Petersen/Easterbrook/Wohlin) of each full-text study of the systematic mapping, with the C1-C6 criteria, and record them in DEF_TA.xlsx under the rater role chosen by the user."
+    },
+    {
+     "name": "slm-thematic-analysis",
+     "path": "slm-thematic-analysis/SKILL.md",
+     "description": "Perform the thematic analysis (Cruzes and Dybå's thematic synthesis with Saldaña's coding methods) of each full-text study of the systematic mapping on digital object tracing and accountability, for the tracked object, technology, purpose, domain, sub-domain and architecture dimensions, and record extraction, codes, themes, final themes and high-level themes in DEF_TA.xlsx under the rater role chosen by the user."
+    }
+   ],
+   "files": [
+    {
+     "path": "README.md",
+     "size": 20550,
+     "text": true
+    },
+    {
+     "path": "dist/slm-data-extraction.zip",
+     "size": 33016,
+     "text": false
+    },
+    {
+     "path": "dist/slm-research-type.zip",
+     "size": 34304,
+     "text": false
+    },
+    {
+     "path": "dist/slm-thematic-analysis.zip",
+     "size": 39122,
+     "text": false
+    },
+    {
+     "path": "examples/answers_P110_P120_P146.json",
+     "size": 22425,
+     "text": true
+    },
+    {
+     "path": "instructions.md",
+     "size": 7241,
+     "text": true
+    },
+    {
+     "path": "slm-data-extraction/SKILL.md",
+     "size": 5504,
+     "text": true
+    },
+    {
+     "path": "slm-data-extraction/references/def-fields.md",
+     "size": 10865,
+     "text": true
+    },
+    {
+     "path": "slm-data-extraction/scripts/slm_extract.py",
+     "size": 88678,
+     "text": true
+    },
+    {
+     "path": "slm-research-type/SKILL.md",
+     "size": 6730,
+     "text": true
+    },
+    {
+     "path": "slm-research-type/references/classification.md",
+     "size": 14690,
+     "text": true
+    },
+    {
+     "path": "slm-research-type/scripts/slm_extract.py",
+     "size": 88678,
+     "text": true
+    },
+    {
+     "path": "slm-thematic-analysis/SKILL.md",
+     "size": 10029,
+     "text": true
+    },
+    {
+     "path": "slm-thematic-analysis/references/codebook.md",
+     "size": 25172,
+     "text": true
+    },
+    {
+     "path": "slm-thematic-analysis/scripts/slm_extract.py",
+     "size": 88678,
+     "text": true
+    },
+    {
+     "path": "tests/test_slm_extract.py",
+     "size": 29072,
+     "text": true
+    },
+    {
+     "path": "tools/build.sh",
+     "size": 427,
+     "text": true
+    },
+    {
+     "path": "tools/slm_extract.py",
+     "size": 88678,
+     "text": true
+    }
+   ]
+  },
+  {
+   "id": "review-agent",
+   "name": "review-agent",
+   "summary": "AI-assisted text review of the article",
+   "description": "An agent and a skill that revise passages of the article \"Accountability Through Digital Object Tracing in Information Security: A Systematic Literature Mapping\", written in LaTeX, for clarity, cohesion, concision and formal academic style. The agent revises each passage in its original language, applies British English when the passage is in English, and keeps the meaning, the citation keys and the LaTeX structure of the source unchanged. It returns the revised passage and a short list of what changed, so that the authors can accept or reject each revision.",
+   "skills": [
+    {
+     "name": "british-scientific-latex-review",
+     "path": "british-scientific-latex-review/SKILL.md",
+     "description": "Invoke to revise scientific-article passages in their original language, applying British English when appropriate while preserving meaning, citations, LaTeX structure, and alignment with supplied references in applied computing and justice."
+    }
+   ],
+   "files": [
+    {
+     "path": "README.md",
+     "size": 7457,
+     "text": true
+    },
+    {
+     "path": "british-scientific-latex-review/SKILL.md",
+     "size": 4446,
+     "text": true
+    },
+    {
+     "path": "dist/british-scientific-latex-review.zip",
+     "size": 2038,
+     "text": false
+    },
+    {
+     "path": "instructions.md",
+     "size": 4131,
+     "text": true
+    }
+   ]
+  }
+ ]
+}

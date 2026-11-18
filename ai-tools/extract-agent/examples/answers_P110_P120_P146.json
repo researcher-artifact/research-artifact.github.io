@@ -1,0 +1,200 @@
+{
+  "role": "AI Tool - Test",
+  "articles": [
+    {
+      "article_id": "2-s2.0-85202434249",
+      "source_pdf": "rayyan-172027982.pdf",
+      "data_extraction": {
+        "objective": "To design digital watermarking systems for the main file formats exchanged in data element circulation transactions (image, PDF, Word, Excel and JSON) so that data products are protected and the source of a file leakage can be traced.",
+        "proposed_solution": "The study proposes five format-specific watermarking systems. Images are watermarked in the U channel through a four-stage DT CWT and SVD of sub-blocks, with the embedding strength tuned by the fruit fly optimisation algorithm and blind detection from a secret key. In PDF files an RSA-encrypted watermark is disguised as a legitimate stream object and the cross-reference offsets are adjusted. In Word (OOXML) files the watermark, with Hamming and parity codes, is embedded in redundant w:rsid attributes of setting.xml. Excel and database forms and JSON data use a reference sharing mechanism with composite redundant character mapping, fingerprint coding against collusion and fountain (LT) coding, embedding identity information of the data user so that, after illegal distribution, the identity of the distributor can be extracted for traitor tracing.",
+        "tracked": "Data products traded in data element circulation (image, PDF, Word, Excel and database forms, JSON data) and the identity of the data user or distributor embedded in each copy.",
+        "architecture": "Server-centered",
+        "technology_stack": "Digital watermarking (robust and fragile), DT CWT, SVD, fruit fly optimisation algorithm, PSNR and SSIM, RSA encryption, OOXML w:rsid attributes, Hamming code, parity check code, reference sharing mechanism, composite redundant character mapping, fingerprint coding, Prediction-Error Expansion, Histogram Shifting, fountain coding (LT code).",
+        "purpose": "Tracking is implemented to protect the security of data products in data element circulation and transaction, to resist collusion attacks and to \"realize treason tracking, and find the source of file leakage\".",
+        "responsibility": "Yes. The Excel, database and JSON schemes embed fingerprint-coded identity information of the data user, so that the identity of the distributor or stealer can be extracted from a leaked copy even after deletion or modification, which the authors present as defeating repudiation and frame-up.",
+        "findings": "The authors report one test of the Word scheme on a Chinese and an English document with the watermark 123456789ABCDEF: after insertions, deletions and changes of font, size, colour and spacing, the watermark position changed but the watermark was still correctly extracted. They conclude that the schemes solve watermark embedding for different file formats with good results.",
+        "limitations": "The authors state that JSON embedding requires files with enough numerical data and that Excel embedding has a length limit. Inferred: only the Word scheme is tested, on two documents, with no quantitative robustness results and no tests of the image, PDF, Excel or JSON schemes or of collusion resistance.",
+        "notes": "Architecture inferred: the watermarks are embedded by the trading platform before data products are delivered, but the paper does not describe the system topology."
+      },
+      "research_type": {
+        "C1": {"value": false, "justification": "The schemes are designed for data trading platforms, but no deployment in a platform or organisation is reported (Sections I and III)."},
+        "C2": {"value": true, "justification": "The paper designs new watermarking algorithms for five file formats (Section III)."},
+        "C3": {"value": true, "justification": "Section IV runs the Word watermarking prototype on two documents and checks extraction after edits (prototyping); the other schemes are described only."},
+        "C4": {"value": false, "justification": "The test uses two sample documents prepared by the authors, not a real-world setting."},
+        "C5": {"value": false, "justification": "The contribution is a set of concrete algorithms, not a conceptual framework."},
+        "C6": {"value": false, "justification": "The paper is a design and test paper, not an opinion or experience report."},
+        "research_method": "Validation research",
+        "evaluation_type": "Prototyping"
+      },
+      "thematic": {
+        "digital_object": {
+          "extraction": ["Through the analysis of image files, PDF files, Word files, Excel files and JSON data, we design the corresponding embedding algorithm", "the identity information of the distributor can still be extracted effectively, which can be used for traitor tracing"],
+          "codes": ["image files", "PDF files", "Word documents", "Excel forms", "JSON data", "distributor identity"],
+          "theme": ["Images", "Files", "Documents", "JSONs"],
+          "final_theme": ["Images", "Files", "JSONs"],
+          "high_level_theme": ["Media Files", "Documents", "Data Files"]
+        },
+        "technology": {
+          "extraction": ["the fruit fly optimization algorithm is used to balance the relationship between the imperceptibility and robustness of the watermark", "RSA encryption algorithm was used to encrypt the watermark information and generate ciphertext", "The design of effective fingerprint coding can effectively resist the collusion attack of the attacker"],
+          "codes": ["robust image watermarking", "DT CWT and SVD", "RSA-encrypted PDF watermark", "redundant attribute watermark", "fingerprint coding", "LT fountain coding"],
+          "theme": ["Steganography & Digital Watermarking", "Cryptography"],
+          "final_theme": ["Steganography & Digital Watermarking", "Cryptography"],
+          "high_level_theme": ["Steganography & Digital Watermarking", "Cryptography"]
+        },
+        "purpose": {
+          "extraction": ["protect the security of data elements circulation trading products, realize treason tracking, and find the source of file leakage", "so as to defeat the repudiation and frame-up"],
+          "codes": ["data product protection", "traitor tracing", "leak source identification", "collusion resistance"],
+          "theme": ["Support forensic investigations", "Data Traceability", "Copyrights Protection"],
+          "final_theme": ["Support forensic investigations", "Data Traceability"],
+          "high_level_theme": ["Forensic Attribution & Post-Incident Investigation", "Data Traceability"]
+        },
+        "domain": {
+          "extraction": ["The circulation and transaction of data elements is an important link."],
+          "codes": ["data element trading market", "digital economy"],
+          "theme": ["Financial"],
+          "final_theme": ["Financial"],
+          "high_level_theme": ["Financial Services & Banking"]
+        },
+        "sub_domain": {
+          "extraction": ["the Shanghai Data Exchange was inaugurated"],
+          "codes": ["data element circulation and transaction"],
+          "theme": ["data element circulation and transaction"],
+          "final_theme": [],
+          "high_level_theme": []
+        },
+        "architecture": {"codes": ["platform-side watermark embedding before delivery"]},
+        "self_verification": "Excerpts from pp. 1-5 (abstract, Sections III-IV); codes derived only from them; domain coded as Financial because the study addresses paid data trading, with medium confidence (Cross-Domain is the alternative)."
+      }
+    },
+    {
+      "article_id": "2-s2.0-85197510801",
+      "source_pdf": "rayyan-172027832.pdf",
+      "data_extraction": {
+        "objective": "To identify the Windows 11 registry artefacts left by the OneDrive cloud storage application when it is linked, unlinked and uninstalled, and to assess how they can be collected as digital evidence in a cloud forensic investigation.",
+        "proposed_solution": "The study proposes a registry-based forensic procedure for OneDrive on Windows 11. In a VMware virtual machine, Regshot snapshots of the registry are taken after linking OneDrive to an account and uploading files, and after unlinking and uninstalling it; the snapshots are compared, keys are exported, last write times are identified and keywords are searched. A command-line script queries the relevant OneDrive registry keys (user name, domain, host name, e-mail, user folder, version, install path, sign-in timestamps, uninstallation keys) and saves the results to RegistryCollectorResults.txt, so that investigators can reconstruct the accounts, file paths and timeline of use of the application.",
+        "tracked": "Windows 11 registry keys and values created by OneDrive (account e-mail, user and domain names, host name, folder paths, version and install path, sign-in and update timestamps, uninstallation and deleted-directory keys).",
+        "architecture": "Server-centered",
+        "technology_stack": "Windows 11 registry, OneDrive, VMware Workstation 16.0.0, Regshot 1.9.7, 7-Zip, Google Chrome, Command Prompt with reg query script, SharePoint.",
+        "purpose": "Tracking is implemented to support digital forensic investigations of data breaches involving cloud storage applications, by identifying the accounts, file paths and timeline of OneDrive use that may lead to the attackers and reduce incident response time.",
+        "responsibility": "Partially. The recovered artefacts (linked e-mail address, user name, host name and sign-in timeline) can identify the account and user associated with OneDrive use, which the authors present as a lead to identify attackers; attribution to an individual is not otherwise addressed.",
+        "findings": "Distinct artefacts remain after OneDrive is unlinked and uninstalled, including the network state cache SSO, the OneDrive App ID, the update failure reason, the uninstallation key and a deleted-directories key. Configuration, account and timeline artefacts reveal the installation path, version 23.043, the linked e-mail address, the domain Majstudent, the host name and first sign-in, installation, last update and last sign-in times. The script gathers these artefacts into a text file to save investigators time.",
+        "limitations": "The authors note that the actual OneDrive platform could not be analysed, that the script works only on Windows and that no tool counts the total number of registry keys and values. Inferred: a single virtual machine, one account and one application were examined.",
+        "notes": "Architecture inferred: the artefacts are collected from the client workstation of a centrally provided cloud service; the paper does not characterise an architecture for its own procedure."
+      },
+      "research_type": {
+        "C1": {"value": false, "justification": "The procedure and script are applied only in a virtual machine set up by the authors (Section IV); no use by an investigation unit is reported."},
+        "C2": {"value": true, "justification": "The study contributes new Windows 11 OneDrive artefacts and a collection script, which the authors state had not been studied for Windows 11 (Section I)."},
+        "C3": {"value": true, "justification": "Section IV conducts a controlled experiment with registry snapshots before and after linking, unlinking and uninstalling OneDrive, and Section V reports the artefacts found (laboratory experiment)."},
+        "C4": {"value": false, "justification": "The experiment is carried out in a laboratory virtual machine with the authors' own account."},
+        "C5": {"value": false, "justification": "The paper reports an experiment and a script, not a conceptual framework."},
+        "C6": {"value": false, "justification": "The findings rest on the experiment, not on opinion or experience."},
+        "research_method": "Validation research",
+        "evaluation_type": "Laboratory experiment (machine or human)"
+      },
+      "thematic": {
+        "digital_object": {
+          "extraction": ["to discover and collect leftover registry artefacts from one of the major cloud storage applications, OneDrive", "The results and lingering artefacts assist in determining the file path for each uploaded file in OneDrive as well as the email address that was linked to it."],
+          "codes": ["Windows registry artefacts", "uploaded file paths", "linked e-mail address", "timeline artefacts"],
+          "theme": ["Logs", "Metadata"],
+          "final_theme": ["Logs", "Metadata"],
+          "high_level_theme": ["Logs & Audit Trails", "Metadata"]
+        },
+        "technology": {
+          "extraction": ["Regshot was used to take two snapshots and compare them", "A bash script was implemented to improve the collection of registry values and artefacts which is related to cloud storage application."],
+          "codes": ["registry snapshot comparison", "Regshot", "registry query script", "virtual machine experiment"],
+          "theme": ["Registry Comparison"],
+          "final_theme": ["Registry Comparison"],
+          "high_level_theme": ["Digital Forensics Techniques"]
+        },
+        "purpose": {
+          "extraction": ["To assist digital forensic investigators in making an expedient determination regarding the use of cloud storage applications", "Identifying the accounts and the chronology that were using OneDrive, may also be utilized as a lead to identify the attackers."],
+          "codes": ["support forensic investigators", "identify attackers", "reduce incident response time"],
+          "theme": ["Support forensic investigations"],
+          "final_theme": ["Support forensic investigations"],
+          "high_level_theme": ["Forensic Attribution & Post-Incident Investigation"]
+        },
+        "domain": {
+          "extraction": ["new cloud storage applications are being introduced, bringing new challenges for digital forensics and law enforcement"],
+          "codes": ["cloud forensics", "law enforcement"],
+          "theme": ["Legal, Compliance and Digital Forensics"],
+          "final_theme": ["Legal, Compliance and Digital Forensics"],
+          "high_level_theme": ["Legal, Compliance & Digital Forensics"]
+        },
+        "sub_domain": {
+          "extraction": ["discover and collect leftover registry artefacts from one of the major cloud storage applications, OneDrive"],
+          "codes": ["OneDrive registry artefacts"],
+          "theme": ["OneDrive registry artefacts"],
+          "final_theme": ["Cloud computing"],
+          "high_level_theme": ["Cloud computing"]
+        },
+        "architecture": {"codes": ["client workstation of a centrally provided cloud service"]},
+        "self_verification": "Excerpts from pp. 1, 4, 6 and 12; codes derived only from them; all themes from the codebook; no residual doubt."
+      }
+    },
+    {
+      "article_id": "2-s2.0-85214686100",
+      "source_pdf": "rayyan-172027829.pdf",
+      "data_extraction": {
+        "objective": "To propose a patient-centric framework for the secure management of electronic health records that gives patients ownership of and control over access to their records in compliance with the GDPR.",
+        "proposed_solution": "The study proposes a decentralised application in which each user receives a Decentralized Identifier (DID), generated with the walt.id API and linked to a MetaMask wallet. Medical records are stored on IPFS and their content identifiers (CIDs) and metadata are stored on the blockchain, keeping records off-chain to address the right to be forgotten. Solidity smart contracts manage registration, EHR storage and access control: patients grant and revoke access for specific doctors, whose identifiers are kept in the contract. All operations are recorded as signed blockchain transactions, which provides traceability and an auditable history of access. The prototype was built with Node.js, Ethers.js and Truffle and tested on Ganache.",
+        "tracked": "Electronic health records stored on IPFS, their content identifiers and metadata on the blockchain, and the grant, revoke and access transactions on those records.",
+        "architecture": "User-centered",
+        "technology_stack": "Blockchain, Polygon, Ethereum smart contracts in Solidity, Truffle, Ganache, MetaMask, Ethers.js, Node.js, IPFS, Self-Sovereign Identity, Decentralized Identifiers (DIDs), Verifiable Credentials, walt.id, SmartCheck.",
+        "purpose": "Tracking is implemented to give patients control over access to their EHRs, to ensure data integrity, non-repudiation, transparency and traceability of transactions and to comply with GDPR principles such as data ownership and the right to access the activity history.",
+        "responsibility": "Yes. Each user is identified by a DID, and all access requests and transactions are signed and recorded on the blockchain, so that users cannot deny the operations they sent (non-repudiation).",
+        "findings": "The authors implemented the architecture as a decentralised application with patient and doctor interfaces. Their security analysis argues that the design provides privacy, authentication and access control, non-repudiation, integrity, availability, transparency and traceability, and SmartCheck reported the smart contract as free of known vulnerabilities such as reentrancy and integer overflows. They conclude that the architecture complies with the GDPR principles analysed.",
+        "limitations": "The authors report difficulties in integrating DIDs (manual selection of the MetaMask account), the risk of losing identity information stored in the client wallet without a recovery mechanism, the immutability of deployed smart contracts, and that the prototype covers only patients and doctors and does not provide data confidentiality (no encryption). Inferred: no performance measurement is reported.",
+        "notes": "The abstract states that the architecture was implemented on a Polygon blockchain, while Section III.C states that the DApp was tested on Ganache."
+      },
+      "research_type": {
+        "C1": {"value": false, "justification": "The DApp is a prototype tested on Ganache (Section III.C); no use by a healthcare organisation is reported."},
+        "C2": {"value": true, "justification": "The paper proposes a new SSI- and blockchain-based EHR architecture (Section III)."},
+        "C3": {"value": true, "justification": "The prototype was implemented and tested on Ganache, with its interfaces shown in Fig. 3 and the smart contract analysed with SmartCheck (Sections III.D and IV.A); no performance measurements are reported (prototyping)."},
+        "C4": {"value": false, "justification": "The evaluation uses a local test blockchain, not a real healthcare setting."},
+        "C5": {"value": false, "justification": "The contribution is a concrete architecture and prototype."},
+        "C6": {"value": false, "justification": "The paper is not an opinion or experience report."},
+        "research_method": "Validation research",
+        "evaluation_type": "Prototyping"
+      },
+      "thematic": {
+        "digital_object": {
+          "extraction": ["records are stored on IPFS, with corresponding hashes stored on the blockchain", "Using blockchain technology to store user and EHR metadata"],
+          "codes": ["electronic health records", "IPFS content identifiers", "EHR metadata on blockchain"],
+          "theme": ["Health Data", "Metadata"],
+          "final_theme": ["Health Data", "Metadata"],
+          "high_level_theme": ["Structured Records", "Metadata"]
+        },
+        "technology": {
+          "extraction": ["Leveraging blockchain technology, smart contracts, Decentralized Identifiers (DIDs) and InterPlanetary File System (IPFS)", "we have integrated Walt.id [8], an open-source identity and wallet infrastructure that streamlines the creation of DIDs and issuance of VCs on blockchain networks"],
+          "codes": ["Polygon blockchain", "Solidity smart contracts", "IPFS storage", "decentralized identifiers", "MetaMask wallet"],
+          "theme": ["Blockchain", "Smart contracts", "Distributed File System", "Cryptography"],
+          "final_theme": ["Blockchain", "Smart contracts", "Distributed File System", "Cryptography"],
+          "high_level_theme": ["Blockchain", "Smart Contracts", "Distributed File System", "Cryptography"]
+        },
+        "purpose": {
+          "extraction": ["It gives patients the ability to grant or revoke access to their health records for specific doctors.", "All operations are recorded as transaction records in the blockchain, and both access requests and transactions are signed, making them undeniable.", "The proposed architecture aligns with General Data Protection Regulation (GDPR) directives concerning personal data privacy"],
+          "codes": ["patient-controlled access", "grant and revoke access", "non-repudiation", "GDPR compliance", "EHR management"],
+          "theme": ["Access Control", "Data Traceability", "Data Privacy", "EHR Management"],
+          "final_theme": ["Access Control", "Data Traceability", "Data Privacy", "EHR Management"],
+          "high_level_theme": ["Access Control", "Data Traceability", "Data Privacy", "Healthcare Data Governance"]
+        },
+        "domain": {
+          "extraction": ["This paper presents a novel framework for secure management of Electronic Health Records (EHRs)."],
+          "codes": ["EHR management", "eHealth"],
+          "theme": ["Healthcare and Medical Informatics"],
+          "final_theme": ["Healthcare and Medical Informatics"],
+          "high_level_theme": ["Healthcare & Medical Informatics"]
+        },
+        "sub_domain": {
+          "extraction": ["Patients, as data owners, can access their EHRs and are responsible for granting and revoking access to their records."],
+          "codes": ["patient-controlled EHR management"],
+          "theme": ["EHR management"],
+          "final_theme": ["Electronic Health Record Management"],
+          "high_level_theme": ["Electronic Health Record Management"]
+        },
+        "architecture": {"codes": ["patient-held DIDs and wallets", "patient grants and revokes access", "no trusted authority"]},
+        "self_verification": "Excerpts from pp. 1, 3 and 4; codes derived only from them; all themes from the codebook; Cryptography coded for DIDs and signed transactions, medium confidence."
+      }
+    }
+  ]
+}
