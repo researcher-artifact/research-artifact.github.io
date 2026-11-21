@@ -201,7 +201,9 @@ table.data thead th.study { z-index: 3; background: var(--surface-2); }
 
 /* Research question tables */
 table.rq th[scope="row"] { font-weight: 500; }
-table.rq tfoot th, table.rq tfoot td { border-bottom: 0; border-top: 2px solid var(--axis); font-weight: 650; }
+table.rq tr.no-category-row > * { border-top: 2px solid var(--axis); }
+table.rq tr.no-category-row th[scope="row"] { font-style: italic; }
+.note-paragraph { max-width: 60rem; margin: .25rem 0 .75rem; }
 .bar-col { width: 30%; min-width: 6rem; }
 .inline-bar { display: block; height: 10px; margin-top: .35rem; background: var(--series-1); border-radius: 0 4px 4px 0; }
 .link-btn { font: inherit; font-weight: 650; color: var(--accent-ink); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }

@@ -851,21 +851,22 @@
     if (!dim) { $('rq-table').replaceChildren(el('p', { text: 'This dimension was not found in the spreadsheet.' })); return; }
     const max = Math.max(...dim.categories.map((c) => c.count), 1);
     const studiesOf = (c) => state.model.studies.filter((s) => (s.cats[dim.id] || []).includes(c.id));
+    // No total row: a study can be assigned to several categories, so the rows do not add up to the number of studies.
+    const uncategorised = state.model.studies.filter((s) => !(s.cats[dim.id] || []).length);
+    const row = (label, list, cls) => el('tr', cls ? { class: cls } : {},
+      el('th', { scope: 'row', text: label }),
+      el('td', { class: 'num', text: pct(list.length, n) }),
+      el('td', { class: 'num' }, el('button', {
+        type: 'button', class: 'link-btn', title: 'List the studies',
+        onclick: () => showCitations(`${rq.id} · ${label}`, list, `${list.length} of ${n} studies (${pct(list.length, n)})`),
+      }, list.length)),
+      el('td', { class: 'bar-col', 'aria-hidden': 'true' }, el('span', { class: 'inline-bar', style: `width:${(100 * list.length / max).toFixed(1)}%` })));
     const t = el('table', { class: 'data rq' },
       el('thead', {}, el('tr', {}, el('th', { text: dim.label }), el('th', { class: 'num', text: '% of occurrence' }),
         el('th', { class: 'num', text: 'No. of studies' }), el('th', { class: 'bar-col', 'aria-hidden': 'true' }))),
-      el('tbody', {}, dim.categories.map((c) => el('tr', {},
-        el('th', { scope: 'row', text: c.label }),
-        el('td', { class: 'num', text: pct(c.count, n) }),
-        el('td', { class: 'num' }, el('button', {
-          type: 'button', class: 'link-btn', title: 'List the studies',
-          onclick: () => showCitations(`${rq.id} · ${c.label}`, studiesOf(c), `${c.count} of ${n} studies (${pct(c.count, n)})`),
-        }, c.count)),
-        el('td', { class: 'bar-col', 'aria-hidden': 'true' }, el('span', { class: 'inline-bar', style: `width:${(100 * c.count / max).toFixed(1)}%` }))))),
-      el('tfoot', {}, el('tr', {}, el('th', { text: 'Primary studies' }), el('td', { class: 'num', text: '100.00%' }),
-        el('td', { class: 'num' }, el('button', {
-          type: 'button', class: 'link-btn', onclick: () => showCitations(`${rq.id} · all studies`, state.model.studies),
-        }, n)), el('td', { class: 'bar-col' }))));
+      el('tbody', {},
+        dim.categories.map((c) => row(c.label, studiesOf(c))),
+        uncategorised.length ? row('Studies with no category', uncategorised, 'no-category-row') : null));
     $('rq-table').replaceChildren(t);
 
     const perStudy = state.model.studies.map((s) => (s.cats[dim.id] || []).length);
@@ -879,8 +880,24 @@
     ];
     $('rq-stats').replaceChildren(...stats.map(([k, v]) => el('div', {}, el('dt', { text: k }), el('dd', { text: v }))));
     $('rq-table').append(el('p', { class: 'hint small', text: 'Percentages refer to all primary studies; categories are not mutually exclusive.' }));
+    if (dim.id === 'approaches' && uncategorised.length) $('rq-table').append(noGroupNote(uncategorised));
     $('rq-extra').replaceChildren();
     if (dim.id === 'approaches') renderRQ5();
+  }
+
+  const NUMBER_WORDS = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+
+  /** Why some studies are in no approach group: the rules, then each study with the reason recorded in data/article.js. */
+  function noGroupNote(studies) {
+    const why = ((state.article.rq5 || {}).noGroup) || {};
+    const k = studies.length;
+    const sorted = [...studies].sort((a, b) => ((refOf(a) || {}).number || 1e9) - ((refOf(b) || {}).number || 1e9));
+    const items = sorted.map((s) => `${why[s.id] || s.title} ${citationLabel(s)} (${s.paperId})`);
+    return el('p', { class: 'note-paragraph' },
+      `${k === 1 ? 'One study satisfies' : `${NUMBER_WORDS[k] ? NUMBER_WORDS[k][0].toUpperCase() + NUMBER_WORDS[k].slice(1) : k} studies satisfy`} none of the eight attribution rules and ${k === 1 ? 'is' : 'are'} therefore assigned to no approach group. `
+      + 'The rules apply to the final codes of technologies, purposes and tracked digital objects and to the technical terms recorded in the data extraction form, and each group requires a specific combination of them. '
+      + `${k === 1 ? 'It is' : 'They are'} ${listJoin(items)}. `
+      + `${k === 1 ? 'Its coding was' : 'Their coding was'} checked: the absence of a group reflects the scope of the rules, not a coding error.`);
   }
 
   /** A count that opens the list of its studies; zero is shown as plain text. */
