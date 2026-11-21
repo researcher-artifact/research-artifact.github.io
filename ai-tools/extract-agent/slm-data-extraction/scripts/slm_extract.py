@@ -238,7 +238,7 @@ GUARDED = {
     "sub_domain": {},
 }
 # Maximum number of high-level themes (final themes for the sub-domain) per study.
-MAX_LABELS = {"digital_object": 4, "technology": 5, "purpose": 5, "domain": 2, "sub_domain": 2}
+MAX_LABELS = {"digital_object": 4, "technology": 5, "purpose": 6, "domain": 2, "sub_domain": 2}
 MAX_EXCERPTS = 10
 MAX_CODE_WORDS = 8
 MAX_NEW = 1

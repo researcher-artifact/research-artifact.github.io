@@ -377,11 +377,11 @@ class TestValidation(Base):
         doc = answers()
         p = doc["articles"][0]["thematic"]["purpose"]
         labs = ["Data Traceability", "Access Control", "Data Privacy", "Secure Data Sharing", "Copyrights Protection",
-                "Support forensic investigations"]
+                "Support forensic investigations", "Data Confidentiality"]
         p["theme"] = p["final_theme"] = labs
         p["support"] = {l: {"codes": ["auditing"], "excerpts": [1]} for l in labs}
         code, out = self.validate(doc)
-        self.assertIn("6 labels; at most 5", out)
+        self.assertIn("7 labels; at most 6", out)
 
     def test_architecture_decision(self):
         doc = answers(data_extraction__architecture="Hybrid (user-centered and server-centered)")
