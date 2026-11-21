@@ -84,7 +84,7 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-The supplementary material (spreadsheet, screening artefacts and codebook) is in <https://github.com/researcher-artifact/sok-tracking-and-accountability>.
+All the data of the study are in this site: the spreadsheet `data/DEF_TA.xlsx`, which holds the records retrieved in each search (sheets *Data Set*, *Seed 0*, *Backward.1* and *Forward.1*), the data extraction form, the thematic analysis and the analysis sheets; and the codebook of the thematic analysis, in the AI Tools section (`ai-tools/extract-agent/slm-thematic-analysis/references/codebook.md`).
 
 ## Anonymity
 
