@@ -194,7 +194,7 @@ These rules were added on 16 November 2026 after the comparison of the GPT and C
 **General**
 
 - **G-1 Stated, not mentioned.** Code what the article states as part of its contribution (abstract, introduction, contributions, design, conclusion). A benefit, technology or setting mentioned in passing, in related work or in future work is not coded.
-- **G-2 Limits.** At most 4 high-level themes for the tracked object, 5 for technology, 5 for purpose, 2 for domain and 2 sub-domains. When more are supported, keep the ones the article treats as central.
+- **G-2 Limits.** At most 4 high-level themes for the tracked object, 5 for technology, 6 for purpose, 2 for domain and 2 sub-domains. When more are supported, keep the ones the article treats as central.
 - **G-3 One `[NEW]`.** At most one `[NEW]` theme per dimension, explained in `self_verification`. A new high-level theme is never proposed by a rater: keep the closest one and record the doubt.
 
 **Tracked digital object**
@@ -215,7 +215,7 @@ These rules were added on 16 November 2026 after the comparison of the GPT and C
 
 **Purpose**
 
-- **PUR-1 Aims of the tracking.** Code the aims that the article states for the tracking or for the proposed solution (G-1), at most five.
+- **PUR-1 Aims of the tracking.** Code the aims that the article states for the tracking or for the proposed solution (G-1), at most six.
 - **PUR-2 Residual security labels.** Data Security and Mitigate Cybersecurity Risks only when protection against attacks or threats is a stated aim **and** no more specific purpose (Access Control, Data Confidentiality, Data Integrity, Data Privacy, Support forensic investigations) already covers it.
 - **PUR-3 Traceability and auditing.** Data Traceability: following objects and recording who did what (provenance, custody, access history). Data Auditing: verifying, after the fact, records, states or compliance, when that verification is a stated aim. Data Integrity: detecting tampering with the objects, when it is a stated aim. Recording access on a ledger is Data Traceability; it is Data Auditing only if the article also verifies or audits those records.
 - **PUR-4 Storage and confidentiality.** Secure Data Storage only when the secure storage of the objects is an aim in itself (availability, retention, deletion, integrity at rest), not merely because data are kept on IPFS or in the cloud. Data Confidentiality only when protection against disclosure through encryption is a stated aim.
