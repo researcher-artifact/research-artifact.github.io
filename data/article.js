@@ -27,6 +27,13 @@ window.DASHBOARD_ARTICLE = {
     "unique": 4958,
     "total": 153
   },
+  "rq5": {
+    "noGroup": {
+      "rayyan-172029046": "a file-distribution model for data leakage prevention that does not use cryptography",
+      "rayyan-172028383": "a discussion of blockchain-based privacy protection for social media users that employs neither cryptography nor smart contracts",
+      "rayyan-172028035": "a semantic specification for data breach reporting"
+    }
+  },
   "researchQuestions": [
     {
       "id": "RQ1",
