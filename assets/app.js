@@ -1553,7 +1553,7 @@
   ];
 
   /** Counterparts that the article names for a requirement but that are not a category of the corpus. */
-  const TR_NOTES = { TR9: 'crypto-erasure in hybrid on-chain/off-chain architectures (not a separate category)' };
+  const TR_NOTES = { TR9: 'crypto-erasure in hybrid on-chain/off-chain architectures, in part (not a separate category)' };
 
   /** The coverage table that the article moved to its supplementary material, built from the rows of the chart. */
   function renderDPRCoverage(reqs, rows, n) {
@@ -1596,7 +1596,7 @@
       rows[first].groupStart = true;
     });
     $('dpr-chart-note').textContent = (missing.length ? `Not found in the spreadsheet: ${listJoin(missing)}. ` : '')
-      + 'The correspondence between requirements and categories follows the article; the requirements were not used to code the studies. Erasure (TR9) is also supported by crypto-erasure in hybrid architectures, which is not a separate category.';
+      + 'The correspondence between requirements and categories follows the article; the requirements were not used to code the studies. Erasure (TR9) is also supported in part by crypto-erasure in hybrid architectures, whose limits the article discusses; it is not a separate category.';
     renderDPRCoverage(reqs, rows, n);
     const ink = cssVar('--text-secondary');
     // On narrow screens the axis shows only the TR number, and the bars only their values.

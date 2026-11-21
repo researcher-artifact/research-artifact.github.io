@@ -205,19 +205,19 @@
     {
       "trl": 3,
       "definition": "Analytical and experimental proof-of-concept of critical function and/or characteristics",
-      "criterion": "Critical function demonstrated analytically (e.g., security proofs or analytical models) or in a simulation of the mechanism, or an implementation demonstrated without any reported test.",
+      "criterion": "Critical function demonstrated analytically (e.g., security proofs or analytical models) or in a simulation of the mechanism, or an implementation demonstrated without reported test results, including one stated to have been tested and one whose only measurements are timings of basic operations used to estimate costs.",
       "environment": "Analytical / simulation"
     },
     {
       "trl": 4,
       "definition": "Component and/or breadboard validation in a laboratory environment",
-      "criterion": "Working implementation of the proposed mechanism or system tested in a laboratory environment: local machines, private or test blockchain networks, containers, network simulators, and synthetic or public datasets.",
+      "criterion": "Working implementation of the proposed mechanism or system tested in a laboratory environment, with the test results reported: local machines, private or test blockchain networks, containers, network simulators, and synthetic or public datasets.",
       "environment": "Laboratory"
     },
     {
       "trl": 5,
       "definition": "Component and/or brassboard validated in a relevant environment",
-      "criterion": "Implemented solution exercised with real operational data, users or infrastructure of the target organisations or domain.",
+      "criterion": "Implemented solution exercised with real operational data, users or infrastructure of the target organisations or domain, with the results of this use described rather than only stated.",
       "environment": "Relevant"
     },
     {
