@@ -2,61 +2,61 @@
 window.DASHBOARD_REFERENCES = {
  "CNJ2026FalsoAdvogado": {
   "number": 1,
-  "reference": "A. P. Souza, Ouvidoria do CNJ registra denúncias de golpe do falso advogado e articula medidas de segurança com tribunais, Agência CNJ de Notícias, Conselho Nacional de Justiça (2026).",
+  "reference": "A. P. Souza, Ouvidoria do CNJ registra denúncias de golpe do falso advogado e articula medidas de segurança com tribunais, Agência CNJ de Notícias, accessed 8 October 2026 (March 2026).",
   "year": "2026",
   "url": "https://www.cnj.jus.br/ouvidoria-do-cnj-registra-denuncias-de-golpe-do-falso-advogado-e-articula-medidas-de-seguranca-com-tribunais/"
  },
  "TRF1_2025_FalsoAdvogado": {
   "number": 2,
-  "reference": "Assessoria de Comunicação Social, TRF1 alerta sobre golpe do falso advogado: entenda como funciona a fraude que usa dados reais para enganar vítimas, Notícias TRF1, Tribunal Regional Federal da 1ª Região (2025).",
+  "reference": "Assessoria de Comunicação Social, TRF1 alerta sobre golpe do falso advogado: entenda como funciona a fraude que usa dados reais para enganar vítimas, Notícias TRF1, accessed 8 October 2026 (July 2025).",
   "year": "2025",
   "url": "https://www.trf1.jus.br/trf1/noticias/trf1-alerta-sobre-golpe-do-falso-advogado-entenda-como-funciona-a-fraude-que-usa-dados-reais-para-enganar-vitimas"
  },
  "SilvaTran2026VictorianCourtBreach": {
   "number": 3,
-  "reference": "K. Silva, D. Tran, Hackers leak sensitive Victorian court data to dark web, ABC News, Australian Broadcasting Corporation (2026).",
+  "reference": "K. Silva, D. Tran, Hackers leak sensitive Victorian court data to dark web, ABC News, accessed 8 October 2026 (August 2026).",
   "year": "2026",
   "url": "https://www.abc.net.au/news/2026-08-07/victorian-court-personal-data-breach-dark-web/107004792"
  },
  "BakerWhite2024CourtBreach": {
   "number": 4,
-  "reference": "E. Baker-White, Massive court breach exposed confidential court testimony, medical and psychiatric records, Forbes, Forbes Media (2024).",
+  "reference": "E. Baker-White, Massive court breach exposed confidential court testimony, medical and psychiatric records, Forbes, accessed 8 October 2026 (June 2024).",
   "year": "2024",
   "url": "https://www.forbes.com/sites/emilybaker-white/2024/06/18/sealed-records-courts-breach/"
  },
  "STJ2025HC953647": {
   "number": 5,
-  "reference": "Brasil. Superior Tribunal de Justiça, AgRg no Habeas Corpus n. 953.647/SP, Superior Tribunal de Justiça (2025).",
+  "reference": "Brasil. Superior Tribunal de Justiça, AgRg no Habeas Corpus n. 953.647/SP, Quinta Turma, Rapporteur Ribeiro Dantas; accessed 8 October 2026 (March 2025).",
   "year": "2025",
   "url": "https://scon.stj.jus.br/SCON/GetInteiroTeorDoAcordao?num_registro=202403915332&dt_publicacao=07/03/2025"
  },
  "CorreioBraziliense2024VazamentoPCC": {
   "number": 6,
-  "reference": "Correio Braziliense, Servidor do MP de SP está envolvido em vazamento de processos para o PCC, Correio Braziliense, Diários Associados (2024).",
+  "reference": "Correio Braziliense, Servidor do MP de SP está envolvido em vazamento de processos para o PCC, Correio Braziliense, accessed 8 October 2026 (November 2024).",
   "year": "2024",
   "url": "https://www.correiobraziliense.com.br/brasil/2024/11/6999321-servidor-do-mp-de-sp-esta-envolvido-em-vazamento-de-processos-para-o-pcc.html"
  },
  "Grizotti2023VazamentoTJRS": {
   "number": 7,
-  "reference": "G. Grizotti, Estagiários e servidores do Tribunal de Justiça do RS são investigados por vazamento de operações a criminosos, g1 Rio Grande do Sul, RBS TV (2023).",
+  "reference": "G. Grizotti, Estagiários e servidores do Tribunal de Justiça do RS são investigados por vazamento de operações a criminosos, g1 Rio Grande do Sul, accessed 8 October 2026 (October 2023).",
   "year": "2023",
   "url": "https://g1.globo.com/rs/rio-grande-do-sul/noticia/2023/10/29/estagiarios-e-servidores-do-tribunal-de-justica-do-rs-sao-investigados-por-vazamento-de-operacoes-a-criminosos.ghtml"
  },
  "Obafemi2025BayCareHIPAA": {
   "number": 8,
-  "reference": "F. Obafemi, BayCare Health System’s $800,000 HIPAA settlement: Privacy lessons from a malicious insider breach, Captain Compliance, Captain Compliance (2025).",
+  "reference": "F. Obafemi, BayCare Health System’s $800,000 HIPAA settlement: Privacy lessons from a malicious insider breach, Captain Compliance, accessed 8 October 2026 (June 2025).",
   "year": "2025",
   "url": "https://captaincompliance.com/education/baycare-health-systems-800000-hipaa-settlement-privacy-lessons-from-a-malicious-insider-breach/"
  },
  "eu_gdpr_2016": {
   "number": 9,
-  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (2016).",
+  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), accessed 8 October 2026 (2016).",
   "year": "2016",
   "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
  },
  "brasil2018lgpd": {
   "number": 10,
-  "reference": "Brasil, Lei nº 13.709, de 14 de agosto de 2018: Lei Geral de Proteção de Dados Pessoais (LGPD), Presidência da República (2018).",
+  "reference": "Brasil, Lei nº 13.709, de 14 de agosto de 2018: Lei Geral de Proteção de Dados Pessoais (LGPD), accessed 8 October 2026 (2018).",
   "year": "2018",
   "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm"
  },
@@ -68,7 +68,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172029208": {
   "number": 12,
-  "reference": "J. Park, R. Sandhu, Towards usage control models: Beyond traditional access control, in: Proceedings of ACM Symposium on Access Control Models and Technologies (SACMAT 2002), Association for Computing Machinery (ACM), 2002, pp. 57–64. doi:10.1145/507721.507722.",
+  "reference": "J. Park, R. Sandhu, Towards usage control models: Beyond traditional access control, in: Proceedings of ACM Symposium on Access Control Models and Technologies (SACMAT 2002), ACM, 2002, pp. 57–64. doi:10.1145/507721.507722.",
   "year": "2002",
   "url": "https://doi.org/10.1145/507721.507722"
  },
@@ -170,7 +170,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "safavi2000combinatorial": {
   "number": 29,
-  "reference": "R. Safavi-Naini, Y. Wang, A combinatorial approach to asymmetric traitor tracing, in: International Computing and Combinatorics Conference, 2000, pp. 416–425.",
+  "reference": "R. Safavi-Naini, Y. Wang, A combinatorial approach to asymmetric traitor tracing, in: International Computing and Combinatorics Conference, Springer, 2000, pp. 416–425.",
   "year": "2000",
   "url": ""
  },
@@ -200,7 +200,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "2-s2.0-84952040795": {
   "number": 34,
-  "reference": "G. Gu, S. Zhang, X. Wang, X. Cai, S. Chen, The method and system implementation of unstructured data tracking and forensics, in: Applications and Techniques in Information Security, Springer Berlin Heidelberg, Berlin, Heidelberg, 2015, pp. 359–367. doi:10.1007/978-3-662-48683-2_32.",
+  "reference": "G. Gu, S. Zhang, X. Wang, X. Cai, S. Chen, The method and system implementation of unstructured data tracking and forensics, in: W. Niu, G. Li, J. Liu, J. Tan, L. Guo, Z. Han, L. Batten (Eds.), Applications and Techniques in Information Security, Springer Berlin Heidelberg, Berlin, Heidelberg, 2015, pp. 359–367. doi:10.1007/978-3-662-48683-2_32.",
   "year": "2015",
   "url": "https://doi.org/10.1007/978-3-662-48683-2_32"
  },
@@ -290,7 +290,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "cox2008digital": {
   "number": 49,
-  "reference": "I. J. Cox, M. L. Miller, J. A. Bloom, J. Fridrich, T. Kalker, Digital watermarking and steganography, Morgan Kaufmann, Burlington, MA (2008).",
+  "reference": "I. J. Cox, M. L. Miller, J. A. Bloom, J. Fridrich, T. Kalker, Digital Watermarking and Steganography, 2nd Edition, Morgan Kaufmann, Burlington, MA, 2008.",
   "year": "2008",
   "url": ""
  },
@@ -308,19 +308,19 @@ window.DASHBOARD_REFERENCES = {
  },
  "VanAlsenoy2016": {
   "number": 52,
-  "reference": "B. Van Alsenoy, Liability under EU data protection law: From Directive 95/46 to the General Data Protection Regulation, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 7 (3) (2016) 271–288.",
+  "reference": "B. Van Alsenoy, Liability under EU data protection law: From Directive 95/46 to the General Data Protection Regulation, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 7 (3) (2016) 271–288, accessed 8 October 2026.",
   "year": "2016",
   "url": "https://www.jipitec.eu/jipitec/article/view/185"
  },
  "us_hipaa_1996": {
   "number": 53,
-  "reference": "United States Congress, Health Insurance Portability and Accountability Act of 1996 (1996).",
+  "reference": "United States Congress, Health Insurance Portability and Accountability Act of 1996, accessed 8 October 2026 (1996).",
   "year": "1996",
   "url": "https://aspe.hhs.gov/reports/health-insurance-portability-accountability-act-1996"
  },
  "eu_digital_id_2024": {
   "number": 54,
-  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (2024).",
+  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework, OJ L, 30 April 2024; accessed 8 October 2026 (2024).",
   "year": "2024",
   "url": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj"
  },
@@ -344,13 +344,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "petticrew2008systematic": {
   "number": 58,
-  "reference": "M. Petticrew, H. Roberts, Systematic reviews in the social sciences: A practical guide, John Wiley and Sons (2008).",
+  "reference": "M. Petticrew, H. Roberts, Systematic Reviews in the Social Sciences: A Practical Guide, John Wiley & Sons, 2008.",
   "year": "2008",
   "url": ""
  },
  "rayyan-218685725": {
   "number": 59,
-  "reference": "F. Cirillo, B. Cheng, R. Porcellana, M. Russo, G. Solmaz, H. Sakamoto, S. P. Romano, Intentkeeper: Intent-oriented data usage control for federated data analytics, in: 2020 IEEE 45th Conference on Local Computer Networks (LCN), 2020, pp. 204–215. doi:10.1109/LCN48667.2020.9314823.",
+  "reference": "F. Cirillo, B. Cheng, R. Porcellana, M. Russo, G. Solmaz, H. Sakamoto, S. P. Romano, IntentKeeper: Intent-oriented data usage control for federated data analytics, in: 2020 IEEE 45th Conference on Local Computer Networks (LCN), IEEE, 2020, pp. 204–215. doi:10.1109/LCN48667.2020.9314823.",
   "year": "2020",
   "url": "https://doi.org/10.1109/LCN48667.2020.9314823"
  },
@@ -368,13 +368,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "WOHLIN2022106908": {
   "number": 62,
-  "reference": "C. Wohlin, M. Kalinowski, K. R. Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Inf. Softw. Technol. 147 (2022) 106908. doi:10.1016/j.infsof.2022.106908.",
+  "reference": "C. Wohlin, M. Kalinowski, K. Romero Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Inf. Softw. Technol. 147 (2022) 106908. doi:10.1016/j.infsof.2022.106908.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.infsof.2022.106908"
  },
  "WOHLIN2601248": {
   "number": 63,
-  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, ACM, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
+  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, EASE '14, ACM, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
   "year": "2014",
   "url": "https://doi.org/10.1145/2601248.2601268"
  },
@@ -386,19 +386,19 @@ window.DASHBOARD_REFERENCES = {
  },
  "NASA_TRA_2020": {
   "number": 65,
-  "reference": "NASA Office of the Chief Technologist, Technology readiness assessment best practices guide, Tech. Rep. SP-20205003605, National Aeronautics and Space Administration, Washington, DC (2020).",
+  "reference": "NASA Office of the Chief Technologist, Technology readiness assessment best practices guide, Tech. Rep. SP-20205003605, National Aeronautics and Space Administration, Washington, DC, NASA Special Publication; accessed 8 October 2026 (2020).",
   "year": "2020",
   "url": "https://ntrs.nasa.gov/api/citations/20205003605/downloads/SP-20205003605%20TRA%20BP%20Guide%20FINAL.pdf"
  },
  "Cruzes2011ThematicSynthesis": {
   "number": 66,
-  "reference": "D. S. Cruzes, T. Dyba, Recommended steps for thematic synthesis in software engineering, in: 2011 International Symposium on Empirical Software Engineering and Measurement, 2011, pp. 275–284. doi:10.1109/ESEM.2011.36.",
+  "reference": "D. S. Cruzes, T. Dybå, Recommended steps for thematic synthesis in software engineering, in: 2011 International Symposium on Empirical Software Engineering and Measurement, 2011, pp. 275–284. doi:10.1109/ESEM.2011.36.",
   "year": "2011",
   "url": "https://doi.org/10.1109/ESEM.2011.36"
  },
  "saldana2021coding": {
   "number": 67,
-  "reference": "J. Saldaña, The coding manual for qualitative researchers, SAGE publications Ltd (2021).",
+  "reference": "J. Saldaña, The Coding Manual for Qualitative Researchers, 4th Edition, SAGE Publications, 2021.",
   "year": "2021",
   "url": ""
  },
@@ -416,7 +416,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "10.1145/3674805.3690743": {
   "number": 70,
-  "reference": "K. R. Felizardo, I. Steinmacher, M. S. Lima, A. Deizepe, T. U. Conte, M. P. Barcellos, Data extraction for systematic mapping study using a large language model - a proof-of-concept study in software engineering, in: Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement, ACM, New York, NY, USA, 2024, pp. 407–413. doi:10.1145/3674805.3690743.",
+  "reference": "K. R. Felizardo, I. Steinmacher, M. S. Lima, A. Deizepe, T. U. Conte, M. P. Barcellos, Data extraction for systematic mapping study using a large language model - a proof-of-concept study in software engineering, in: Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement, ESEM '24, ACM, New York, NY, USA, 2024, pp. 407–413. doi:10.1145/3674805.3690743.",
   "year": "2024",
   "url": "https://doi.org/10.1145/3674805.3690743"
  },
@@ -488,7 +488,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027935": {
   "number": 82,
-  "reference": "S. Basudan, IPFS-blockchain-based delegation model for internet of medical robotics things telesurgery system, Connect. Sci. 36 (1) (2024). doi:10.1080/09540091.2024.2367549.",
+  "reference": "S. Basudan, IPFS-blockchain-based delegation model for Internet of Medical Robotics Things telesurgery system, Connect. Sci. 36 (1) (2024). doi:10.1080/09540091.2024.2367549.",
   "year": "2024",
   "url": "https://doi.org/10.1080/09540091.2024.2367549"
  },
@@ -614,7 +614,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028518": {
   "number": 103,
-  "reference": "L. Li, Z. Yue, G. Wu, Electronic medical record sharing system based on Hyperledger Fabric and InterPlanetary File System, ACM Int. Conf. Proc. Ser. (2021) 149–154. doi:10.1145/3456529.3456555.",
+  "reference": "L. Li, Z. Yue, G. Wu, Electronic medical record sharing system based on Hyperledger Fabric and InterPlanetary File System, in: ACM International Conference Proceeding Series, ACM, 2021, pp. 149–154. doi:10.1145/3456529.3456555.",
   "year": "2021",
   "url": "https://doi.org/10.1145/3456529.3456555"
  },
@@ -704,7 +704,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218685380": {
   "number": 118,
-  "reference": "B. A. Dedeturk, B. Bakir-Gungor, Aguhyper: a hyperledger-based electronic health record management framework, PeerJ Comput. Sci. 10 (2024) 1–33. doi:10.7717/PEERJ-CS.2060.",
+  "reference": "B. A. Dedeturk, B. Bakir-Gungor, AguHyper: a Hyperledger-based electronic health record management framework, PeerJ Comput. Sci. 10 (2024) 1–33. doi:10.7717/PEERJ-CS.2060.",
   "year": "2024",
   "url": "https://doi.org/10.7717/PEERJ-CS.2060"
  },
@@ -752,7 +752,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218687255": {
   "number": 126,
-  "reference": "B. S. Egala, A. K. Pradhan, P. Dey, V. Badarla, S. P. Mohanty, Fortified-chain 2.0: Intelligent blockchain for decentralized smart healthcare system, IEEE Internet Things J. 10 (14) (2023) 12308–12321. doi:10.1109/JIOT.2023.3247452.",
+  "reference": "B. S. Egala, A. K. Pradhan, P. Dey, V. Badarla, S. P. Mohanty, Fortified-Chain 2.0: Intelligent blockchain for decentralized smart healthcare system, IEEE Internet Things J. 10 (14) (2023) 12308–12321. doi:10.1109/JIOT.2023.3247452.",
   "year": "2023",
   "url": "https://doi.org/10.1109/JIOT.2023.3247452"
  },
@@ -764,13 +764,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218687386": {
   "number": 128,
-  "reference": "L. Zhang, H. Kan, H. Huang, Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption, ACM Int. Conf. Proc. Ser. (2022) 58–66. doi:10.1145/3528416.3530228.",
+  "reference": "L. Zhang, H. Kan, H. Huang, Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption, in: ACM International Conference Proceeding Series, ACM, 2022, pp. 58–66. doi:10.1145/3528416.3530228.",
   "year": "2022",
   "url": "https://doi.org/10.1145/3528416.3530228"
  },
  "rayyan-218687416": {
   "number": 129,
-  "reference": "X. Zhao, S. Wang, Y. Zhang, Y. Wang, Attribute-based access control scheme for data sharing on hyperledger fabric, J. Inf. Secur. Appl. 67 (2022). doi:10.1016/j.jisa.2022.103182.",
+  "reference": "X. Zhao, S. Wang, Y. Zhang, Y. Wang, Attribute-based access control scheme for data sharing on Hyperledger Fabric, J. Inf. Secur. Appl. 67 (2022). doi:10.1016/j.jisa.2022.103182.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.jisa.2022.103182"
  },
@@ -896,7 +896,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218688262": {
   "number": 150,
-  "reference": "R. H. Hylock, X. Zeng, A blockchain framework for patient-centered health records and exchange (healthChain): Evaluation and proof-of-concept study, J. Med. Internet Res. 21 (8) (2019). doi:10.2196/13592.",
+  "reference": "R. H. Hylock, X. Zeng, A blockchain framework for patient-centered health records and exchange (HealthChain): Evaluation and proof-of-concept study, J. Med. Internet Res. 21 (8) (2019). doi:10.2196/13592.",
   "year": "2019",
   "url": "https://doi.org/10.2196/13592"
  },
@@ -1178,7 +1178,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218685441": {
   "number": 197,
-  "reference": "X. Yan, M. Chen, Y. Zhang, F. Pan, Data security access control based on blockchain and smart contracts, ACM Int. Conf. Proc. Ser. (2023) 254–260. doi:10.1145/3617733.3617774.",
+  "reference": "X. Yan, M. Chen, Y. Zhang, F. Pan, Data security access control based on blockchain and smart contracts, in: ACM International Conference Proceeding Series, ACM, 2023, pp. 254–260. doi:10.1145/3617733.3617774.",
   "year": "2023",
   "url": "https://doi.org/10.1145/3617733.3617774"
  },
@@ -1202,13 +1202,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218686268": {
   "number": 201,
-  "reference": "M. Alawneh, I. M. Abbadi, Preventing information leakage between collaborating organisations, ACM Int. Conf. Proc. Ser. (2008). doi:10.1145/1409540.1409592.",
+  "reference": "M. Alawneh, I. M. Abbadi, Preventing information leakage between collaborating organisations, in: ACM International Conference Proceeding Series, ACM, 2008. doi:10.1145/1409540.1409592.",
   "year": "2008",
   "url": "https://doi.org/10.1145/1409540.1409592"
  },
  "rayyan-218688059": {
   "number": 202,
-  "reference": "A. Alniamy, B. D. Taylor, Attribute-based access control of data sharing based on Hyperledger blockchain, ACM Int. Conf. Proc. Ser. (2020) 135–139. doi:10.1145/3390566.3391688.",
+  "reference": "A. Alniamy, B. D. Taylor, Attribute-based access control of data sharing based on Hyperledger blockchain, in: ACM International Conference Proceeding Series, ACM, 2020, pp. 135–139. doi:10.1145/3390566.3391688.",
   "year": "2020",
   "url": "https://doi.org/10.1145/3390566.3391688"
  },
@@ -1226,13 +1226,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "edpb_blockchain_2026": {
   "number": 205,
-  "reference": "European Data Protection Board, Guidelines 02/2025 on processing of personal data through blockchain technologies, version 2.0 (2026).",
+  "reference": "European Data Protection Board, Guidelines 02/2025 on processing of personal data through blockchain technologies, version 2.0, Adopted on 7 July 2026; accessed 21 November 2026 (2026).",
   "year": "2026",
   "url": "https://www.edpb.europa.eu/system/files/2026-07/edpb_guidelines_202502_blockchain_v2_en.pdf"
  },
  "SSRN-3080322": {
   "number": 206,
-  "reference": "M. Finck, Blockchains and data protection in the European Union, Max Planck Institute for Innovation & Competition Research Paper 18-01, Max Planck Institute for Innovation and Competition, Munich (2017). doi:10.2139/ssrn.3080322.",
+  "reference": "M. Finck, Blockchains and data protection in the European Union, Max Planck Institute for Innovation & Competition Research Paper 18-01, Max Planck Institute for Innovation and Competition, Munich, Available at SSRN (November 2017). doi:10.2139/ssrn.3080322.",
   "year": "2017",
   "url": "https://doi.org/10.2139/ssrn.3080322"
  }
