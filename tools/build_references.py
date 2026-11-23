@@ -69,7 +69,10 @@ def parse_bib(text):
                 depth -= 1
             j += 1
         body = text[comma + 1:j - 1]
-        entries[key] = dict(parse_fields(body), type=etype)
+        fields = parse_fields(body)
+        if "type" in fields:  # the BibTeX field "type" (kind of report), not the entry type
+            fields["reporttype"] = fields["type"]
+        entries[key] = dict(fields, type=etype)
         i = j
     return entries
 
@@ -214,7 +217,10 @@ def format_entry(e):
             bits.append(("pp. " if "–" in pages else "p. ") + pages)
         text = ", ".join(parts + bits)
     else:
-        bits = [x for x in (get("howpublished"), get("publisher") or get("institution") or get("organization"),
+        report = ""
+        if t == "techreport" and get("number"):
+            report = (get("reporttype") or "Tech. Rep.") + " " + get("number")
+        bits = [x for x in (report, get("howpublished"), get("publisher") or get("institution") or get("organization"),
                             get("address")) if x]
         text = ", ".join(parts + bits) + (" (" + year + ")" if year else "")
     text = text.rstrip(".") + "."
