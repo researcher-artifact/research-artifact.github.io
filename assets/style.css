@@ -170,6 +170,11 @@ select, input[type="search"] {
 .chart-box { position: relative; height: clamp(300px, 46vh, 460px); }
 .table-view { margin-top: .75rem; }
 .table-view summary { cursor: pointer; color: var(--text-secondary); font-size: .9rem; }
+.table-view.defs { margin: 0 0 1rem; }
+.table-view.defs h3 { margin: 1rem 0 .25rem; }
+.table-view.defs dl { margin: .5rem 0 0; }
+.table-view.defs dt { font-weight: 600; margin-top: .6rem; }
+.table-view.defs dd { margin: .15rem 0 0; max-width: 60rem; line-height: 1.5; }
 
 /* Tables */
 .table-scroll { overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
