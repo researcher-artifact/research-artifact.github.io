@@ -27,6 +27,9 @@ ACCENTS = {
 }
 
 
+SPECIAL = {"aa": "å", "AA": "Å", "ae": "æ", "AE": "Æ", "oe": "œ", "OE": "Œ", "o": "ø", "O": "Ø", "ss": "ß", "l": "ł", "L": "Ł"}
+
+
 def strip_comments(tex):
     """Remove LaTeX comments (an unescaped % to the end of the line)."""
     return "\n".join(re.sub(r"(?<!\\)%.*", "", line) for line in tex.splitlines())
@@ -69,7 +72,10 @@ def parse_bib(text):
                 depth -= 1
             j += 1
         body = text[comma + 1:j - 1]
-        entries[key] = dict(parse_fields(body), type=etype)
+        fields = parse_fields(body)
+        if "type" in fields:  # the BibTeX field "type" (kind of report), not the entry type
+            fields["reporttype"] = fields["type"]
+        entries[key] = dict(fields, type=etype)
         i = j
     return entries
 
@@ -125,6 +131,7 @@ def delatex(s):
     s = re.sub(r"\{\\([`'^\"~cv])\s*\{?(\w)\}?\}", lambda m: ACCENTS.get(m.group(1), {}).get(m.group(2), m.group(2)), s)
     s = re.sub(r"\\([`'^\"~])\{?(\w)\}?", lambda m: ACCENTS.get(m.group(1), {}).get(m.group(2), m.group(2)), s)
     s = re.sub(r"\\([cv])\{(\w)\}", lambda m: ACCENTS.get(m.group(1), {}).get(m.group(2), m.group(2)), s)
+    s = re.sub(r"\{?\\(aa|AA|ae|AE|oe|OE|o|O|ss|l|L)\b\s*\}?", lambda m: SPECIAL[m.group(1)], s)
     s = re.sub(r"\\(?:textit|textbf|emph|textsc|mbox)\{([^}]*)\}", r"\1", s)
     s = s.replace("\\&", "&").replace("\\%", "%").replace("\\_", "_").replace("\\$", "$")
     s = s.replace("---", "—").replace("--", "–").replace("~", " ")
@@ -163,7 +170,7 @@ def format_name(name):
         last, first = parts[0], parts[-1]
         jr = parts[1] if len(parts) == 3 else ""
     else:
-        words = name.split()
+        words = re.findall(r"\{[^{}]*\}|[^\s{}]+", name)  # a braced group is one word
         last, first, jr = (words[-1], " ".join(words[:-1]), "") if words else (name, "", "")
     initials = []
     for word in re.split(r"\s+", delatex(first)):
@@ -189,9 +196,9 @@ def format_entry(e):
     """Format an entry in the elsarticle-num style used by the article."""
     get = lambda f: delatex(e.get(f, ""))
     authors = format_authors(e.get("author", "")) if e.get("author") else format_authors(e.get("editor", ""))
-    title = delatex(sentence_case(e.get("title", "")))
-    year, pages = get("year"), dashify(get("pages"))
     t = e["type"]
+    title = delatex(e.get("title", "") if t == "book" else sentence_case(e.get("title", "")))
+    year, pages = get("year"), dashify(get("pages"))
     parts = [p for p in (authors, title) if p]
     if t == "article":
         venue = get("journal")
@@ -204,19 +211,35 @@ def format_entry(e):
         if pages:
             venue += " " + pages
         parts.append(venue.strip())
+        if get("note"):
+            parts.append(get("note"))
         text = ", ".join(parts)
     elif t in ("inproceedings", "incollection", "inbook"):
         bits = []
         if get("booktitle"):
-            bits.append("in: " + get("booktitle"))
-        bits += [x for x in (get("publisher"), get("address"), year) if x]
+            editors = format_authors(e["editor"]) if e.get("editor") and e.get("author") else ""
+            if editors:
+                editors += " (Eds.), " if " and " in e["editor"] else " (Ed.), "
+            bits.append("in: " + editors + get("booktitle"))
+        bits += [x for x in (get("series"), get("organization"), get("publisher"), get("address"), year) if x]
         if pages:
             bits.append(("pp. " if "–" in pages else "p. ") + pages)
         text = ", ".join(parts + bits)
+    elif t == "book":
+        edition = get("edition")
+        bits = [x for x in (edition + " Edition" if edition else "", get("publisher"), get("address"), year) if x]
+        text = ", ".join(parts + bits)
     else:
-        bits = [x for x in (get("howpublished"), get("publisher") or get("institution") or get("organization"),
-                            get("address")) if x]
-        text = ", ".join(parts + bits) + (" (" + year + ")" if year else "")
+        report = ""
+        if t == "techreport" and get("number"):
+            report = (get("reporttype") or "Tech. Rep.") + " " + get("number")
+        if t == "misc":  # the article's style prints the outlet and the note, not the publisher
+            bits = [x for x in (get("howpublished"), get("note")) if x]
+        else:
+            bits = [x for x in (report, get("howpublished"), get("publisher") or get("institution") or get("organization"),
+                                get("address"), get("note")) if x]
+        date = " ".join(x for x in (get("month"), year) if x)
+        text = ", ".join(parts + bits) + (" (" + date + ")" if date else "")
     text = text.rstrip(".") + "."
     if e.get("doi"):
         text += " doi:" + e["doi"].strip() + "."

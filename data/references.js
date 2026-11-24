@@ -2,61 +2,61 @@
 window.DASHBOARD_REFERENCES = {
  "CNJ2026FalsoAdvogado": {
   "number": 1,
-  "reference": "A. P. Souza, Ouvidoria do cnj registra denúncias de golpe do falso advogado e articula medidas de segurança com tribunais, Agência CNJ de Notícias (2026).",
+  "reference": "A. P. Souza, Ouvidoria do CNJ registra denúncias de golpe do falso advogado e articula medidas de segurança com tribunais, Agência CNJ de Notícias, accessed 8 October 2026 (March 2026).",
   "year": "2026",
   "url": "https://www.cnj.jus.br/ouvidoria-do-cnj-registra-denuncias-de-golpe-do-falso-advogado-e-articula-medidas-de-seguranca-com-tribunais/"
  },
  "TRF1_2025_FalsoAdvogado": {
   "number": 2,
-  "reference": "Assessoria de Comunicação Social, Trf1 alerta sobre golpe do falso advogado: entenda como funciona a fraude que usa dados reais para enganar vítimas, Notícias TRF1 (2025).",
+  "reference": "Assessoria de Comunicação Social, TRF1 alerta sobre golpe do falso advogado: entenda como funciona a fraude que usa dados reais para enganar vítimas, Notícias TRF1, accessed 8 October 2026 (July 2025).",
   "year": "2025",
   "url": "https://www.trf1.jus.br/trf1/noticias/trf1-alerta-sobre-golpe-do-falso-advogado-entenda-como-funciona-a-fraude-que-usa-dados-reais-para-enganar-vitimas"
  },
  "SilvaTran2026VictorianCourtBreach": {
   "number": 3,
-  "reference": "K. Silva, D. Tran, Hackers leak sensitive victorian court data to dark web, ABC News (2026).",
+  "reference": "K. Silva, D. Tran, Hackers leak sensitive Victorian court data to dark web, ABC News, accessed 8 October 2026 (August 2026).",
   "year": "2026",
   "url": "https://www.abc.net.au/news/2026-08-07/victorian-court-personal-data-breach-dark-web/107004792"
  },
  "BakerWhite2024CourtBreach": {
   "number": 4,
-  "reference": "E. Baker-White, Massive court breach exposed confidential court testimony, medical and psychiatric records, Forbes (2024).",
+  "reference": "E. Baker-White, Massive court breach exposed confidential court testimony, medical and psychiatric records, Forbes, accessed 8 October 2026 (June 2024).",
   "year": "2024",
   "url": "https://www.forbes.com/sites/emilybaker-white/2024/06/18/sealed-records-courts-breach/"
  },
  "STJ2025HC953647": {
   "number": 5,
-  "reference": "Brasil. Superior Tribunal de Justiça, Agrg no habeas corpus n. 953.647/sp, Superior Tribunal de Justiça (2025).",
+  "reference": "Brasil. Superior Tribunal de Justiça, AgRg no Habeas Corpus n. 953.647/SP, Quinta Turma, Rapporteur Ribeiro Dantas; accessed 8 October 2026 (March 2025).",
   "year": "2025",
   "url": "https://scon.stj.jus.br/SCON/GetInteiroTeorDoAcordao?num_registro=202403915332&dt_publicacao=07/03/2025"
  },
  "CorreioBraziliense2024VazamentoPCC": {
   "number": 6,
-  "reference": "Correio Braziliense, Servidor do mp de sp está envolvido em vazamento de processos para o pcc, Correio Braziliense (2024).",
+  "reference": "Correio Braziliense, Servidor do MP de SP está envolvido em vazamento de processos para o PCC, Correio Braziliense, accessed 8 October 2026 (November 2024).",
   "year": "2024",
   "url": "https://www.correiobraziliense.com.br/brasil/2024/11/6999321-servidor-do-mp-de-sp-esta-envolvido-em-vazamento-de-processos-para-o-pcc.html"
  },
  "Grizotti2023VazamentoTJRS": {
   "number": 7,
-  "reference": "G. Grizotti, Estagiários e servidores do tribunal de justiça do rs são investigados por vazamento de operações a criminosos, g1 Rio Grande do Sul (2023).",
+  "reference": "G. Grizotti, Estagiários e servidores do Tribunal de Justiça do RS são investigados por vazamento de operações a criminosos, g1 Rio Grande do Sul, accessed 8 October 2026 (October 2023).",
   "year": "2023",
   "url": "https://g1.globo.com/rs/rio-grande-do-sul/noticia/2023/10/29/estagiarios-e-servidores-do-tribunal-de-justica-do-rs-sao-investigados-por-vazamento-de-operacoes-a-criminosos.ghtml"
  },
  "Obafemi2025BayCareHIPAA": {
   "number": 8,
-  "reference": "F. Obafemi, BayCare Health System’s $800,000 HIPAA settlement: Privacy lessons from a malicious insider breach, Captain Compliance (2025).",
+  "reference": "F. Obafemi, BayCare Health System’s $800,000 HIPAA settlement: Privacy lessons from a malicious insider breach, Captain Compliance, accessed 8 October 2026 (June 2025).",
   "year": "2025",
   "url": "https://captaincompliance.com/education/baycare-health-systems-800000-hipaa-settlement-privacy-lessons-from-a-malicious-insider-breach/"
  },
  "eu_gdpr_2016": {
   "number": 9,
-  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (2016).",
+  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), accessed 8 October 2026 (2016).",
   "year": "2016",
   "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
  },
  "brasil2018lgpd": {
   "number": 10,
-  "reference": "Brasil, Lei nº 13.709, de 14 de agosto de 2018: Lei geral de proteção de dados pessoais (LGPD), Presidência da República (2018).",
+  "reference": "Brasil, Lei nº 13.709, de 14 de agosto de 2018: Lei Geral de Proteção de Dados Pessoais (LGPD), accessed 8 October 2026 (2018).",
   "year": "2018",
   "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm"
  },
@@ -68,37 +68,37 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172029208": {
   "number": 12,
-  "reference": "J. Park, R. Sandhu, Towards usage control models: Beyond traditional access control, Proceedings of ACM Symposium on Access Control Models and Technologies (SACMAT 2002) (2002) 57–64. doi:10.1145/507721.507722.",
+  "reference": "J. Park, R. Sandhu, Towards usage control models: Beyond traditional access control, in: Proceedings of ACM Symposium on Access Control Models and Technologies (SACMAT 2002), ACM, 2002, pp. 57–64. doi:10.1145/507721.507722.",
   "year": "2002",
   "url": "https://doi.org/10.1145/507721.507722"
  },
  "rayyan-172029219": {
   "number": 13,
-  "reference": "J. Park, R. Sandhu, J. Schifalacqua, Security architectures for controlled digital information dissemination, Proceedings - Annual Computer Security Applications Conference, ACSAC 2000 (2000) 224–233. doi:10.1109/ACSAC.2000.898877.",
+  "reference": "J. Park, R. Sandhu, J. Schifalacqua, Security architectures for controlled digital information dissemination, in: Annual Computer Security Applications Conference, ACSAC, IEEE Computer Society, 2000, pp. 224–233. doi:10.1109/ACSAC.2000.898877.",
   "year": "2000",
   "url": "https://doi.org/10.1109/ACSAC.2000.898877"
  },
  "rayyan-218688824": {
   "number": 14,
-  "reference": "A. Azaria, A. Ekblaw, T. Vieira, A. Lippman, Medrec: Using blockchain for medical data access and permission management, Proceedings - 2016 2nd International Conference on Open and Big Data, OBD 2016 (2016) 25–30. doi:10.1109/OBD.2016.11.",
+  "reference": "A. Azaria, A. Ekblaw, T. Vieira, A. Lippman, MedRec: Using blockchain for medical data access and permission management, in: 2016 2nd International Conference on Open and Big Data, OBD 2016, IEEE, 2016, pp. 25–30. doi:10.1109/OBD.2016.11.",
   "year": "2016",
   "url": "https://doi.org/10.1109/OBD.2016.11"
  },
  "rayyan-218688578": {
   "number": 15,
-  "reference": "Q. Xia, E. B. Sifah, K. O. Asamoah, J. Gao, X. Du, M. Guizani, Medshare: Trust-less medical data sharing among cloud service providers via blockchain, IEEE Access 5 (2017) 14757–14767. doi:10.1109/ACCESS.2017.2730843.",
+  "reference": "Q. Xia, E. B. Sifah, K. O. Asamoah, J. Gao, X. Du, M. Guizani, MeDShare: Trust-less medical data sharing among cloud service providers via blockchain, IEEE Access 5 (2017) 14757–14767. doi:10.1109/ACCESS.2017.2730843.",
   "year": "2017",
   "url": "https://doi.org/10.1109/ACCESS.2017.2730843"
  },
  "rayyan-218685195": {
   "number": 16,
-  "reference": "M. Xie, Z. Zhang, H. Hong, G. Zhang, Y. Qin, Secure medical data sharing featuring traceable data usage and automatic audit mechanism, IEEE Internet Things J. (2025). doi:10.1109/JIOT.2025.3559926.",
+  "reference": "M. Xie, Z. Zhang, H. Hong, G. Zhang, Y. Qin, Secure medical data sharing featuring traceable data usage and automatic audit mechanism, IEEE Internet Things J. 12 (13) (2025) 25587–25600. doi:10.1109/JIOT.2025.3559926.",
   "year": "2025",
   "url": "https://doi.org/10.1109/JIOT.2025.3559926"
  },
  "rayyan-172028246": {
   "number": 17,
-  "reference": "M. Jagadeeswari, P. Karthi, V. Nitish Kumar, S. S. Ram, A secure file sharing and audit trail tracking platform with advanced encryption standard for cloud-based environments, 2023 4th International Conference on Electronics and Sustainable Communication Systems, ICESC 2023 - Proceedings (2023) 540–547. doi:10.1109/ICESC57686.2023.10193389.",
+  "reference": "M. Jagadeeswari, P. Karthi, V. Nitish Kumar, S. S. Ram, A secure file sharing and audit trail tracking platform with advanced encryption standard for cloud-based environments, in: 2023 4th International Conference on Electronics and Sustainable Communication Systems, ICESC 2023, IEEE, 2023, pp. 540–547. doi:10.1109/ICESC57686.2023.10193389.",
   "year": "2023",
   "url": "https://doi.org/10.1109/ICESC57686.2023.10193389"
  },
@@ -110,19 +110,19 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218687203": {
   "number": 19,
-  "reference": "S. Zhao, Z. Zeng, J. Peng, F. Yu, Achieving a secure and traceable high-definition multimedia data trading scheme based on blockchain, Mathematics 11 (10) (2023). doi:10.3390/math11102224.",
+  "reference": "S. Zhao, Z. Zeng, J. Peng, F. Yu, Achieving a secure and traceable high-definition multimedia data trading scheme based on blockchain, Mathematics 11 (10) (2023) 2224. doi:10.3390/math11102224.",
   "year": "2023",
   "url": "https://doi.org/10.3390/math11102224"
  },
  "rayyan-172027982": {
   "number": 20,
-  "reference": "H. Cho, L. Zhang, X. Jiang, Digital watermarking technology of data element circulation transaction, Proceedings - 2024 IEEE 10th International Conference on Edge Computing and Scalable Cloud, EdgeCom 2024 (2024) 1–6. doi:10.1109/EdgeCom62867.2024.00008.",
+  "reference": "H. Cho, L. Zhang, X. Jiang, Digital watermarking technology of data element circulation transaction, in: 2024 IEEE 10th International Conference on Edge Computing and Scalable Cloud, EdgeCom 2024, IEEE, 2024, pp. 1–6. doi:10.1109/EdgeCom62867.2024.00008.",
   "year": "2024",
   "url": "https://doi.org/10.1109/EdgeCom62867.2024.00008"
  },
  "rayyan-218688078": {
   "number": 21,
-  "reference": "U. Bodkhe, S. Tanwar, K. Parekh, P. Khanpara, S. Tyagi, N. Kumar, M. Alazab, Blockchain for industry 4.0: A comprehensive review, IEEE Access 8 (2020) 79764–79800. doi:10.1109/ACCESS.2020.2988579.",
+  "reference": "U. Bodkhe, S. Tanwar, K. Parekh, P. Khanpara, S. Tyagi, N. Kumar, M. Alazab, Blockchain for Industry 4.0: A comprehensive review, IEEE Access 8 (2020) 79764–79800. doi:10.1109/ACCESS.2020.2988579.",
   "year": "2020",
   "url": "https://doi.org/10.1109/ACCESS.2020.2988579"
  },
@@ -134,13 +134,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028588": {
   "number": 23,
-  "reference": "R. Wasim Ahmad, H. Hasan, I. Yaqoob, K. Salah, R. Jayaraman, M. Omar, Blockchain for aerospace and defense: Opportunities and open research challenges, Comput. Ind. Eng. 151 (2021). doi:10.1016/j.cie.2020.106982.",
+  "reference": "R. Wasim Ahmad, H. Hasan, I. Yaqoob, K. Salah, R. Jayaraman, M. Omar, Blockchain for aerospace and defense: Opportunities and open research challenges, Comput. Ind. Eng. 151 (2021) 106982. doi:10.1016/j.cie.2020.106982.",
   "year": "2021",
   "url": "https://doi.org/10.1016/j.cie.2020.106982"
  },
  "rayyan-172028414": {
   "number": 24,
-  "reference": "N. S. G. Ganesh, N. G. M. Venkatesh, D. V. V. Prasad, A systematic literature review on forensics in cloud, iot, ai and blockchain, Lect. Notes Data Eng. Commun. Technol. 109 (2022) 197–229. doi:10.1007/978-3-030-93453-8_9.",
+  "reference": "N. S. G. Ganesh, N. G. M. Venkatesh, D. V. V. Prasad, A systematic literature review on forensics in cloud, IoT, AI and blockchain, Lect. Notes Data Eng. Commun. Technol. 109 (2022) 197–229. doi:10.1007/978-3-030-93453-8_9.",
   "year": "2022",
   "url": "https://doi.org/10.1007/978-3-030-93453-8_9"
  },
@@ -158,25 +158,25 @@ window.DASHBOARD_REFERENCES = {
  },
  "PETERSEN20151": {
   "number": 27,
-  "reference": "K. Petersen, S. Vakkalanka, L. Kuzniarz, Guidelines for conducting systematic mapping studies in software engineering: An update, Inf. Softw. Technol. 64 (2015) 1–18.",
+  "reference": "K. Petersen, S. Vakkalanka, L. Kuzniarz, Guidelines for conducting systematic mapping studies in software engineering: An update, Inf. Softw. Technol. 64 (2015) 1–18. doi:10.1016/j.infsof.2015.03.007.",
   "year": "2015",
   "url": "https://doi.org/10.1016/j.infsof.2015.03.007"
  },
  "kitchenham2007guidelines": {
   "number": 28,
-  "reference": "B. Kitchenham, S. Charters et al., Guidelines for performing systematic literature reviews in software engineering, Softw. Eng. J. (2007).",
+  "reference": "B. Kitchenham, S. Charters, Guidelines for performing systematic literature reviews in software engineering, EBSE Technical Report EBSE-2007-01, Keele University and Durham University (2007).",
   "year": "2007",
   "url": ""
  },
  "safavi2000combinatorial": {
   "number": 29,
-  "reference": "R. Safavi-Naini, Y. Wang, A combinatorial approach to asymmetric traitor tracing, in: International Computing and Combinatorics Conference, 2000, pp. 416–425.",
+  "reference": "R. Safavi-Naini, Y. Wang, A combinatorial approach to asymmetric traitor tracing, in: International Computing and Combinatorics Conference, Springer, 2000, pp. 416–425. doi:10.1007/3-540-44968-X_41.",
   "year": "2000",
-  "url": ""
+  "url": "https://doi.org/10.1007/3-540-44968-X_41"
  },
  "rayyan-172029046": {
   "number": 30,
-  "reference": "F. Yin, L. Wang, R. Yu, X. Ma, A distribution model for data leakage prevention, Proceedings - 2013 International Conference on Mechatronic Sciences, Electric Engineering and Computer, MEC 2013 (2013) 2617–2620. doi:10.1109/MEC.2013.6885474.",
+  "reference": "F. Yin, L. Wang, R. Yu, X. Ma, A distribution model for data leakage prevention, in: 2013 International Conference on Mechatronic Sciences, Electric Engineering and Computer, MEC 2013, IEEE, 2013, pp. 2617–2620. doi:10.1109/MEC.2013.6885474.",
   "year": "2013",
   "url": "https://doi.org/10.1109/MEC.2013.6885474"
  },
@@ -194,73 +194,73 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218685609": {
   "number": 33,
-  "reference": "T. Zheng, Y. Luo, T. Zhou, Z. Cai, Towards differential access control and privacy-preserving for secure media data sharing in the cloud, Comput. Secur. 113 (2022). doi:10.1016/j.cose.2021.102553.",
+  "reference": "T. Zheng, Y. Luo, T. Zhou, Z. Cai, Towards differential access control and privacy-preserving for secure media data sharing in the cloud, Comput. Secur. 113 (2022) 102553. doi:10.1016/j.cose.2021.102553.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.cose.2021.102553"
  },
  "2-s2.0-84952040795": {
   "number": 34,
-  "reference": "G. Gu, S. Zhang, X. Wang, X. Cai, S. Chen, The method and system implementation of unstructured data tracking and forensics, in: Applications and Techniques in Information Security, Springer Berlin Heidelberg, Berlin, Heidelberg, 2015, pp. 359–367. doi:10.1007/978-3-662-48683-2_32.",
+  "reference": "G. Gu, S. Zhang, X. Wang, X. Cai, S. Chen, The method and system implementation of unstructured data tracking and forensics, in: W. Niu, G. Li, J. Liu, J. Tan, L. Guo, Z. Han, L. Batten (Eds.), Applications and Techniques in Information Security, Springer Berlin Heidelberg, Berlin, Heidelberg, 2015, pp. 359–367. doi:10.1007/978-3-662-48683-2_32.",
   "year": "2015",
   "url": "https://doi.org/10.1007/978-3-662-48683-2_32"
  },
  "rayyan-172027922": {
   "number": 35,
-  "reference": "T.-K. Chang, C.-N. Yang, C.-Y. Tseng, Bt-def: A secure digital evidence framework using blockchain and tp-merkle tree, 2024 4th International Conference on Computer, Control and Robotics, ICCCR 2024 (2024) 343–348. doi:10.1109/ICCCR61138.2024.10585397.",
+  "reference": "T.-K. Chang, C.-N. Yang, C.-Y. Tseng, BT-DEF: A secure digital evidence framework using blockchain and TP-Merkle tree, in: 2024 4th International Conference on Computer, Control and Robotics, ICCCR 2024, IEEE, 2024, pp. 343–348. doi:10.1109/ICCCR61138.2024.10585397.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICCCR61138.2024.10585397"
  },
  "rayyan-218685128": {
   "number": 36,
-  "reference": "F. Ullah, J. He, N. Zhu, A. Wajahat, A. Nazir, S. Qureshi, M. S. Pathan, S. Dev, Blockchain-enabled ehr access auditing: Enhancing healthcare data security, Heliyon 10 (16) (2024). doi:10.1016/j.heliyon.2024.e34407.",
+  "reference": "F. Ullah, J. He, N. Zhu, A. Wajahat, A. Nazir, S. Qureshi, M. S. Pathan, S. Dev, Blockchain-enabled EHR access auditing: Enhancing healthcare data security, Heliyon 10 (16) (2024) e34407. doi:10.1016/j.heliyon.2024.e34407.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.heliyon.2024.e34407"
  },
  "kent2006guide": {
   "number": 37,
-  "reference": "K. Kent, M. Souppaya, Guide to computer security log management, National Institute of Standards and Technology (2006). doi:10.6028/NIST.SP.800-92.",
+  "reference": "K. Kent, M. Souppaya, Guide to computer security log management, NIST Special Publication 800-92, National Institute of Standards and Technology (2006). doi:10.6028/NIST.SP.800-92.",
   "year": "2006",
   "url": "https://doi.org/10.6028/NIST.SP.800-92"
  },
  "rayyan-172028743": {
   "number": 38,
-  "reference": "R. Manikandan, A. Rengarajan, C. Devibala, K. Gayathri, T. Malarvizhi, Secure and traceable medical image sharing using enigma in cloud?, Lect. Notes Data Eng. Commun. Technol. 35 (2020) 816–825. doi:10.1007/978-3-030-32150-5_82.",
+  "reference": "R. Manikandan, A. Rengarajan, C. Devibala, K. Gayathri, T. Malarvizhi, Secure and traceable medical image sharing using Enigma in cloud?, Lect. Notes Data Eng. Commun. Technol. 35 (2020) 816–825. doi:10.1007/978-3-030-32150-5_82.",
   "year": "2020",
   "url": "https://doi.org/10.1007/978-3-030-32150-5_82"
  },
  "rayyan-172027890": {
   "number": 39,
-  "reference": "J. Yong, X. Lei, Z. Huang, J. Dang, Y. Wang, A blockchain-based supervision data security sharing framework, Appl. Sci. 14 (16) (2024). doi:10.3390/app14167034.",
+  "reference": "J. Yong, X. Lei, Z. Huang, J. Dang, Y. Wang, A blockchain-based supervision data security sharing framework, Appl. Sci. 14 (16) (2024) 7034. doi:10.3390/app14167034.",
   "year": "2024",
   "url": "https://doi.org/10.3390/app14167034"
  },
  "10.3390/info11110509": {
   "number": 40,
-  "reference": "G. Caldarelli, Understanding the blockchain oracle problem: A call for action, Information 11 (11) (2020). doi:10.3390/info11110509.",
+  "reference": "G. Caldarelli, Understanding the blockchain oracle problem: A call for action, Information 11 (11) (2020) 509. doi:10.3390/info11110509.",
   "year": "2020",
   "url": "https://doi.org/10.3390/info11110509"
  },
  "nist80053r5": {
   "number": 41,
-  "reference": "Joint Task Force, Security and privacy controls for information systems and organizations, National Institute of Standards and Technology (2020). doi:10.6028/NIST.SP.800-53r5.",
+  "reference": "Joint Task Force, Security and privacy controls for information systems and organizations, NIST Special Publication 800-53, Rev. 5, National Institute of Standards and Technology (2020). doi:10.6028/NIST.SP.800-53r5.",
   "year": "2020",
   "url": "https://doi.org/10.6028/NIST.SP.800-53r5"
  },
  "rayyan-172027829": {
   "number": 42,
-  "reference": "H. Makina, A. Ben Letaifa, A. Rachedi, A blockchain and self-sovereign identity-based platform for electronic health records management under gdpr, International Conference on Wireless and Mobile Computing, Networking and Communications (2024) 118–123. doi:10.1109/WiMob61911.2024.10770361.",
+  "reference": "H. Makina, A. Ben Letaifa, A. Rachedi, A blockchain and self-sovereign identity-based platform for electronic health records management under GDPR, in: International Conference on Wireless and Mobile Computing, Networking and Communications, IEEE Computer Society, 2024, pp. 118–123. doi:10.1109/WiMob61911.2024.10770361.",
   "year": "2024",
   "url": "https://doi.org/10.1109/WiMob61911.2024.10770361"
  },
  "rayyan-218685194": {
   "number": 43,
-  "reference": "M. Li, J. Xue, Z. Liu, Y. Suo, T. Lei, Y. Wang, Damfsd: A decentralized authorization model with flexible and secure delegation, Internet Things 27 (2024). doi:10.1016/j.iot.2024.101317.",
+  "reference": "M. Li, J. Xue, Z. Liu, Y. Suo, T. Lei, Y. Wang, DAMFSD: A decentralized authorization model with flexible and secure delegation, Internet Things 27 (2024) 101317. doi:10.1016/j.iot.2024.101317.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.iot.2024.101317"
  },
  "rayyan-172027927": {
   "number": 44,
-  "reference": "M. Rajesh, V. Navya, R. Konjarla, M. Birada, Blockchain-based e-vault for legal records, Proceedings of the 3rd International Conference on Applied Artificial Intelligence and Computing, ICAAIC 2024 (2024) 1389–1392. doi:10.1109/ICAAIC60222.2024.10574924.",
+  "reference": "M. Rajesh, V. Navya, R. Konjarla, M. Birada, Blockchain-based e-vault for legal records, in: Proceedings of the 3rd International Conference on Applied Artificial Intelligence and Computing, ICAAIC 2024, IEEE, 2024, pp. 1389–1392. doi:10.1109/ICAAIC60222.2024.10574924.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICAAIC60222.2024.10574924"
  },
@@ -272,7 +272,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "fips1865": {
   "number": 46,
-  "reference": "National Institute of Standards and Technology, Digital signature standard (DSS), National Institute of Standards and Technology (2023). doi:10.6028/NIST.FIPS.186-5.",
+  "reference": "National Institute of Standards and Technology, Digital signature standard (DSS), Federal Information Processing Standards Publication FIPS 186-5, National Institute of Standards and Technology (2023). doi:10.6028/NIST.FIPS.186-5.",
   "year": "2023",
   "url": "https://doi.org/10.6028/NIST.FIPS.186-5"
  },
@@ -290,7 +290,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "cox2008digital": {
   "number": 49,
-  "reference": "I. J. Cox, M. L. Miller, J. A. Bloom, J. Fridrich, T. Kalker, Digital watermarking and steganography, Morgan Kaufmann, Burlington, MA (2008).",
+  "reference": "I. J. Cox, M. L. Miller, J. A. Bloom, J. Fridrich, T. Kalker, Digital Watermarking and Steganography, 2nd Edition, Morgan Kaufmann, Burlington, MA, 2008.",
   "year": "2008",
   "url": ""
  },
@@ -302,55 +302,55 @@ window.DASHBOARD_REFERENCES = {
  },
  "Mahieu2019Responsibility": {
   "number": 51,
-  "reference": "R. Mahieu, J. van Hoboken, H. Asghari, Responsibility for data protection in a networked world: On the question of the controller, ``effective and complete protection'' and its application to data access rights in europe, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 10 (1) (2019) 39–59. doi:10.2139/ssrn.3256743.",
+  "reference": "R. Mahieu, J. van Hoboken, H. Asghari, Responsibility for data protection in a networked world: On the question of the controller, ``effective and complete protection'' and its application to data access rights in Europe, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 10 (1) (2019) 39–59, Available at SSRN. doi:10.2139/ssrn.3256743.",
   "year": "2019",
   "url": "https://doi.org/10.2139/ssrn.3256743"
  },
  "VanAlsenoy2016": {
   "number": 52,
-  "reference": "B. Van Alsenoy, Liability under EU data protection law: From directive 95/46 to the general data protection regulation, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 7 (3) (2016) 271–288.",
+  "reference": "B. Van Alsenoy, Liability under EU data protection law: From Directive 95/46 to the General Data Protection Regulation, J. Intellect. Prop. Inf. Technol. Electron. Commer. Law 7 (3) (2016) 271–288, accessed 8 October 2026.",
   "year": "2016",
   "url": "https://www.jipitec.eu/jipitec/article/view/185"
  },
  "us_hipaa_1996": {
   "number": 53,
-  "reference": "United States Congress, Health insurance portability and accountability act of 1996 (1996).",
+  "reference": "United States Congress, Health Insurance Portability and Accountability Act of 1996, accessed 8 October 2026 (1996).",
   "year": "1996",
   "url": "https://aspe.hhs.gov/reports/health-insurance-portability-accountability-act-1996"
  },
  "eu_digital_id_2024": {
   "number": 54,
-  "reference": "European Parliament, Council of the European Union, Regulation (eu) 2024/1183 of the european parliament and of the council of 11 april 2024 amending regulation (eu) no 910/2014 as regards establishing the european digital identity framework (2024).",
+  "reference": "European Parliament, Council of the European Union, Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework, OJ L, 30 April 2024; accessed 8 October 2026 (2024).",
   "year": "2024",
   "url": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj"
  },
  "10.1109/RE.2019.00036": {
   "number": 55,
-  "reference": "K. Hjerppe, J. Ruohonen, V. Leppänen, The general data protection regulation: Requirements, architectures, and constraints, in: 2019 IEEE 27th International Requirements Engineering Conference (RE), 2019, pp. 265–275. doi:10.1109/RE.2019.00036.",
+  "reference": "K. Hjerppe, J. Ruohonen, V. Leppänen, The General Data Protection Regulation: Requirements, architectures, and constraints, in: 2019 IEEE 27th International Requirements Engineering Conference (RE), 2019, pp. 265–275. doi:10.1109/RE.2019.00036.",
   "year": "2019",
   "url": "https://doi.org/10.1109/RE.2019.00036"
  },
  "10.1109/RE.2018.00023": {
   "number": 56,
-  "reference": "V. Ayala-Rivera, L. Pasquale, The grace period has ended: An approach to operationalize gdpr requirements, in: 2018 IEEE 26th International Requirements Engineering Conference (RE), 2018, pp. 136–146. doi:10.1109/RE.2018.00023.",
+  "reference": "V. Ayala-Rivera, L. Pasquale, The grace period has ended: An approach to operationalize GDPR requirements, in: 2018 IEEE 26th International Requirements Engineering Conference (RE), 2018, pp. 136–146. doi:10.1109/RE.2018.00023.",
   "year": "2018",
   "url": "https://doi.org/10.1109/RE.2018.00023"
  },
  "rayyan-218685148": {
   "number": 57,
-  "reference": "A. Punia, P. Gulia, N. S. Gill, E. Ibeke, C. Iwendi, P. K. Shukla, A systematic review on blockchain-based access control systems in cloud environment, J. Cloud Comput. 13 (1) (2024). doi:10.1186/s13677-024-00697-7.",
+  "reference": "A. Punia, P. Gulia, N. S. Gill, E. Ibeke, C. Iwendi, P. K. Shukla, A systematic review on blockchain-based access control systems in cloud environment, J. Cloud Comput. 13 (1) (2024) 146. doi:10.1186/s13677-024-00697-7.",
   "year": "2024",
   "url": "https://doi.org/10.1186/s13677-024-00697-7"
  },
  "petticrew2008systematic": {
   "number": 58,
-  "reference": "M. Petticrew, H. Roberts, Systematic reviews in the social sciences: A practical guide, John Wiley and Sons (2008).",
+  "reference": "M. Petticrew, H. Roberts, Systematic Reviews in the Social Sciences: A Practical Guide, John Wiley & Sons, 2008.",
   "year": "2008",
   "url": ""
  },
  "rayyan-218685725": {
   "number": 59,
-  "reference": "F. Cirillo, B. Cheng, R. Porcellana, M. Russo, G. Solmaz, H. Sakamoto, S. P. Romano, Intentkeeper: Intent-oriented data usage control for federated data analytics, in: 2020 IEEE 45th Conference on Local Computer Networks (LCN), 2020, pp. 204–215. doi:10.1109/LCN48667.2020.9314823.",
+  "reference": "F. Cirillo, B. Cheng, R. Porcellana, M. Russo, G. Solmaz, H. Sakamoto, S. P. Romano, IntentKeeper: Intent-oriented data usage control for federated data analytics, in: 2020 IEEE 45th Conference on Local Computer Networks (LCN), IEEE, 2020, pp. 204–215. doi:10.1109/LCN48667.2020.9314823.",
   "year": "2020",
   "url": "https://doi.org/10.1109/LCN48667.2020.9314823"
  },
@@ -362,19 +362,19 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218688549": {
   "number": 61,
-  "reference": "M. Alessi, A. Camillo, E. Giangreco, M. Matera, S. Pino, D. Storelli, Make users own their data: A decentralized personal data store prototype based on ethereum and ipfs, 2018 3rd International Conference on Smart and Sustainable Technologies, SpliTech 2018 (2018).",
+  "reference": "M. Alessi, A. Camillo, E. Giangreco, M. Matera, S. Pino, D. Storelli, Make users own their data: A decentralized personal data store prototype based on Ethereum and IPFS, in: 2018 3rd International Conference on Smart and Sustainable Technologies, SpliTech 2018, IEEE, 2018.",
   "year": "2018",
   "url": ""
  },
  "WOHLIN2022106908": {
   "number": 62,
-  "reference": "C. Wohlin, M. Kalinowski, K. R. Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Inf. Softw. Technol. 147 (2022) 106908.",
+  "reference": "C. Wohlin, M. Kalinowski, K. Romero Felizardo, E. Mendes, Successful combination of database search and snowballing for identification of primary studies in systematic literature studies, Inf. Softw. Technol. 147 (2022) 106908. doi:10.1016/j.infsof.2022.106908.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.infsof.2022.106908"
  },
  "WOHLIN2601248": {
   "number": 63,
-  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, Association for Computing Machinery, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
+  "reference": "C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, EASE '14, ACM, New York, NY, USA, 2014, pp. 38:1–38:10. doi:10.1145/2601248.2601268.",
   "year": "2014",
   "url": "https://doi.org/10.1145/2601248.2601268"
  },
@@ -386,37 +386,37 @@ window.DASHBOARD_REFERENCES = {
  },
  "NASA_TRA_2020": {
   "number": 65,
-  "reference": "NASA Office of the Chief Technologist, Technology readiness assessment best practices guide, National Aeronautics and Space Administration, Washington, DC (2020).",
+  "reference": "NASA Office of the Chief Technologist, Technology readiness assessment best practices guide, Tech. Rep. SP-20205003605, National Aeronautics and Space Administration, Washington, DC, NASA Special Publication; accessed 8 October 2026 (2020).",
   "year": "2020",
   "url": "https://ntrs.nasa.gov/api/citations/20205003605/downloads/SP-20205003605%20TRA%20BP%20Guide%20FINAL.pdf"
  },
  "Cruzes2011ThematicSynthesis": {
   "number": 66,
-  "reference": "D. S. Cruzes, T. Dyba, Recommended steps for thematic synthesis in software engineering, in: 2011 International Symposium on Empirical Software Engineering and Measurement, 2011, pp. 275–284. doi:10.1109/ESEM.2011.36.",
+  "reference": "D. S. Cruzes, T. Dybå, Recommended steps for thematic synthesis in software engineering, in: 2011 International Symposium on Empirical Software Engineering and Measurement, 2011, pp. 275–284. doi:10.1109/ESEM.2011.36.",
   "year": "2011",
   "url": "https://doi.org/10.1109/ESEM.2011.36"
  },
  "saldana2021coding": {
   "number": 67,
-  "reference": "J. Saldaña, The coding manual for qualitative researchers, SAGE publications Ltd (2021).",
+  "reference": "J. Saldaña, The Coding Manual for Qualitative Researchers, 4th Edition, SAGE Publications, 2021.",
   "year": "2021",
   "url": ""
  },
  "10.1109/WSESE66602.2025.00011": {
   "number": 68,
-  "reference": "S. Wagner, M. M. Barón, D. Falessi, S. Baltes, Towards evaluation guidelines for empirical studies involving llms, in: 2025 IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering (WSESE), 2025, pp. 24–27. doi:10.1109/WSESE66602.2025.00011.",
+  "reference": "S. Wagner, M. M. Barón, D. Falessi, S. Baltes, Towards evaluation guidelines for empirical studies involving LLMs, in: 2025 IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering (WSESE), 2025, pp. 24–27. doi:10.1109/WSESE66602.2025.00011.",
   "year": "2025",
   "url": "https://doi.org/10.1109/WSESE66602.2025.00011"
  },
  "10.1109/WSESE66602.2025.00010": {
   "number": 69,
-  "reference": "K. R. Felizardo, A. Deizepe, D. Coutinho, G. Gomes, M. Meireles, M. Gerosa, I. Steinmacher, On the difficulties of conducting and replicating systematic literature reviews studies using llms in software engineering, in: 2025 IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering (WSESE), 2025, pp. 20–23. doi:10.1109/WSESE66602.2025.00010.",
+  "reference": "K. R. Felizardo, A. Deizepe, D. Coutinho, G. Gomes, M. Meireles, M. Gerosa, I. Steinmacher, On the difficulties of conducting and replicating systematic literature reviews studies using LLMs in software engineering, in: 2025 IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering (WSESE), 2025, pp. 20–23. doi:10.1109/WSESE66602.2025.00010.",
   "year": "2025",
   "url": "https://doi.org/10.1109/WSESE66602.2025.00010"
  },
  "10.1145/3674805.3690743": {
   "number": 70,
-  "reference": "K. R. Felizardo, I. Steinmacher, M. S. Lima, A. Deizepe, T. U. Conte, M. P. Barcellos, Data extraction for systematic mapping study using a large language model - a proof-of-concept study in software engineering, in: Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement, Association for Computing Machinery, New York, NY, USA, 2024, pp. 407–413. doi:10.1145/3674805.3690743.",
+  "reference": "K. R. Felizardo, I. Steinmacher, M. S. Lima, A. Deizepe, T. U. Conte, M. P. Barcellos, Data extraction for systematic mapping study using a large language model - a proof-of-concept study in software engineering, in: Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement, ESEM '24, ACM, New York, NY, USA, 2024, pp. 407–413. doi:10.1145/3674805.3690743.",
   "year": "2024",
   "url": "https://doi.org/10.1145/3674805.3690743"
  },
@@ -434,43 +434,43 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027818": {
   "number": 73,
-  "reference": "S. Shree, C. Zhou, M. Barati, Data protection in internet of medical things using blockchain and secret sharing method, J. Supercomput. 80 (4) (2024) 5108–5135. doi:10.1007/s11227-023-05657-7.",
+  "reference": "S. Shree, C. Zhou, M. Barati, Data protection in Internet of Medical Things using blockchain and secret sharing method, J. Supercomput. 80 (4) (2024) 5108–5135. doi:10.1007/s11227-023-05657-7.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s11227-023-05657-7"
  },
  "rayyan-172027834": {
   "number": 74,
-  "reference": "P. K. Bhansali, D. Hiran, H. Kothari, K. Gulati, Cloud-based secure data storage and access control for internet of medical things using federated learning, Int. J. Pervasive Comput. Commun. 20 (2) (2024) 228–239. doi:10.1108/IJPCC-02-2022-0041.",
+  "reference": "P. K. Bhansali, D. Hiran, H. Kothari, K. Gulati, Cloud-based secure data storage and access control for Internet of Medical Things using federated learning, Int. J. Pervasive Comput. Commun. 20 (2) (2024) 228–239. doi:10.1108/IJPCC-02-2022-0041.",
   "year": "2024",
   "url": "https://doi.org/10.1108/IJPCC-02-2022-0041"
  },
  "rayyan-172027844": {
   "number": 75,
-  "reference": "X. Kong, G. Yue, Construction of embedded online teaching platform based on aes-rsa encryption algorithm, Discov. Artif. Intell. 4 (1) (2024). doi:10.1007/s44163-024-00217-1.",
+  "reference": "X. Kong, G. Yue, Construction of embedded online teaching platform based on AES-RSA encryption algorithm, Discov. Artif. Intell. 4 (1) (2024) 114. doi:10.1007/s44163-024-00217-1.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s44163-024-00217-1"
  },
  "rayyan-172027847": {
   "number": 76,
-  "reference": "S. Guo, C. Chen, Q. Tong, Secure data sharing technology of medical privacy data in the web 3.0, IET Blockchain 4 (4) (2024) 335–343. doi:10.1049/blc2.12086.",
+  "reference": "S. Guo, C. Chen, Q. Tong, Secure data sharing technology of medical privacy data in the Web 3.0, IET Blockchain 4 (4) (2024) 335–343. doi:10.1049/blc2.12086.",
   "year": "2024",
   "url": "https://doi.org/10.1049/blc2.12086"
  },
  "rayyan-172027849": {
   "number": 77,
-  "reference": "G. Wu, H. Wang, Z. Yang, D. He, S. Chan, Electronic health records sharing based on consortium blockchain, J. Med. Syst. 48 (1) (2024). doi:10.1007/s10916-024-02120-9.",
+  "reference": "G. Wu, H. Wang, Z. Yang, D. He, S. Chan, Electronic health records sharing based on consortium blockchain, J. Med. Syst. 48 (1) (2024) 106. doi:10.1007/s10916-024-02120-9.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s10916-024-02120-9"
  },
  "rayyan-172027868": {
   "number": 78,
-  "reference": "B. Hu, K. Zhang, J. Gong, L. Wei, J. Ning, Designated server proxy re-encryption with boolean keyword search for e-health clouds, J. Inf. Secur. Appl. 83 (2024). doi:10.1016/j.jisa.2024.103783.",
+  "reference": "B. Hu, K. Zhang, J. Gong, L. Wei, J. Ning, Designated server proxy re-encryption with boolean keyword search for e-health clouds, J. Inf. Secur. Appl. 83 (2024) 103783. doi:10.1016/j.jisa.2024.103783.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.jisa.2024.103783"
  },
  "rayyan-172027888": {
   "number": 79,
-  "reference": "R. Zhao, C. Xu, Z. Zhu, W. Mo, A blockchain-based secure sharing scheme for electrical impedance tomography data, Mathematics 12 (7) (2024). doi:10.3390/math12071120.",
+  "reference": "R. Zhao, C. Xu, Z. Zhu, W. Mo, A blockchain-based secure sharing scheme for electrical impedance tomography data, Mathematics 12 (7) (2024) 1120. doi:10.3390/math12071120.",
   "year": "2024",
   "url": "https://doi.org/10.3390/math12071120"
  },
@@ -482,31 +482,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027928": {
   "number": 81,
-  "reference": "D. Veeraiah, V. Sowjanya, S. Nagababu, Y. Anudeep, P. Tejaswini, M. Himasri, Enhanced healthcare security: Integrating blockchain and iot for patient data protection and remote vital sign monitoring, Proceedings of the 3rd International Conference on Applied Artificial Intelligence and Computing, ICAAIC 2024 (2024) 1434–1441. doi:10.1109/ICAAIC60222.2024.10575671.",
+  "reference": "D. Veeraiah, V. Sowjanya, S. Nagababu, Y. Anudeep, P. Tejaswini, M. Himasri, Enhanced healthcare security: Integrating blockchain and IoT for patient data protection and remote vital sign monitoring, in: Proceedings of the 3rd International Conference on Applied Artificial Intelligence and Computing, ICAAIC 2024, IEEE, 2024, pp. 1434–1441. doi:10.1109/ICAAIC60222.2024.10575671.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICAAIC60222.2024.10575671"
  },
  "rayyan-172027935": {
   "number": 82,
-  "reference": "S. Basudan, Ipfs-blockchain-based delegation model for internet of medical robotics things telesurgery system, Connect. Sci. 36 (1) (2024). doi:10.1080/09540091.2024.2367549.",
+  "reference": "S. Basudan, IPFS-blockchain-based delegation model for Internet of Medical Robotics Things telesurgery system, Connect. Sci. 36 (1) (2024) 2367549. doi:10.1080/09540091.2024.2367549.",
   "year": "2024",
   "url": "https://doi.org/10.1080/09540091.2024.2367549"
  },
  "rayyan-172027943": {
   "number": 83,
-  "reference": "P. Sivaprakash, R. Charaan, J. V. Ithayan, M. Sankar, R. Chithambaramani, D. Marichamy, Ipfs-based blockchain enabled system for secure data storage and access in healthcare, 2nd International Conference on Intelligent Cyber Physical Systems and Internet of Things, ICoICI 2024 - Proceedings (2024) 203–208. doi:10.1109/ICoICI62503.2024.10696438.",
+  "reference": "P. Sivaprakash, R. Charaan, J. V. Ithayan, M. Sankar, R. Chithambaramani, D. Marichamy, IPFS-based blockchain enabled system for secure data storage and access in healthcare, in: 2nd International Conference on Intelligent Cyber Physical Systems and Internet of Things, ICoICI 2024, IEEE, 2024, pp. 203–208. doi:10.1109/ICoICI62503.2024.10696438.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICoICI62503.2024.10696438"
  },
  "rayyan-172027981": {
   "number": 84,
-  "reference": "A. Sharma, R. K. Kaushal, N. Kumar, A comprehensive assessment of blockchain technology in the healthcare industry and techniques to store medical image, 2024 3rd International Conference on Electrical, Electronics, Information and Communication Technologies, ICEEICT 2024 (2024). doi:10.1109/ICEEICT61591.2024.10718467.",
+  "reference": "A. Sharma, R. K. Kaushal, N. Kumar, A comprehensive assessment of blockchain technology in the healthcare industry and techniques to store medical image, in: 2024 3rd International Conference on Electrical, Electronics, Information and Communication Technologies, ICEEICT 2024, IEEE, 2024, pp. 1–7. doi:10.1109/ICEEICT61591.2024.10718467.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICEEICT61591.2024.10718467"
  },
  "rayyan-172028017": {
   "number": 85,
-  "reference": "L. Zu, H. Li, L. Zhang, Z. Lu, J. Ye, X. Zhao, S. Hu, E-sawm: A semantic analysis-based odf watermarking algorithm for edge cloud scenarios, Future Internet 15 (9) (2023). doi:10.3390/fi15090283.",
+  "reference": "L. Zu, H. Li, L. Zhang, Z. Lu, J. Ye, X. Zhao, S. Hu, E-SAWM: A semantic analysis-based ODF watermarking algorithm for edge cloud scenarios, Future Internet 15 (9) (2023) 283. doi:10.3390/fi15090283.",
   "year": "2023",
   "url": "https://doi.org/10.3390/fi15090283"
  },
@@ -518,7 +518,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028035": {
   "number": 87,
-  "reference": "H. J. Pandit, P. Ryan, G. P. Krog, M. Crane, R. Brennan, Towards a semantic specification for gdpr data breach reporting, Front. Artif. Intell. Appl. 379 (2023) 131–136. doi:10.3233/FAIA230956.",
+  "reference": "H. J. Pandit, P. Ryan, G. P. Krog, M. Crane, R. Brennan, Towards a semantic specification for GDPR data breach reporting, Front. Artif. Intell. Appl. 379 (2023) 131–136. doi:10.3233/FAIA230956.",
   "year": "2023",
   "url": "https://doi.org/10.3233/FAIA230956"
  },
@@ -530,31 +530,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028055": {
   "number": 89,
-  "reference": "R. P. Puneeth, G. Parthasarathy, Blockchain-based framework for privacy preservation and securing ehr with patient-centric access control, Acta Inform. Pragensia 13 (1) (2024) 1–23. doi:10.18267/j.aip.225.",
+  "reference": "R. P. Puneeth, G. Parthasarathy, Blockchain-based framework for privacy preservation and securing EHR with patient-centric access control, Acta Inform. Pragensia 13 (1) (2024) 1–23. doi:10.18267/j.aip.225.",
   "year": "2024",
   "url": "https://doi.org/10.18267/j.aip.225"
  },
  "rayyan-172028095": {
   "number": 90,
-  "reference": "R. Ghugare, S. W. Rathod, A. Joshi, P. V. Patil, Decentralizing health: The role of private blockchain in secure and patient-oriented ehr management, 2024 2nd International Conference on Computer, Communication and Control, IC4 2024 (2024). doi:10.1109/IC457434.2024.10486508.",
+  "reference": "R. Ghugare, S. W. Rathod, A. Joshi, P. V. Patil, Decentralizing health: The role of private blockchain in secure and patient-oriented EHR management, in: 2024 2nd International Conference on Computer, Communication and Control, IC4 2024, IEEE, 2024, pp. 1–6. doi:10.1109/IC457434.2024.10486508.",
   "year": "2024",
   "url": "https://doi.org/10.1109/IC457434.2024.10486508"
  },
  "rayyan-172028127": {
   "number": 91,
-  "reference": "I. P. S. Setiawan, A. Alamsyah, Enhancing security, privacy, and traceability in indonesia's national health insurance claims process using blockchain technology, 2023 International Conference on Artificial Intelligence, Blockchain, Cloud Computing, and Data Analytics, ICoABCD 2023 (2023) 77–82. doi:10.1109/ICoABCD59879.2023.10390967.",
+  "reference": "I. P. S. Setiawan, A. Alamsyah, Enhancing security, privacy, and traceability in Indonesia's National Health Insurance claims process using blockchain technology, in: 2023 International Conference on Artificial Intelligence, Blockchain, Cloud Computing, and Data Analytics, ICoABCD 2023, IEEE, 2023, pp. 77–82. doi:10.1109/ICoABCD59879.2023.10390967.",
   "year": "2023",
   "url": "https://doi.org/10.1109/ICoABCD59879.2023.10390967"
  },
  "rayyan-172028165": {
   "number": 92,
-  "reference": "F. H. Semantha, S. Azam, B. Shanmugam, K. C. Yeo, Pbdinehr: A novel privacy by design developed framework using distributed data storage and sharing for secure and scalable electronic health records management, J. Sens. Actuator Netw. 12 (2) (2023). doi:10.3390/jsan12020036.",
+  "reference": "F. H. Semantha, S. Azam, B. Shanmugam, K. C. Yeo, PbDinEHR: A novel privacy by design developed framework using distributed data storage and sharing for secure and scalable electronic health records management, J. Sens. Actuator Netw. 12 (2) (2023) 36. doi:10.3390/jsan12020036.",
   "year": "2023",
   "url": "https://doi.org/10.3390/jsan12020036"
  },
  "rayyan-172028182": {
   "number": 93,
-  "reference": "B. Ganegoda, K. Kahandawaarachchi, Unlocking the potential of non-fungible tokens: A novel approach for privacy-preserving in ehr, International Conference on Software, Knowledge Information, Industrial Management and Applications, SKIMA (2023) 6–11. doi:10.1109/SKIMA59232.2023.10387303.",
+  "reference": "B. Ganegoda, K. Kahandawaarachchi, Unlocking the potential of non-fungible tokens: A novel approach for privacy-preserving in EHR, in: International Conference on Software, Knowledge Information, Industrial Management and Applications, SKIMA, IEEE, 2023, pp. 6–11. doi:10.1109/SKIMA59232.2023.10387303.",
   "year": "2023",
   "url": "https://doi.org/10.1109/SKIMA59232.2023.10387303"
  },
@@ -566,7 +566,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028233": {
   "number": 95,
-  "reference": "Y. Gao, A. Zhang, S. Wu, J. Chen, Blockchain-based multi-hop permission delegation scheme with controllable delegation depth for electronic health record sharing, High-Confid. Comput. 2 (4) (2022). doi:10.1016/j.hcc.2022.100084.",
+  "reference": "Y. Gao, A. Zhang, S. Wu, J. Chen, Blockchain-based multi-hop permission delegation scheme with controllable delegation depth for electronic health record sharing, High-Confid. Comput. 2 (4) (2022) 100084. doi:10.1016/j.hcc.2022.100084.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.hcc.2022.100084"
  },
@@ -578,91 +578,91 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028249": {
   "number": 97,
-  "reference": "K. Pampattiwar, P. Chavan, Security and privacy facets of electronic health record, Unleashing the Potentials of Blockchain Technology for Healthcare Industries (2023) 59–75. doi:10.1016/B978-0-323-99481-1.00006-7.",
+  "reference": "K. Pampattiwar, P. Chavan, Security and privacy facets of electronic health record, in: Unleashing the Potentials of Blockchain Technology for Healthcare Industries, Elsevier, 2023, pp. 59–75. doi:10.1016/B978-0-323-99481-1.00006-7.",
   "year": "2023",
   "url": "https://doi.org/10.1016/B978-0-323-99481-1.00006-7"
  },
  "rayyan-172028274": {
   "number": 98,
-  "reference": "P. A. Miranda, J. Kaur, P. Morita, Ubisece: Ubilab's secure cloud environment for public health research in microsoft azure, International Conference on Wireless and Mobile Computing, Networking and Communications 2023 (2023) 1–4. doi:10.1109/WiMob58348.2023.10187831.",
+  "reference": "P. A. Miranda, J. Kaur, P. Morita, UbiSecE: UbiLab's secure cloud environment for public health research in Microsoft Azure, in: International Conference on Wireless and Mobile Computing, Networking and Communications, IEEE Computer Society, 2023, pp. 1–4. doi:10.1109/WiMob58348.2023.10187831.",
   "year": "2023",
   "url": "https://doi.org/10.1109/WiMob58348.2023.10187831"
  },
  "rayyan-172028383": {
   "number": 99,
-  "reference": "P. Ahirao, S. Joshi, Social media users privacy protection from social surveillance using blockchain technology, IBSSC 2022 - IEEE Bombay Section Signature Conference (2022). doi:10.1109/IBSSC56953.2022.10037392.",
+  "reference": "P. Ahirao, S. Joshi, Social media users privacy protection from social surveillance using blockchain technology, in: IBSSC 2022 - IEEE Bombay Section Signature Conference, IEEE, 2022, pp. 1–6. doi:10.1109/IBSSC56953.2022.10037392.",
   "year": "2022",
   "url": "https://doi.org/10.1109/IBSSC56953.2022.10037392"
  },
  "rayyan-172028402": {
   "number": 100,
-  "reference": "I. C. A. Pilares, S. Azam, S. Akbulut, M. Jonkman, B. Shanmugam, Addressing the challenges of electronic health records using blockchain and ipfs, Sensors 22 (11) (2022). doi:10.3390/s22114032.",
+  "reference": "I. C. A. Pilares, S. Azam, S. Akbulut, M. Jonkman, B. Shanmugam, Addressing the challenges of electronic health records using blockchain and IPFS, Sensors 22 (11) (2022) 4032. doi:10.3390/s22114032.",
   "year": "2022",
   "url": "https://doi.org/10.3390/s22114032"
  },
  "rayyan-172028473": {
   "number": 101,
-  "reference": "S. Sharmin, I. H. Sarker, M. Shamim Kaiser, M. S. Arefin, Interplanetary file system-based decentralized and secured electronic health record system using lightweight algorithm, Lect. Notes Data Eng. Commun. Technol. 95 (2022) 691–702. doi:10.1007/978-981-16-6636-0_52.",
+  "reference": "S. Sharmin, I. H. Sarker, M. Shamim Kaiser, M. S. Arefin, InterPlanetary File System-based decentralized and secured electronic health record system using lightweight algorithm, Lect. Notes Data Eng. Commun. Technol. 95 (2022) 691–702. doi:10.1007/978-981-16-6636-0_52.",
   "year": "2022",
   "url": "https://doi.org/10.1007/978-981-16-6636-0_52"
  },
  "rayyan-172028480": {
   "number": 102,
-  "reference": "H. Wu, A. D. Dwivedi, G. Srivastava, Security and privacy of patient information in medical systems based on blockchain technology, ACM Trans. Multimed. Comput. Commun. Appl. 17 (2) (2021). doi:10.1145/3408321.",
+  "reference": "H. Wu, A. D. Dwivedi, G. Srivastava, Security and privacy of patient information in medical systems based on blockchain technology, ACM Trans. Multimed. Comput. Commun. Appl. 17 (2s) (2021) 1–17. doi:10.1145/3408321.",
   "year": "2021",
   "url": "https://doi.org/10.1145/3408321"
  },
  "rayyan-172028518": {
   "number": 103,
-  "reference": "L. Li, Z. Yue, G. Wu, Electronic medical record sharing system based on hyperledger fabric and interplanetary file system, ACM Int. Conf. Proc. Ser. (2021) 149–154. doi:10.1145/3456529.3456555.",
+  "reference": "L. Li, Z. Yue, G. Wu, Electronic medical record sharing system based on Hyperledger Fabric and InterPlanetary File System, in: ACM International Conference Proceeding Series, ACM, 2021, pp. 149–154. doi:10.1145/3456529.3456555.",
   "year": "2021",
   "url": "https://doi.org/10.1145/3456529.3456555"
  },
  "rayyan-172028579": {
   "number": 104,
-  "reference": "M. M. Mahdy, Semi-centralized blockchain based distributed system for secure and private sharing of electronic health records, Proceedings of: 2020 International Conference on Computer, Control, Electrical, and Electronics Engineering, ICCCEEE 2020 (2021). doi:10.1109/ICCCEEE49695.2021.9429554.",
+  "reference": "M. M. Mahdy, Semi-centralized blockchain based distributed system for secure and private sharing of electronic health records, in: 2020 International Conference on Computer, Control, Electrical, and Electronics Engineering, ICCCEEE 2020, IEEE, 2021, pp. 1–4. doi:10.1109/ICCCEEE49695.2021.9429554.",
   "year": "2021",
   "url": "https://doi.org/10.1109/ICCCEEE49695.2021.9429554"
  },
  "rayyan-172028646": {
   "number": 105,
-  "reference": "R. K. Marangappanavar, K. Kiran, Inter-planetary file system enabled blockchain solution for securing healthcare records, ISEA-ISAP 2020 - Proceedings of the 3rd ISEA International Conference on Security and Privacy 2020 (2020) 171–178. doi:10.1109/ISEA-ISAP49340.2020.235016.",
+  "reference": "R. K. Marangappanavar, K. Kiran, Inter-Planetary File System enabled blockchain solution for securing healthcare records, in: ISEA-ISAP 2020 - Proceedings of the 3rd ISEA International Conference on Security and Privacy 2020, IEEE, 2020, pp. 171–178. doi:10.1109/ISEA-ISAP49340.2020.235016.",
   "year": "2020",
   "url": "https://doi.org/10.1109/ISEA-ISAP49340.2020.235016"
  },
  "rayyan-172028976": {
   "number": 106,
-  "reference": "G. N. Vo, R. Lai, A secure multi-layer e-application framework for e-government processes, Proceedings of the European Conference on e-Government, ECEG 2014 (2014) 352–362.",
+  "reference": "G. N. Vo, R. Lai, A secure multi-layer e-application framework for e-government processes, in: Proceedings of the European Conference on e-Government, ECEG, Academic Conferences Limited, 2014, pp. 352–362.",
   "year": "2014",
   "url": ""
  },
  "rayyan-218685005": {
   "number": 107,
-  "reference": "N. K. Dewangan, P. Chandrakar, Treatchain: A patient-centric treatment cycle blockchain using proof-of-upload consensus, Peer-to-Peer Netw. Appl. 18 (3) (2025). doi:10.1007/s12083-025-01984-z.",
+  "reference": "N. K. Dewangan, P. Chandrakar, TreatChain: A patient-centric treatment cycle blockchain using proof-of-upload consensus, Peer-to-Peer Netw. Appl. 18 (3) (2025) 154. doi:10.1007/s12083-025-01984-z.",
   "year": "2025",
   "url": "https://doi.org/10.1007/s12083-025-01984-z"
  },
  "rayyan-218685020": {
   "number": 108,
-  "reference": "R. Saranya, A. Murugan, Rbhap-hlb framework with high data privacy for secured ehr storage, Fusion Pract. Appl. 18 (2) (2025) 182–199. doi:10.54216/FPA.180214.",
+  "reference": "R. Saranya, A. Murugan, RBHAP-HLB framework with high data privacy for secured EHR storage, Fusion Pract. Appl. 18 (2) (2025) 182–199. doi:10.54216/FPA.180214.",
   "year": "2025",
   "url": "https://doi.org/10.54216/FPA.180214"
  },
  "rayyan-218685039": {
   "number": 109,
-  "reference": "R. Naga Priyadarsini, B. Tyagi, B. Harsath, R. Vinoth Kannan, Blockchain-based electronic health record system, IETE J. Res. (2025). doi:10.1080/03772063.2025.2451060.",
+  "reference": "R. Naga Priyadarsini, B. Tyagi, B. Harsath, R. Vinoth Kannan, Blockchain-based electronic health record system, IETE J. Res. 71 (4) (2025) 1432–1443. doi:10.1080/03772063.2025.2451060.",
   "year": "2025",
   "url": "https://doi.org/10.1080/03772063.2025.2451060"
  },
  "rayyan-218685131": {
   "number": 110,
-  "reference": "H. E. Said, N. B. Al Barghuthi, S. M. Badi, F. Hashim, S. Girija, Phr-nft: Decentralized blockchain framework with hyperledger and nfts for secure and transparent patient health records, Appl. Sci. 14 (22) (2024). doi:10.3390/app142210744.",
+  "reference": "H. E. Said, N. B. Al Barghuthi, S. M. Badi, F. Hashim, S. Girija, PHR-NFT: Decentralized blockchain framework with Hyperledger and NFTs for secure and transparent patient health records, Appl. Sci. 14 (22) (2024) 10744. doi:10.3390/app142210744.",
   "year": "2024",
   "url": "https://doi.org/10.3390/app142210744"
  },
  "rayyan-218685225": {
   "number": 111,
-  "reference": "P. P. Pawar, D. Kumar, M. K. Meesala, P. K. Pareek, S. R. Addula, K. Shwetha, A patient-centric blockchain framework for transparent and secure medical data sharing using modified aes, 2nd IEEE International Conference on Integrated Intelligence and Communication Systems, ICIICS 2024 (2024). doi:10.1109/ICIICS63763.2024.10859825.",
+  "reference": "P. P. Pawar, D. Kumar, M. K. Meesala, P. K. Pareek, S. R. Addula, K. Shwetha, A patient-centric blockchain framework for transparent and secure medical data sharing using modified AES, in: 2nd IEEE International Conference on Integrated Intelligence and Communication Systems, ICIICS 2024, IEEE, 2024, pp. 1–7. doi:10.1109/ICIICS63763.2024.10859825.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICIICS63763.2024.10859825"
  },
@@ -674,37 +674,37 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218685236": {
   "number": 113,
-  "reference": "A. Rajasekharan, R. Koshy, Emrchain: Electronic medical records management system using blockchain, 2024 IEEE International Conference on Blockchain and Distributed Systems Security, ICBDS 2024 (2024). doi:10.1109/ICBDS61829.2024.10837244.",
+  "reference": "A. Rajasekharan, R. Koshy, EMRChain: Electronic medical records management system using blockchain, in: 2024 IEEE International Conference on Blockchain and Distributed Systems Security, ICBDS 2024, IEEE, 2024, pp. 1–6. doi:10.1109/ICBDS61829.2024.10837244.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICBDS61829.2024.10837244"
  },
  "rayyan-218685245": {
   "number": 114,
-  "reference": "A. Giri, R. Sandhu, M. Rakhra, G. S. Cheema, Blockchain framework for secure patient data management, Proceedings - 4th International Conference on Technological Advancements in Computational Sciences, ICTACS 2024 (2024) 1012–1018. doi:10.1109/ICTACS62700.2024.10840674.",
+  "reference": "A. Giri, R. Sandhu, M. Rakhra, G. S. Cheema, Blockchain framework for secure patient data management, in: 4th International Conference on Technological Advancements in Computational Sciences, ICTACS 2024, IEEE, 2024, pp. 1012–1018. doi:10.1109/ICTACS62700.2024.10840674.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICTACS62700.2024.10840674"
  },
  "rayyan-218685264": {
   "number": 115,
-  "reference": "X. Yang, K. Zhang, K. Jia, P. Zhao, A personalized and efficient emr sharing and management scheme based on smart contracts, Peer-to-Peer Netw. Appl. 17 (3) (2024) 1569–1587. doi:10.1007/s12083-024-01669-z.",
+  "reference": "X. Yang, K. Zhang, K. Jia, P. Zhao, A personalized and efficient EMR sharing and management scheme based on smart contracts, Peer-to-Peer Netw. Appl. 17 (3) (2024) 1569–1587. doi:10.1007/s12083-024-01669-z.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s12083-024-01669-z"
  },
  "rayyan-218685292": {
   "number": 116,
-  "reference": "D. F. R. Pacheco, S. D. Y. Vasquez, V. M. P. Falcon, Technological model for the prevention of leaks of medical records based on blockchain technology in the peruvian health sector, Proceedings of the 2024 IEEE 31st International Conference on Electronics, Electrical Engineering and Computing, INTERCON 2024 (2024). doi:10.1109/INTERCON63140.2024.10833483.",
+  "reference": "D. F. R. Pacheco, S. D. Y. Vasquez, V. M. P. Falcon, Technological model for the prevention of leaks of medical records based on blockchain technology in the Peruvian health sector, in: Proceedings of the 2024 IEEE 31st International Conference on Electronics, Electrical Engineering and Computing, INTERCON 2024, IEEE, 2024, pp. 1–7. doi:10.1109/INTERCON63140.2024.10833483.",
   "year": "2024",
   "url": "https://doi.org/10.1109/INTERCON63140.2024.10833483"
  },
  "rayyan-218685334": {
   "number": 117,
-  "reference": "J. Dutta, S. Barman, Smart contract and blockchain-based secured approach for storing and sharing electronic health records, Multimed. Tools Appl. (2024). doi:10.1007/s11042-024-19714-7.",
+  "reference": "J. Dutta, S. Barman, Smart contract and blockchain-based secured approach for storing and sharing electronic health records, Multimed. Tools Appl. 84 (16) (2024) 16883–16907. doi:10.1007/s11042-024-19714-7.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s11042-024-19714-7"
  },
  "rayyan-218685380": {
   "number": 118,
-  "reference": "B. A. Dedeturk, B. Bakir-Gungor, Aguhyper: a hyperledger-based electronic health record management framework, PeerJ Comput. Sci. 10 (2024) 1–33. doi:10.7717/PEERJ-CS.2060.",
+  "reference": "B. A. Dedeturk, B. Bakir-Gungor, AguHyper: a Hyperledger-based electronic health record management framework, PeerJ Comput. Sci. 10 (2024) e2060. doi:10.7717/PEERJ-CS.2060.",
   "year": "2024",
   "url": "https://doi.org/10.7717/PEERJ-CS.2060"
  },
@@ -722,121 +722,121 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218685532": {
   "number": 121,
-  "reference": "R. A. Abutaleb, S. S. Alqahtany, T. A. Syed, Integrity and privacy-aware, patient-centric health record access control framework using a blockchain, Appl. Sci. 13 (2) (2023). doi:10.3390/app13021028.",
+  "reference": "R. A. Abutaleb, S. S. Alqahtany, T. A. Syed, Integrity and privacy-aware, patient-centric health record access control framework using a blockchain, Appl. Sci. 13 (2) (2023) 1028. doi:10.3390/app13021028.",
   "year": "2023",
   "url": "https://doi.org/10.3390/app13021028"
  },
  "rayyan-218685546": {
   "number": 122,
-  "reference": "H. Mhamdi, M. Ayadi, A. Ksibi, A. Al-Rasheed, B. O. Soufiene, S. Hedi, Semrachain: A secure electronic medical record based on blockchain technology, Electronics 11 (21) (2022). doi:10.3390/electronics11213617.",
+  "reference": "H. Mhamdi, M. Ayadi, A. Ksibi, A. Al-Rasheed, B. O. Soufiene, S. Hedi, SEMRAchain: A secure electronic medical record based on blockchain technology, Electronics 11 (21) (2022) 3617. doi:10.3390/electronics11213617.",
   "year": "2022",
   "url": "https://doi.org/10.3390/electronics11213617"
  },
  "rayyan-218685713": {
   "number": 123,
-  "reference": "B. Zaabar, O. Cheikhrouhou, F. Jamil, M. Ammi, M. Abid, Healthblock: A secure blockchain-based healthcare data management system, Comput. Netw. 200 (2021). doi:10.1016/j.comnet.2021.108500.",
+  "reference": "B. Zaabar, O. Cheikhrouhou, F. Jamil, M. Ammi, M. Abid, HealthBlock: A secure blockchain-based healthcare data management system, Comput. Netw. 200 (2021) 108500. doi:10.1016/j.comnet.2021.108500.",
   "year": "2021",
   "url": "https://doi.org/10.1016/j.comnet.2021.108500"
  },
  "rayyan-218687107": {
   "number": 124,
-  "reference": "H. Wang, Y. Xie, Y. Liu, X. Li, P. Dorje, Data verifiable personalized access control electronic healthcare record sharing based on blockchain in iot environment, IEEE Internet Things J. 11 (4) (2024) 5696–5707. doi:10.1109/JIOT.2023.3309322.",
+  "reference": "H. Wang, Y. Xie, Y. Liu, X. Li, P. Dorje, Data verifiable personalized access control electronic healthcare record sharing based on blockchain in IoT environment, IEEE Internet Things J. 11 (4) (2024) 5696–5707. doi:10.1109/JIOT.2023.3309322.",
   "year": "2024",
   "url": "https://doi.org/10.1109/JIOT.2023.3309322"
  },
  "rayyan-218687130": {
   "number": 125,
-  "reference": "A. Xiang, H. Gao, Y. Tian, L. Wang, J. Xiong, Attribute-based key management for patient-centric and trusted data access in blockchain-enabled iomt, Comput. Netw. 246 (2024). doi:10.1016/j.comnet.2024.110425.",
+  "reference": "A. Xiang, H. Gao, Y. Tian, L. Wang, J. Xiong, Attribute-based key management for patient-centric and trusted data access in blockchain-enabled IoMT, Comput. Netw. 246 (2024) 110425. doi:10.1016/j.comnet.2024.110425.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.comnet.2024.110425"
  },
  "rayyan-218687255": {
   "number": 126,
-  "reference": "B. S. Egala, A. K. Pradhan, P. Dey, V. Badarla, S. P. Mohanty, Fortified-chain 2.0: Intelligent blockchain for decentralized smart healthcare system, IEEE Internet Things J. 10 (14) (2023) 12308–12321. doi:10.1109/JIOT.2023.3247452.",
+  "reference": "B. S. Egala, A. K. Pradhan, P. Dey, V. Badarla, S. P. Mohanty, Fortified-Chain 2.0: Intelligent blockchain for decentralized smart healthcare system, IEEE Internet Things J. 10 (14) (2023) 12308–12321. doi:10.1109/JIOT.2023.3247452.",
   "year": "2023",
   "url": "https://doi.org/10.1109/JIOT.2023.3247452"
  },
  "rayyan-218687262": {
   "number": 127,
-  "reference": "R. Cerchione, P. Centobelli, E. Riccio, S. Abbate, E. Oropallo, Blockchain's coming to hospital to digitalize healthcare services: Designing a distributed electronic health record ecosystem, Technovation 120 (2023). doi:10.1016/j.technovation.2022.102480.",
+  "reference": "R. Cerchione, P. Centobelli, E. Riccio, S. Abbate, E. Oropallo, Blockchain's coming to hospital to digitalize healthcare services: Designing a distributed electronic health record ecosystem, Technovation 120 (2023) 102480. doi:10.1016/j.technovation.2022.102480.",
   "year": "2023",
   "url": "https://doi.org/10.1016/j.technovation.2022.102480"
  },
  "rayyan-218687386": {
   "number": 128,
-  "reference": "L. Zhang, H. Kan, H. Huang, Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption, ACM Int. Conf. Proc. Ser. (2022) 58–66. doi:10.1145/3528416.3530228.",
+  "reference": "L. Zhang, H. Kan, H. Huang, Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption, in: ACM International Conference Proceeding Series, ACM, 2022, pp. 58–66. doi:10.1145/3528416.3530228.",
   "year": "2022",
   "url": "https://doi.org/10.1145/3528416.3530228"
  },
  "rayyan-218687416": {
   "number": 129,
-  "reference": "X. Zhao, S. Wang, Y. Zhang, Y. Wang, Attribute-based access control scheme for data sharing on hyperledger fabric, J. Inf. Secur. Appl. 67 (2022). doi:10.1016/j.jisa.2022.103182.",
+  "reference": "X. Zhao, S. Wang, Y. Zhang, Y. Wang, Attribute-based access control scheme for data sharing on Hyperledger Fabric, J. Inf. Secur. Appl. 67 (2022) 103182. doi:10.1016/j.jisa.2022.103182.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.jisa.2022.103182"
  },
  "rayyan-218687470": {
   "number": 130,
-  "reference": "J. Chen, X. Yin, J. Ning, A fine-grained and secure health data sharing scheme based on blockchain, Trans. Emerg. Telecommun. Technol. 33 (9) (2022). doi:10.1002/ett.4510.",
+  "reference": "J. Chen, X. Yin, J. Ning, A fine-grained and secure health data sharing scheme based on blockchain, Trans. Emerg. Telecommun. Technol. 33 (9) (2022) e4510. doi:10.1002/ett.4510.",
   "year": "2022",
   "url": "https://doi.org/10.1002/ett.4510"
  },
  "rayyan-218687484": {
   "number": 131,
-  "reference": "P. Pawar, N. Parolia, S. Shinde, T. O. Edoh, M. Singh, ehealthchain—a blockchain-based personal health information management system, Ann. Telecommun. 77 (1) (2022) 33–45. doi:10.1007/s12243-021-00868-6.",
+  "reference": "P. Pawar, N. Parolia, S. Shinde, T. O. Edoh, M. Singh, eHealthChain—a blockchain-based personal health information management system, Ann. Telecommun. 77 (1) (2022) 33–45. doi:10.1007/s12243-021-00868-6.",
   "year": "2022",
   "url": "https://doi.org/10.1007/s12243-021-00868-6"
  },
  "rayyan-218687541": {
   "number": 132,
-  "reference": "H. Saidi, N. Labraoui, A. A. A. Ari, L. A. Maglaras, J. H. M. Emati, Dsmac: Privacy-aware decentralized self-management of data access control based on blockchain for health data, IEEE Access 10 (2022) 101011–101028. doi:10.1109/ACCESS.2022.3207803.",
+  "reference": "H. Saidi, N. Labraoui, A. A. A. Ari, L. A. Maglaras, J. H. M. Emati, DSMAC: Privacy-aware decentralized self-management of data access control based on blockchain for health data, IEEE Access 10 (2022) 101011–101028. doi:10.1109/ACCESS.2022.3207803.",
   "year": "2022",
   "url": "https://doi.org/10.1109/ACCESS.2022.3207803"
  },
  "rayyan-218687555": {
   "number": 133,
-  "reference": "K. Kostick-Quenet, K. D. Mandl, T. Minssen, I. G. Cohen, U. Gasser, I. Kohane, A. L. McGuire, How nfts could transform health information exchange, Science 375 (6580) (2022) 500–502. doi:10.1126/science.abm2004.",
+  "reference": "K. Kostick-Quenet, K. D. Mandl, T. Minssen, I. G. Cohen, U. Gasser, I. Kohane, A. L. McGuire, How NFTs could transform health information exchange, Science 375 (6580) (2022) 500–502. doi:10.1126/science.abm2004.",
   "year": "2022",
   "url": "https://doi.org/10.1126/science.abm2004"
  },
  "rayyan-218687604": {
   "number": 134,
-  "reference": "Y. Wang, Z. Su, N. Zhang, J. Chen, X. Sun, Z. Ye, Z. Zhou, Spds: A secure and auditable private data sharing scheme for smart grid based on blockchain, IEEE Trans. Ind. Inform. 17 (11) (2021) 7688–7699. doi:10.1109/TII.2020.3040171.",
+  "reference": "Y. Wang, Z. Su, N. Zhang, J. Chen, X. Sun, Z. Ye, Z. Zhou, SPDS: A secure and auditable private data sharing scheme for smart grid based on blockchain, IEEE Trans. Ind. Inform. 17 (11) (2021) 7688–7699. doi:10.1109/TII.2020.3040171.",
   "year": "2021",
   "url": "https://doi.org/10.1109/TII.2020.3040171"
  },
  "rayyan-218687675": {
   "number": 135,
-  "reference": "V. Mani, P. Manickam, Y. Alotaibi, S. Alghamdi, O. I. Khalaf, Hyperledger healthchain: Patient-centric ipfs-based storage of health records, Electronics 10 (23) (2021). doi:10.3390/electronics10233003.",
+  "reference": "V. Mani, P. Manickam, Y. Alotaibi, S. Alghamdi, O. I. Khalaf, Hyperledger Healthchain: Patient-centric IPFS-based storage of health records, Electronics 10 (23) (2021) 3003. doi:10.3390/electronics10233003.",
   "year": "2021",
   "url": "https://doi.org/10.3390/electronics10233003"
  },
  "rayyan-218687743": {
   "number": 136,
-  "reference": "H. M. Hussien, S. M. Yasin, N. I. Udzir, M. I. H. Ninggal, Blockchain-based access control scheme for secure shared personal health records over decentralised storage, Sensors 21 (7) (2021). doi:10.3390/s21072462.",
+  "reference": "H. M. Hussien, S. M. Yasin, N. I. Udzir, M. I. H. Ninggal, Blockchain-based access control scheme for secure shared personal health records over decentralised storage, Sensors 21 (7) (2021) 2462. doi:10.3390/s21072462.",
   "year": "2021",
   "url": "https://doi.org/10.3390/s21072462"
  },
  "rayyan-218687745": {
   "number": 137,
-  "reference": "R. Cong, Y. Liu, K. Tago, R. Li, H. Asaeda, Q. Jin, Individual-initiated auditable access control for privacy-preserved iot data sharing with blockchain, 2021 IEEE International Conference on Communications Workshops, ICC Workshops 2021 - Proceedings (2021). doi:10.1109/ICCWorkshops50388.2021.9473508.",
+  "reference": "R. Cong, Y. Liu, K. Tago, R. Li, H. Asaeda, Q. Jin, Individual-initiated auditable access control for privacy-preserved IoT data sharing with blockchain, in: 2021 IEEE International Conference on Communications Workshops, ICC Workshops 2021, IEEE, 2021, pp. 1–6. doi:10.1109/ICCWorkshops50388.2021.9473508.",
   "year": "2021",
   "url": "https://doi.org/10.1109/ICCWorkshops50388.2021.9473508"
  },
  "rayyan-218687761": {
   "number": 138,
-  "reference": "B. Alamri, I. T. Javed, T. Margaria, A gdpr-compliant framework for iot-based personal health records using blockchain, 2021 11th IFIP International Conference on New Technologies, Mobility and Security, NTMS 2021 (2021). doi:10.1109/NTMS49979.2021.9432661.",
+  "reference": "B. Alamri, I. T. Javed, T. Margaria, A GDPR-compliant framework for IoT-based personal health records using blockchain, in: 2021 11th IFIP International Conference on New Technologies, Mobility and Security, NTMS 2021, IEEE, 2021, pp. 1–5. doi:10.1109/NTMS49979.2021.9432661.",
   "year": "2021",
   "url": "https://doi.org/10.1109/NTMS49979.2021.9432661"
  },
  "rayyan-218687860": {
   "number": 139,
-  "reference": "Y. Chen, L. Meng, H. Zhou, G. Xue, A blockchain-based medical data sharing mechanism with attribute-based access control and privacy protection, Wirel. Commun. Mob. Comput. 2021 (2021). doi:10.1155/2021/6685762.",
+  "reference": "Y. Chen, L. Meng, H. Zhou, G. Xue, A blockchain-based medical data sharing mechanism with attribute-based access control and privacy protection, Wirel. Commun. Mob. Comput. 2021 (2021) 6685762. doi:10.1155/2021/6685762.",
   "year": "2021",
   "url": "https://doi.org/10.1155/2021/6685762"
  },
  "rayyan-218687992": {
   "number": 140,
-  "reference": "A. Dubovitskaya, F. Baig, Z. Xu, R. Shukla, P. S. Zambani, A. Swaminathan, M. M. Jahangir, K. Chowdhry, R. Lachhani, N. Idnani, M. Schumacher, K. Aberer, S. D. Stoller, S. Ryu, F. Wang, Action-ehr: Patient-centric blockchain-based electronic health record data management for cancer care, J. Med. Internet Res. 22 (8) (2020). doi:10.2196/13598.",
+  "reference": "A. Dubovitskaya, F. Baig, Z. Xu, R. Shukla, P. S. Zambani, A. Swaminathan, M. M. Jahangir, K. Chowdhry, R. Lachhani, N. Idnani, M. Schumacher, K. Aberer, S. D. Stoller, S. Ryu, F. Wang, ACTION-EHR: Patient-centric blockchain-based electronic health record data management for cancer care, J. Med. Internet Res. 22 (8) (2020) e13598. doi:10.2196/13598.",
   "year": "2020",
   "url": "https://doi.org/10.2196/13598"
  },
@@ -848,7 +848,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218688112": {
   "number": 142,
-  "reference": "B. Sharma, R. Halder, J. Singh, Blockchain-based interoperable healthcare using zero-knowledge proofs and proxy re-encryption, 2020 International Conference on COMmunication Systems and NETworkS, COMSNETS 2020 (2020) 1–6. doi:10.1109/COMSNETS48256.2020.9027413.",
+  "reference": "B. Sharma, R. Halder, J. Singh, Blockchain-based interoperable healthcare using zero-knowledge proofs and proxy re-encryption, in: 2020 International Conference on COMmunication Systems and NETworkS, COMSNETS 2020, IEEE, 2020, pp. 1–6. doi:10.1109/COMSNETS48256.2020.9027413.",
   "year": "2020",
   "url": "https://doi.org/10.1109/COMSNETS48256.2020.9027413"
  },
@@ -872,31 +872,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218688172": {
   "number": 146,
-  "reference": "G. S. Reen, M. Mohandas, S. Venkatesan, Decentralized patient centric e-health record management system using blockchain and ipfs, 2019 IEEE Conference on Information and Communication Technology, CICT 2019 (2019). doi:10.1109/CICT48419.2019.9066212.",
+  "reference": "G. S. Reen, M. Mohandas, S. Venkatesan, Decentralized patient centric e-health record management system using blockchain and IPFS, in: 2019 IEEE Conference on Information and Communication Technology, CICT 2019, IEEE, 2019, pp. 1–7. doi:10.1109/CICT48419.2019.9066212.",
   "year": "2019",
   "url": "https://doi.org/10.1109/CICT48419.2019.9066212"
  },
  "rayyan-218688174": {
   "number": 147,
-  "reference": "T. Abdul Rahoof, V. Deepthi, Healthchain: A secure scalable health care data management system using blockchain, Lect. Notes Comput. Sci. 11969 (2020) 380–391. doi:10.1007/978-3-030-36987-3_25.",
+  "reference": "T. Abdul Rahoof, V. Deepthi, HealthChain: A secure scalable health care data management system using blockchain, Lect. Notes Comput. Sci. 11969 (2020) 380–391. doi:10.1007/978-3-030-36987-3_25.",
   "year": "2020",
   "url": "https://doi.org/10.1007/978-3-030-36987-3_25"
  },
  "rayyan-218688176": {
   "number": 148,
-  "reference": "M. Verdonck, G. Poels, Decentralized data access with ipfs and smart contract permission management for electronic health records, Lect. Notes Bus. Inf. Process. 397 (2020) 5–16. doi:10.1007/978-3-030-66498-5_1.",
+  "reference": "M. Verdonck, G. Poels, Decentralized data access with IPFS and smart contract permission management for electronic health records, Lect. Notes Bus. Inf. Process. 397 (2020) 5–16. doi:10.1007/978-3-030-66498-5_1.",
   "year": "2020",
   "url": "https://doi.org/10.1007/978-3-030-66498-5_1"
  },
  "rayyan-218688212": {
   "number": 149,
-  "reference": "J. Huang, Y. W. Qi, M. R. Asghar, A. Meads, Y.-C. Tu, Medbloc: A blockchain-based secure ehr system for sharing and accessing medical data, Proceedings - 2019 18th IEEE International Conference on Trust, Security and Privacy in Computing and Communications/13th IEEE International Conference on Big Data Science and Engineering, TrustCom/BigDataSE 2019 (2019) 594–601. doi:10.1109/TrustCom/BigDataSE.2019.00085.",
+  "reference": "J. Huang, Y. W. Qi, M. R. Asghar, A. Meads, Y.-C. Tu, MedBloc: A blockchain-based secure EHR system for sharing and accessing medical data, in: 2019 18th IEEE International Conference on Trust, Security and Privacy in Computing and Communications/13th IEEE International Conference on Big Data Science and Engineering, TrustCom/BigDataSE 2019, IEEE, 2019, pp. 594–601. doi:10.1109/TrustCom/BigDataSE.2019.00085.",
   "year": "2019",
   "url": "https://doi.org/10.1109/TrustCom/BigDataSE.2019.00085"
  },
  "rayyan-218688262": {
   "number": 150,
-  "reference": "R. H. Hylock, X. Zeng, A blockchain framework for patient-centered health records and exchange (healthchain): Evaluation and proof-of-concept study, J. Med. Internet Res. 21 (8) (2019). doi:10.2196/13592.",
+  "reference": "R. H. Hylock, X. Zeng, A blockchain framework for patient-centered health records and exchange (HealthChain): Evaluation and proof-of-concept study, J. Med. Internet Res. 21 (8) (2019) e13592. doi:10.2196/13592.",
   "year": "2019",
   "url": "https://doi.org/10.2196/13592"
  },
@@ -908,31 +908,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218688318": {
   "number": 152,
-  "reference": "S. Jiang, H. Wu, L. Wang, Patients-controlled secure and privacy-preserving ehrs sharing scheme based on consortium blockchain, Proceedings - IEEE Global Communications Conference, GLOBECOM (2019). doi:10.1109/GLOBECOM38437.2019.9013220.",
+  "reference": "S. Jiang, H. Wu, L. Wang, Patients-controlled secure and privacy-preserving EHRs sharing scheme based on consortium blockchain, in: IEEE Global Communications Conference, GLOBECOM, 2019, pp. 1–6. doi:10.1109/GLOBECOM38437.2019.9013220.",
   "year": "2019",
   "url": "https://doi.org/10.1109/GLOBECOM38437.2019.9013220"
  },
  "rayyan-218688371": {
   "number": 153,
-  "reference": "E. Zaghloul, T. Li, J. Ren, Security and privacy of electronic health records: Decentralized and hierarchical data sharing using smart contracts, 2019 International Conference on Computing, Networking and Communications, ICNC 2019 (2019) 375–379. doi:10.1109/ICCNC.2019.8685552.",
+  "reference": "E. Zaghloul, T. Li, J. Ren, Security and privacy of electronic health records: Decentralized and hierarchical data sharing using smart contracts, in: 2019 International Conference on Computing, Networking and Communications, ICNC 2019, IEEE, 2019, pp. 375–379. doi:10.1109/ICCNC.2019.8685552.",
   "year": "2019",
   "url": "https://doi.org/10.1109/ICCNC.2019.8685552"
  },
  "rayyan-218688425": {
   "number": 154,
-  "reference": "E.-Y. Daraghmi, Y.-A. Daraghmi, S.-M. Yuan, Medchain: A design of blockchain-based system for medical records access and permissions management, IEEE Access 7 (2019) 164595–164613. doi:10.1109/ACCESS.2019.2952942.",
+  "reference": "E.-Y. Daraghmi, Y.-A. Daraghmi, S.-M. Yuan, MedChain: A design of blockchain-based system for medical records access and permissions management, IEEE Access 7 (2019) 164595–164613. doi:10.1109/ACCESS.2019.2952942.",
   "year": "2019",
   "url": "https://doi.org/10.1109/ACCESS.2019.2952942"
  },
  "rayyan-218688443": {
   "number": 155,
-  "reference": "S. Amofa, E. B. Sifah, K. O.-B. Obour Agyekum, S. Abla, Q. Xia, J. C. Gee, J. Gao, A blockchain-based architecture framework for secure sharing of personal health data, 2018 IEEE 20th International Conference on e-Health Networking, Applications and Services, Healthcom 2018 (2018). doi:10.1109/HealthCom.2018.8531160.",
+  "reference": "S. Amofa, E. B. Sifah, K. O.-B. Obour Agyekum, S. Abla, Q. Xia, J. C. Gee, J. Gao, A blockchain-based architecture framework for secure sharing of personal health data, in: 2018 IEEE 20th International Conference on e-Health Networking, Applications and Services, Healthcom 2018, IEEE, 2018, pp. 1–6. doi:10.1109/HealthCom.2018.8531160.",
   "year": "2018",
   "url": "https://doi.org/10.1109/HealthCom.2018.8531160"
  },
  "rayyan-218688759": {
   "number": 156,
-  "reference": "X. Liang, J. Zhao, S. Shetty, J. Liu, D. Li, Integrating blockchain for data sharing and collaboration in mobile healthcare applications, IEEE International Symposium on Personal, Indoor and Mobile Radio Communications, PIMRC 2017 (2017) 1–5. doi:10.1109/PIMRC.2017.8292361.",
+  "reference": "X. Liang, J. Zhao, S. Shetty, J. Liu, D. Li, Integrating blockchain for data sharing and collaboration in mobile healthcare applications, in: IEEE International Symposium on Personal, Indoor and Mobile Radio Communications, PIMRC, IEEE, 2017, pp. 1–5. doi:10.1109/PIMRC.2017.8292361.",
   "year": "2017",
   "url": "https://doi.org/10.1109/PIMRC.2017.8292361"
  },
@@ -944,67 +944,67 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027824": {
   "number": 158,
-  "reference": "S. Gangadharaiah, P. Shrinivasacharya, Secure and efficient public auditing system of user data using hybrid aes-ecc crypto system with merkle hash tree in blockchain, Multimed. Tools Appl. 83 (29) (2024) 72301–72320. doi:10.1007/s11042-024-18363-0.",
+  "reference": "S. Gangadharaiah, P. Shrinivasacharya, Secure and efficient public auditing system of user data using hybrid AES-ECC crypto system with Merkle hash tree in blockchain, Multimed. Tools Appl. 83 (29) (2024) 72301–72320. doi:10.1007/s11042-024-18363-0.",
   "year": "2024",
   "url": "https://doi.org/10.1007/s11042-024-18363-0"
  },
  "rayyan-172027866": {
   "number": 159,
-  "reference": "J. J. Hathaliya, S. Tanwar, Role and attribute-based access control scheme for decentralized medicine supply chain, J. Inf. Secur. Appl. 85 (2024). doi:10.1016/j.jisa.2024.103851.",
+  "reference": "J. J. Hathaliya, S. Tanwar, Role and attribute-based access control scheme for decentralized medicine supply chain, J. Inf. Secur. Appl. 85 (2024) 103851. doi:10.1016/j.jisa.2024.103851.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.jisa.2024.103851"
  },
  "rayyan-172027891": {
   "number": 160,
-  "reference": "I. Herrera Montano, J. Ramos Diaz, J. J. García Aranda, S. Molina-Cardín, J. J. Guerrero López, I. de la Torre Díez, Securecipher: An instantaneous synchronization stream encryption system for insider threat data leakage protection, Expert Syst. Appl. 254 (2024). doi:10.1016/j.eswa.2024.124470.",
+  "reference": "I. Herrera Montano, J. Ramos Diaz, J. J. García Aranda, S. Molina-Cardín, J. J. Guerrero López, I. de la Torre Díez, Securecipher: An instantaneous synchronization stream encryption system for insider threat data leakage protection, Expert Syst. Appl. 254 (2024) 124470. doi:10.1016/j.eswa.2024.124470.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.eswa.2024.124470"
  },
  "rayyan-172027893": {
   "number": 161,
-  "reference": "Q. Zhang, L. Yuan, T. Xie, H. Chen, Auditable and dynamic access control scheme with behavior and identity tracing, Comput. Netw. 251 (2024). doi:10.1016/j.comnet.2024.110623.",
+  "reference": "Q. Zhang, L. Yuan, T. Xie, H. Chen, Auditable and dynamic access control scheme with behavior and identity tracing, Comput. Netw. 251 (2024) 110623. doi:10.1016/j.comnet.2024.110623.",
   "year": "2024",
   "url": "https://doi.org/10.1016/j.comnet.2024.110623"
  },
  "rayyan-172027938": {
   "number": 162,
-  "reference": "P. V. Darshini, D. Sangeetha, S. D. Krishnan, V. Sathya Priya, Enhancing user revocation mechanisms for shared resources to strengthen data security in public clouds, 2024 International Conference on Electrical, Electronics and Computing Technologies, ICEECT 2024 (2024). doi:10.1109/ICEECT61758.2024.10739201.",
+  "reference": "P. V. Darshini, D. Sangeetha, S. D. Krishnan, V. Sathya Priya, Enhancing user revocation mechanisms for shared resources to strengthen data security in public clouds, in: 2024 International Conference on Electrical, Electronics and Computing Technologies, ICEECT 2024, IEEE, 2024, pp. 1–6. doi:10.1109/ICEECT61758.2024.10739201.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICEECT61758.2024.10739201"
  },
  "rayyan-172027958": {
   "number": 163,
-  "reference": "H. N. B. Manjyanaik, R. Mohanty, J. M. Kannan, Preserving confidential data using improved rivest-shamir adleman to secure multi-cloud, Int. J. Intell. Eng. Syst. 17 (4) (2024) 162–171. doi:10.22266/IJIES2024.0831.13.",
+  "reference": "H. N. B. Manjyanaik, R. Mohanty, J. M. Kannan, Preserving confidential data using improved Rivest-Shamir Adleman to secure multi-cloud, Int. J. Intell. Eng. Syst. 17 (4) (2024) 162–171. doi:10.22266/IJIES2024.0831.13.",
   "year": "2024",
   "url": "https://doi.org/10.22266/IJIES2024.0831.13"
  },
  "rayyan-172027976": {
   "number": 164,
-  "reference": "N. M. N. Fath, M. R. H. Aminy, N. J. De La Croix, T. Ahmad, Hiding secret data using reduced differences within the pixels of an image, 2nd IEEE International Conference on Networks, Multimedia and Information Technology, NMITCON 2024 (2024). doi:10.1109/NMITCON62075.2024.10699207.",
+  "reference": "N. M. N. Fath, M. R. H. Aminy, N. J. De La Croix, T. Ahmad, Hiding secret data using reduced differences within the pixels of an image, in: 2nd IEEE International Conference on Networks, Multimedia and Information Technology, NMITCON 2024, IEEE, 2024, pp. 1–6. doi:10.1109/NMITCON62075.2024.10699207.",
   "year": "2024",
   "url": "https://doi.org/10.1109/NMITCON62075.2024.10699207"
  },
  "rayyan-172028007": {
   "number": 165,
-  "reference": "P. Singh, P. Singh, A. K. Agarwal, A. Kumar, Modified blowfish encryption standard with optimization strategy for secured cloud storage with data dynamics, 2024 IEEE International Conference on Information Technology, Electronics and Intelligent Communication Systems, ICITEICS 2024 (2024). doi:10.1109/ICITEICS61368.2024.10625529.",
+  "reference": "P. Singh, P. Singh, A. K. Agarwal, A. Kumar, Modified Blowfish encryption standard with optimization strategy for secured cloud storage with data dynamics, in: 2024 IEEE International Conference on Information Technology, Electronics and Intelligent Communication Systems, ICITEICS 2024, IEEE, 2024, pp. 1–8. doi:10.1109/ICITEICS61368.2024.10625529.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ICITEICS61368.2024.10625529"
  },
  "rayyan-172028104": {
   "number": 166,
-  "reference": "K. Koptyra, M. R. Ogiela, An efficient steganographic protocol for webp files, Appl. Sci. 13 (22) (2023). doi:10.3390/app132212404.",
+  "reference": "K. Koptyra, M. R. Ogiela, An efficient steganographic protocol for WebP files, Appl. Sci. 13 (22) (2023) 12404. doi:10.3390/app132212404.",
   "year": "2023",
   "url": "https://doi.org/10.3390/app132212404"
  },
  "rayyan-172028264": {
   "number": 167,
-  "reference": "Z. Wang, S. Guan, A blockchain-based traceable and secure data-sharing scheme, PeerJ Comput. Sci. 9 (2023). doi:10.7717/PEERJ-CS.1337.",
+  "reference": "Z. Wang, S. Guan, A blockchain-based traceable and secure data-sharing scheme, PeerJ Comput. Sci. 9 (2023) e1337. doi:10.7717/PEERJ-CS.1337.",
   "year": "2023",
   "url": "https://doi.org/10.7717/PEERJ-CS.1337"
  },
  "rayyan-172028394": {
   "number": 168,
-  "reference": "A. Cantu, J. Geng, C. Rong, Nft as a proof of digital ownership-reward system integrated to a secure distributed computing blockchain framework, Proceedings of the International Conference on Cloud Computing Technology and Science, CloudCom 2022 (2022) 97–104. doi:10.1109/CloudCom55334.2022.00024.",
+  "reference": "A. Cantu, J. Geng, C. Rong, NFT as a proof of digital ownership-reward system integrated to a secure distributed computing blockchain framework, in: Proceedings of the International Conference on Cloud Computing Technology and Science, CloudCom, IEEE Computer Society, 2022, pp. 97–104. doi:10.1109/CloudCom55334.2022.00024.",
   "year": "2022",
   "url": "https://doi.org/10.1109/CloudCom55334.2022.00024"
  },
@@ -1016,31 +1016,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028643": {
   "number": 170,
-  "reference": "O. Malomo, D. Rawat, M. Garuba, Security through block vault in a blockchain enabled federated cloud framework, Appl. Netw. Sci. 5 (1) (2020). doi:10.1007/s41109-020-00256-4.",
+  "reference": "O. Malomo, D. Rawat, M. Garuba, Security through block vault in a blockchain enabled federated cloud framework, Appl. Netw. Sci. 5 (1) (2020) 16. doi:10.1007/s41109-020-00256-4.",
   "year": "2020",
   "url": "https://doi.org/10.1007/s41109-020-00256-4"
  },
  "rayyan-172028983": {
   "number": 171,
-  "reference": "R. Kowsik, L. Vignesh, Mitigating insider data theft attacks in the cloud, 2016 2nd International Conference on Science Technology Engineering and Management, ICONSTEM 2016 (2016) 561–567. doi:10.1109/ICONSTEM.2016.7560956.",
+  "reference": "R. Kowsik, L. Vignesh, Mitigating insider data theft attacks in the cloud, in: 2016 2nd International Conference on Science Technology Engineering and Management, ICONSTEM 2016, IEEE, 2016, pp. 561–567. doi:10.1109/ICONSTEM.2016.7560956.",
   "year": "2016",
   "url": "https://doi.org/10.1109/ICONSTEM.2016.7560956"
  },
  "rayyan-172029019": {
   "number": 172,
-  "reference": "S. J. Stolfo, M. B. Salem, A. D. Keromytis, Fog computing: Mitigating insider data theft attacks in the cloud, Proceedings - IEEE CS Security and Privacy Workshops, SPW 2012 (2012) 125–128. doi:10.1109/SPW.2012.19.",
+  "reference": "S. J. Stolfo, M. B. Salem, A. D. Keromytis, Fog computing: Mitigating insider data theft attacks in the cloud, in: IEEE CS Security and Privacy Workshops, SPW 2012, 2012, pp. 125–128. doi:10.1109/SPW.2012.19.",
   "year": "2012",
   "url": "https://doi.org/10.1109/SPW.2012.19"
  },
  "rayyan-218685239": {
   "number": 173,
-  "reference": "R. Chouhan, A. Thatipamula, M. R. K. Thumati, S. Sharma, V. Tandra, R. Tadiboina, Dlt-based cloud file sharing system, 2024 Parul International Conference on Engineering and Technology, PICET 2024 (2024). doi:10.1109/PICET60765.2024.10716064.",
+  "reference": "R. Chouhan, A. Thatipamula, M. R. K. Thumati, S. Sharma, V. Tandra, R. Tadiboina, DLT-based cloud file sharing system, in: 2024 Parul International Conference on Engineering and Technology, PICET 2024, IEEE, 2024, pp. 1–6. doi:10.1109/PICET60765.2024.10716064.",
   "year": "2024",
   "url": "https://doi.org/10.1109/PICET60765.2024.10716064"
  },
  "rayyan-218685256": {
   "number": 174,
-  "reference": "C. Arissabarno, S. Sukaridhoto, I. Winarno, Secure and traceable companies file management system using blockchain and ipfs, Digest of Technical Papers - IEEE International Conference on Consumer Electronics (2024) 325–331. doi:10.1109/ISCT62336.2024.10791132.",
+  "reference": "C. Arissabarno, S. Sukaridhoto, I. Winarno, Secure and traceable companies file management system using blockchain and IPFS, in: Digest of Technical Papers - IEEE International Conference on Consumer Electronics, IEEE, 2024, pp. 325–331. doi:10.1109/ISCT62336.2024.10791132.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ISCT62336.2024.10791132"
  },
@@ -1052,67 +1052,67 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218686026": {
   "number": 176,
-  "reference": "J. Nikolai, Y. Wang, A system for detecting malicious insider data theft in iaas cloud environments, Proceedings - IEEE Global Communications Conference, GLOBECOM (2016). doi:10.1109/GLOCOM.2016.7841554.",
+  "reference": "J. Nikolai, Y. Wang, A system for detecting malicious insider data theft in IaaS cloud environments, in: IEEE Global Communications Conference, GLOBECOM, 2016, pp. 1–6. doi:10.1109/GLOCOM.2016.7841554.",
   "year": "2016",
   "url": "https://doi.org/10.1109/GLOCOM.2016.7841554"
  },
  "rayyan-218687559": {
   "number": 177,
-  "reference": "S. Athanere, R. Thakur, Blockchain based hierarchical semi-decentralized approach using ipfs for secure and efficient data sharing, J. King Saud Univ. Comput. Inf. Sci. 34 (4) (2022) 1523–1534. doi:10.1016/j.jksuci.2022.01.019.",
+  "reference": "S. Athanere, R. Thakur, Blockchain based hierarchical semi-decentralized approach using IPFS for secure and efficient data sharing, J. King Saud Univ. Comput. Inf. Sci. 34 (4) (2022) 1523–1534. doi:10.1016/j.jksuci.2022.01.019.",
   "year": "2022",
   "url": "https://doi.org/10.1016/j.jksuci.2022.01.019"
  },
  "rayyan-218688565": {
   "number": 178,
-  "reference": "M. Steichen, B. Fiz, R. Norvill, W. Shbair, R. State, Blockchain-based, decentralized access control for ipfs, Proceedings - IEEE 2018 International Congress on Cybermatics: 2018 IEEE Conferences on Internet of Things, Green Computing and Communications, Cyber, Physical and Social Computing, Smart Data, Blockchain, Computer and Information Technology, iThings/GreenCom/CPSCom/SmartData/Blockchain/CIT 2018 (2018) 1499–1506. doi:10.1109/Cybermatics_2018.2018.00253.",
+  "reference": "M. Steichen, B. Fiz, R. Norvill, W. Shbair, R. State, Blockchain-based, decentralized access control for IPFS, in: IEEE 2018 International Congress on Cybermatics: 2018 IEEE Conferences on Internet of Things, Green Computing and Communications, Cyber, Physical and Social Computing, Smart Data, Blockchain, Computer and Information Technology, iThings/GreenCom/CPSCom/SmartData/Blockchain/CIT 2018, IEEE, 2018, pp. 1499–1506. doi:10.1109/Cybermatics_2018.2018.00253.",
   "year": "2018",
   "url": "https://doi.org/10.1109/Cybermatics_2018.2018.00253"
  },
  "rayyan-218688840": {
   "number": 179,
-  "reference": "Q. Huang, Z. Ma, Y. Yang, J. Fu, X. Niu, Eabds: Attribute-based secure data sharing with efficient revocation in cloud computing, Chin. J. Electron. 24 (4) (2015) 862–868. doi:10.1049/cje.2015.10.033.",
+  "reference": "Q. Huang, Z. Ma, Y. Yang, J. Fu, X. Niu, EABDS: Attribute-based secure data sharing with efficient revocation in cloud computing, Chin. J. Electron. 24 (4) (2015) 862–868. doi:10.1049/cje.2015.10.033.",
   "year": "2015",
   "url": "https://doi.org/10.1049/cje.2015.10.033"
  },
  "rayyan-172027826": {
   "number": 180,
-  "reference": "X. Xue, G. Shang, Z. Ma, M. Xu, H. Guo, K. Li, X. Cheng, Datasafe: Copyright protection with puf watermarking and blockchain tracing, Commun. Comput. Inf. Sci. 2277 (2025) 256–268. doi:10.1007/978-981-97-9412-6_24.",
+  "reference": "X. Xue, G. Shang, Z. Ma, M. Xu, H. Guo, K. Li, X. Cheng, DataSafe: Copyright protection with PUF watermarking and blockchain tracing, Commun. Comput. Inf. Sci. 2277 (2025) 256–268. doi:10.1007/978-981-97-9412-6_24.",
   "year": "2025",
   "url": "https://doi.org/10.1007/978-981-97-9412-6_24"
  },
  "rayyan-172027846": {
   "number": 181,
-  "reference": "A. Paradise Vit, Y. Aronson, R. Fraidenberg, R. Puzis, Visual censorship: A deep learning-based approach to preventing the leakage of confidential content in images, Appl. Sci. 14 (17) (2024). doi:10.3390/app14177915.",
+  "reference": "A. Paradise Vit, Y. Aronson, R. Fraidenberg, R. Puzis, Visual censorship: A deep learning-based approach to preventing the leakage of confidential content in images, Appl. Sci. 14 (17) (2024) 7915. doi:10.3390/app14177915.",
   "year": "2024",
   "url": "https://doi.org/10.3390/app14177915"
  },
  "rayyan-172027848": {
   "number": 182,
-  "reference": "S. Kiltz, J. Dittmann, F. Loewe, C. Heidecke, M. John, J. Mädel, F. Preißler, Forensic image trace map for image-stego-malware analysis: Validation of the effectiveness with structured image sets, IH MMSec 2024 - Proceedings of the 2024 ACM Workshop on Information Hiding and Multimedia Security (2024) 125–130. doi:10.1145/3658664.3659659.",
+  "reference": "S. Kiltz, J. Dittmann, F. Loewe, C. Heidecke, M. John, J. Mädel, F. Preißler, Forensic image trace map for image-stego-malware analysis: Validation of the effectiveness with structured image sets, in: IH MMSec 2024 - Proceedings of the 2024 ACM Workshop on Information Hiding and Multimedia Security, ACM, 2024, pp. 125–130. doi:10.1145/3658664.3659659.",
   "year": "2024",
   "url": "https://doi.org/10.1145/3658664.3659659"
  },
  "rayyan-172027886": {
   "number": 183,
-  "reference": "H. Hu, Y. Wang, G. Song, Research on convergence media ecological model based on blockchain, Systems 12 (9) (2024). doi:10.3390/systems12090381.",
+  "reference": "H. Hu, Y. Wang, G. Song, Research on convergence media ecological model based on blockchain, Systems 12 (9) (2024) 381. doi:10.3390/systems12090381.",
   "year": "2024",
   "url": "https://doi.org/10.3390/systems12090381"
  },
  "rayyan-172027964": {
   "number": 184,
-  "reference": "X. Cong, L. Feng, L. Zi, Research on ipfs image copyright protectionmethod based on blockchain, Comput. Mater. Contin. 81 (1) (2024) 663–684. doi:10.32604/cmc.2024.054372.",
+  "reference": "X. Cong, L. Feng, L. Zi, Research on IPFS image copyright protection method based on blockchain, Comput. Mater. Contin. 81 (1) (2024) 663–684. doi:10.32604/cmc.2024.054372.",
   "year": "2024",
   "url": "https://doi.org/10.32604/cmc.2024.054372"
  },
  "rayyan-172027997": {
   "number": 185,
-  "reference": "L. Li, Generic image manipulation localization based on boundary artifact search and frequency domain artifact mining, 2024 4th International Symposium on Computer Technology and Information Science, ISCTIS 2024 (2024) 635–641. doi:10.1109/ISCTIS63324.2024.10699182.",
+  "reference": "L. Li, Generic image manipulation localization based on boundary artifact search and frequency domain artifact mining, in: 2024 4th International Symposium on Computer Technology and Information Science, ISCTIS 2024, IEEE, 2024, pp. 635–641. doi:10.1109/ISCTIS63324.2024.10699182.",
   "year": "2024",
   "url": "https://doi.org/10.1109/ISCTIS63324.2024.10699182"
  },
  "rayyan-172028028": {
   "number": 186,
-  "reference": "Q. Zou, W. Yu, Z. Bao, A blockchain solution for remote sensing data management model, Appl. Sci. 13 (17) (2023). doi:10.3390/app13179609.",
+  "reference": "Q. Zou, W. Yu, Z. Bao, A blockchain solution for remote sensing data management model, Appl. Sci. 13 (17) (2023) 9609. doi:10.3390/app13179609.",
   "year": "2023",
   "url": "https://doi.org/10.3390/app13179609"
  },
@@ -1124,13 +1124,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028135": {
   "number": 188,
-  "reference": "A. Balodi, P. Malik, P. Rawat, P. Das, K. Singh, M. Manjul, Enhancing data security in networking through aes encryption and steganography: A comparative analysis of des and aes algorithms, Proceedings - International Conference on Technological Advancements in Computational Sciences, ICTACS 2023 (2023) 927–932. doi:10.1109/ICTACS59847.2023.10390281.",
+  "reference": "A. Balodi, P. Malik, P. Rawat, P. Das, K. Singh, M. Manjul, Enhancing data security in networking through AES encryption and steganography: A comparative analysis of DES and AES algorithms, in: International Conference on Technological Advancements in Computational Sciences, ICTACS 2023, IEEE, 2023, pp. 927–932. doi:10.1109/ICTACS59847.2023.10390281.",
   "year": "2023",
   "url": "https://doi.org/10.1109/ICTACS59847.2023.10390281"
  },
  "rayyan-172028161": {
   "number": 189,
-  "reference": "R. Jamatia, B. Bhuyan, Comparative analysis and performance metrics evaluation of image steganography embedding algorithms, 2023 International Conference on Evolutionary Algorithms and Soft Computing Techniques, EASCT 2023 (2023). doi:10.1109/EASCT59475.2023.10393229.",
+  "reference": "R. Jamatia, B. Bhuyan, Comparative analysis and performance metrics evaluation of image steganography embedding algorithms, in: 2023 International Conference on Evolutionary Algorithms and Soft Computing Techniques, EASCT 2023, IEEE, 2023, pp. 1–7. doi:10.1109/EASCT59475.2023.10393229.",
   "year": "2023",
   "url": "https://doi.org/10.1109/EASCT59475.2023.10393229"
  },
@@ -1154,7 +1154,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027819": {
   "number": 193,
-  "reference": "M. A. Umer, E. G. Belay, L. B. Gouveia, Leveraging artificial intelligence and provenance blockchain framework to mitigate risks in cloud manufacturing in industry 4.0, Electronics 13 (3) (2024). doi:10.3390/electronics13030660.",
+  "reference": "M. A. Umer, E. G. Belay, L. B. Gouveia, Leveraging artificial intelligence and provenance blockchain framework to mitigate risks in cloud manufacturing in Industry 4.0, Electronics 13 (3) (2024) 660. doi:10.3390/electronics13030660.",
   "year": "2024",
   "url": "https://doi.org/10.3390/electronics13030660"
  },
@@ -1166,31 +1166,31 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027882": {
   "number": 195,
-  "reference": "Q. Gong, J. Zhang, Z. Wei, X. Wang, X. Zhang, X. Yan, Y. Liu, L. Dong, Sdacs: Blockchain-based secure and dynamic access control scheme for internet of things, Sensors 24 (7) (2024). doi:10.3390/s24072267.",
+  "reference": "Q. Gong, J. Zhang, Z. Wei, X. Wang, X. Zhang, X. Yan, Y. Liu, L. Dong, SDACS: Blockchain-based secure and dynamic access control scheme for Internet of Things, Sensors 24 (7) (2024) 2267. doi:10.3390/s24072267.",
   "year": "2024",
   "url": "https://doi.org/10.3390/s24072267"
  },
  "rayyan-172028100": {
   "number": 196,
-  "reference": "S. M. Umran, S. Lu, Z. A. Abduljabbar, V. O. Nyangaresi, Multi-chain blockchain based secure data-sharing framework for industrial iots smart devices in petroleum industry, Internet Things 24 (2023). doi:10.1016/j.iot.2023.100969.",
+  "reference": "S. M. Umran, S. Lu, Z. A. Abduljabbar, V. O. Nyangaresi, Multi-chain blockchain based secure data-sharing framework for industrial IoTs smart devices in petroleum industry, Internet Things 24 (2023) 100969. doi:10.1016/j.iot.2023.100969.",
   "year": "2023",
   "url": "https://doi.org/10.1016/j.iot.2023.100969"
  },
  "rayyan-218685441": {
   "number": 197,
-  "reference": "X. Yan, M. Chen, Y. Zhang, F. Pan, Data security access control based on blockchain and smart contracts, ACM Int. Conf. Proc. Ser. (2023) 254–260. doi:10.1145/3617733.3617774.",
+  "reference": "X. Yan, M. Chen, Y. Zhang, F. Pan, Data security access control based on blockchain and smart contracts, in: ACM International Conference Proceeding Series, ACM, 2023, pp. 254–260. doi:10.1145/3617733.3617774.",
   "year": "2023",
   "url": "https://doi.org/10.1145/3617733.3617774"
  },
  "rayyan-218685477": {
   "number": 198,
-  "reference": "R. K. Mishra, R. K. Yadav, P. Nath, Blockchain drivenaccess control architecture for the internet of things, Multimed. Tools Appl. 82 (20) (2023) 31397–31421. doi:10.1007/s11042-023-14881-5.",
+  "reference": "R. K. Mishra, R. K. Yadav, P. Nath, Blockchain driven access control architecture for the Internet of Things, Multimed. Tools Appl. 82 (20) (2023) 31397–31421. doi:10.1007/s11042-023-14881-5.",
   "year": "2023",
   "url": "https://doi.org/10.1007/s11042-023-14881-5"
  },
  "rayyan-218688137": {
   "number": 199,
-  "reference": "I. Makhdoom, I. Zhou, M. Abolhasan, J. Lipman, W. Ni, Privysharing: A blockchain-based framework for privacy-preserving and secure data sharing in smart cities, Comput. Secur. 88 (2020). doi:10.1016/j.cose.2019.101653.",
+  "reference": "I. Makhdoom, I. Zhou, M. Abolhasan, J. Lipman, W. Ni, PrivySharing: A blockchain-based framework for privacy-preserving and secure data sharing in smart cities, Comput. Secur. 88 (2020) 101653. doi:10.1016/j.cose.2019.101653.",
   "year": "2020",
   "url": "https://doi.org/10.1016/j.cose.2019.101653"
  },
@@ -1202,13 +1202,13 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-218686268": {
   "number": 201,
-  "reference": "M. Alawneh, I. M. Abbadi, Preventing information leakage between collaborating organisations, ACM Int. Conf. Proc. Ser. (2008). doi:10.1145/1409540.1409592.",
+  "reference": "M. Alawneh, I. M. Abbadi, Preventing information leakage between collaborating organisations, in: ACM International Conference Proceeding Series, ACM, 2008, pp. 1–10. doi:10.1145/1409540.1409592.",
   "year": "2008",
   "url": "https://doi.org/10.1145/1409540.1409592"
  },
  "rayyan-218688059": {
   "number": 202,
-  "reference": "A. Alniamy, B. D. Taylor, Attribute-based access control of data sharing based on hyperledger blockchain, ACM Int. Conf. Proc. Ser. (2020) 135–139. doi:10.1145/3390566.3391688.",
+  "reference": "A. Alniamy, B. D. Taylor, Attribute-based access control of data sharing based on Hyperledger blockchain, in: ACM International Conference Proceeding Series, ACM, 2020, pp. 135–139. doi:10.1145/3390566.3391688.",
   "year": "2020",
   "url": "https://doi.org/10.1145/3390566.3391688"
  },
@@ -1220,19 +1220,19 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028105": {
   "number": 204,
-  "reference": "L. Wang, R. L. Mosher, P. Duett, Cyberattacks and cybersecurity in additive manufacturing, Conference Proceedings - IEEE SOUTHEASTCON (2024) 1040–1045. doi:10.1109/SoutheastCon52093.2024.10500033.",
+  "reference": "L. Wang, R. L. Mosher, P. Duett, Cyberattacks and cybersecurity in additive manufacturing, in: IEEE SOUTHEASTCON, IEEE, 2024, pp. 1040–1045. doi:10.1109/SoutheastCon52093.2024.10500033.",
   "year": "2024",
   "url": "https://doi.org/10.1109/SoutheastCon52093.2024.10500033"
  },
  "edpb_blockchain_2026": {
   "number": 205,
-  "reference": "European Data Protection Board, Guidelines 02/2025 on processing of personal data through blockchain technologies, version 2.0 (2026).",
+  "reference": "European Data Protection Board, Guidelines 02/2025 on processing of personal data through blockchain technologies, version 2.0, Adopted on 7 July 2026; accessed 21 November 2026 (2026).",
   "year": "2026",
   "url": "https://www.edpb.europa.eu/system/files/2026-07/edpb_guidelines_202502_blockchain_v2_en.pdf"
  },
  "SSRN-3080322": {
   "number": 206,
-  "reference": "M. Finck, Blockchains and data protection in the european union, Max Planck Institute for Innovation and Competition, Munich (2017). doi:10.2139/ssrn.3080322.",
+  "reference": "M. Finck, Blockchains and data protection in the European Union, Max Planck Institute for Innovation & Competition Research Paper 18-01, Max Planck Institute for Innovation and Competition, Munich, Available at SSRN (November 2017). doi:10.2139/ssrn.3080322.",
   "year": "2017",
   "url": "https://doi.org/10.2139/ssrn.3080322"
  }
