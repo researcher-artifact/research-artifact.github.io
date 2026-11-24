@@ -440,7 +440,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172027834": {
   "number": 74,
-  "reference": "P. K. Bhansali, D. Hiran, H. Kothari, K. Gulati, Cloud-based secure data storage and access control for Internet of Medical Things using federated learning, Int. J. Pervasive Comput. Commun. 20 (2) (2024) 228–239. doi:10.1108/IJPCC-02-2022-0041.",
+  "reference": "P. K. Bhansali, D. Hiran, H. Kothari, K. Gulati, Cloud-based secure data storage and access control for Internet of Medical Things using federated learning, Int. J. Pervasive Comput. Commun. 20 (2) (2024) 228–239, [Retracted]. doi:10.1108/IJPCC-02-2022-0041.",
   "year": "2024",
   "url": "https://doi.org/10.1108/IJPCC-02-2022-0041"
  },
@@ -512,7 +512,7 @@ window.DASHBOARD_REFERENCES = {
  },
  "rayyan-172028018": {
   "number": 86,
-  "reference": "T. Liao, Blockchain-enabled police management framework for securing police data, Soft Comput. 27 (23) (2023) 18061–18075. doi:10.1007/s00500-023-09216-3.",
+  "reference": "T. Liao, Blockchain-enabled police management framework for securing police data, Soft Comput. 27 (23) (2023) 18061–18075, [Retracted]. doi:10.1007/s00500-023-09216-3.",
   "year": "2023",
   "url": "https://doi.org/10.1007/s00500-023-09216-3"
  },
