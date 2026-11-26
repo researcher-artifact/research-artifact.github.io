@@ -1,6 +1,6 @@
 # Data Extraction Form (DEF): fields and rules
 
-Source: the article "Accountability Through Digital Object Tracing in Information Security: A Systematic Literature Mapping", section *Data extraction* (the DEF fields), section *Planning* (research questions) and section *User-centric and server-centric architectures*; the `Data Extraction` sheet of DEF_TA; and the data-extraction prompt of the first round (repository `sok-tracking-and-accountability`, folder *AI Tool for Data Extraction*).
+Source: the article "Accountability Through Digital Object Tracing in Information Security: A Systematic Literature Mapping", section *Data extraction* (the DEF fields), section *Planning* (research questions) and section *User-centric and server-centric architectures*; the `Data Extraction` sheet of DEF_TA; and the data-extraction prompt of the first round.
 
 ## Research questions served by the DEF
 
